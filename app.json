@@ -1,0 +1,9 @@
+{
+  "expo": {
+    "sdkVersion": "29.0.0",
+    "name": "Chi Sun College App",
+    "slug": "chi-sun-college-app",
+    "icon": "src/images/app-icon.png",
+    "privacy": "public"
+  }
+}
