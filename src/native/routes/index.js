@@ -14,7 +14,41 @@ import GroupsContainer from '../../containers/Groups';
 import GroupsComponent from '../components/Groups';
 import GroupViewComponent from '../components/Group';
 
-import theme from '../../../native-base-theme/variables/commonColor';
+import EventsContainer from '../../containers/Events';
+import EventsComponent from '../components/Events';
+import EventViewComponent from '../components/Event';
+
+// import AboutComponent from '../components/About';
+
+const Index = (
+  <Stack hideNavBar>
+    <Scene hideNavBar>
+      <Tabs
+        key="tabbar"
+        swipeEnabled
+        type="replace"
+        showLabel={false}
+        {...DefaultProps.tabProps}
+      >
+        <Stack
+          key="home"
+          title={AppConfig.appName.toUpperCase()}
+          icon={() => <Icon name="planet" {...DefaultProps.icons} />}
+          {...DefaultProps.navbarProps}
+        >
+          <Scene key="home" component={EventsContainer} Layout={EventsComponent} />
+        </Stack>
+
+        <Stack
+          key="groups"
+          title="Groups"
+          icon={() => <Icon name="book" {...DefaultProps.icons} />}
+          {...DefaultProps.navbarProps}
+        >
+          <Scene key="groups" component={GroupsContainer} Layout={GroupsComponent} />
+        </Stack>
+      </Tabs>
+    </Scene>
 
 export default (
   <Drawer
@@ -56,5 +90,15 @@ export default (
       component={GroupsContainer}
       Layout={GroupViewComponent}
     />
-  </Drawer>
+
+    <Scene
+      back
+      clone
+      key="event"
+      title="EVENT"
+      {...DefaultProps.navbarProps}
+      component={EventsContainer}
+      Layout={EventViewComponent}
+    />
+  </Stack>
 );

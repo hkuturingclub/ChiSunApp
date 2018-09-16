@@ -56,8 +56,16 @@ const GroupListing = ({
                   <Spacer size={10} />
                   <Text style={{ fontWeight: '800' }}>{item.name}</Text>
                   <Spacer size={15} />
-                  <Button block bordered small onPress={() => onPress(item)}>
-                    <Text>View Group</Text>
+                  <Button
+                    block
+                    bordered
+                    small
+                    onPress={() => onPress(item)}
+                  >
+                    <Text>
+
+                      View Group
+                    </Text>
                   </Button>
                   <Spacer size={5} />
                 </Body>

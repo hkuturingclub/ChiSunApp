@@ -8,7 +8,10 @@ import {
 import ErrorMessages from '../../constants/errors';
 import Error from './Error';
 import Spacer from './Spacer';
+<<<<<<< HEAD
 import moment from 'moment';
+=======
+>>>>>>> 2ae2e9e... mobile-app: displays upcoming events
 
 const EventView = ({
   error,
@@ -52,6 +55,7 @@ const EventView = ({
           <CardItem>
             <Body>
               <Text>
+<<<<<<< HEAD
                 Day: {moment(event.start).format('Do MMM, dddd')}
               </Text>
               <Text>
@@ -59,6 +63,9 @@ const EventView = ({
               </Text>
               <Text>
                 Event End: {moment(event.end).format('LT')}
+=======
+                {event.start}
+>>>>>>> 2ae2e9e... mobile-app: displays upcoming events
               </Text>
             </Body>
           </CardItem>
