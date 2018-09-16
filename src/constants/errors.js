@@ -7,9 +7,12 @@ export default {
   // Firebase Related
   invalidFirebase: 'Firebase is not connected correctly',
 
-  // Recipes
+  // Groups
   group404: 'Group not found',
 
+  // Events
+  error404: 'Event not found',
+  
   // Locale
   localeDoesNotExist: 'Sorry, we do not support that local',
 };

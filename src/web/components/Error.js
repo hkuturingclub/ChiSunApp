@@ -14,6 +14,7 @@ const Error = ({ title, content }) => (
       </p>
       <p>
         <Link to="/" className="btn btn-primary">
+
           Go Home
         </Link>
       </p>
