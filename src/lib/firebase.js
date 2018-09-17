@@ -1,4 +1,5 @@
-import * as FirebaseModule from 'firebase';
+import * as FirebaseModule from 'firebase/app';
+import 'firebase/firestore';
 import firebaseConfig from '../constants/firebase';
 
 const {
@@ -7,6 +8,7 @@ const {
   databaseURL,
   storageBucket,
   messagingSenderId,
+  projectId,
 } = firebaseConfig;
 
 let firebaseInitialized = false;
@@ -24,10 +26,35 @@ if (
     databaseURL,
     storageBucket,
     messagingSenderId,
+    projectId,
   });
 
   firebaseInitialized = true;
 }
 
-export const FirebaseRef = firebaseInitialized ? FirebaseModule.database().ref() : null;
+let db;
+if (firebaseInitialized) {
+  // Initialize Cloud Firestore through Firebase
+  db = FirebaseModule.firestore();
+
+  // Disable deprecated features
+  db.settings({
+    timestampsInSnapshots: true,
+  });
+
+  db.enablePersistence().catch((err) => {
+    if (err.code === 'failed-precondition') {
+      // Multiple tabs open, persistence can only be enabled
+      // in one tab at a a time.
+      console.error(`Error enabling firestore persistence: ${err.code}`);
+    } else if (err.code === 'unimplemented') {
+      // The current browser does not support all of the
+      // features required to enable persistence
+      console.error(`Error enabling firestore persistence: ${err.code}`);
+    }
+  });
+  // Subsequent queries will use persistence, if it was enabled successfully
+}
+
+export const FirebaseDB = firebaseInitialized ? db : null;
 export const Firebase = firebaseInitialized ? FirebaseModule : null;
