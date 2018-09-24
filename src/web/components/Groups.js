@@ -1,13 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-  Row,
-  Col,
-  Card,
-  CardImg,
-  CardText,
-  CardBody,
-  CardTitle,
+  Row, Col, Card, CardImg, CardText, CardBody, CardTitle,
 } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import Error from './Error';
@@ -23,12 +17,8 @@ const GroupListing = ({ error, loading, groups }) => {
         <CardImg top src={item.image} alt={item.name} />
       </Link>
       <CardBody>
-        <CardTitle>
-          {item.name}
-        </CardTitle>
-        <CardText>
-          {item.description}
-        </CardText>
+        <CardTitle>{item.name}</CardTitle>
+        <CardText>{item.description}</CardText>
         <Link className="btn btn-primary" to={`/group/${item.id}`}>
           View Group
           {' '}
@@ -43,11 +33,11 @@ const GroupListing = ({ error, loading, groups }) => {
     <div>
       <Row>
         <Col sm="12">
-          <h1>
-            Groups
-          </h1>
+          <h1>Groups</h1>
           <p>
-            The following data is read directly from Firebase.
+            From festive parties to sports and from meditation to programming classes, these
+            activities are almost entirely student-run, and exhibit the creativity and livelihood
+            that is quintessential to the Chi Sun style.
           </p>
         </Col>
       </Row>

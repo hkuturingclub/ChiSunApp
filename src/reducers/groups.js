@@ -1,16 +1,17 @@
 import Store from '../store/groups';
+import { GROUPS_ERROR, GROUPS_REPLACE } from '../actions/groups';
 
 export const initialState = Store;
 
 export default function groupReducer(state = initialState, action) {
   switch (action.type) {
-    case 'GROUPS_ERROR': {
+    case GROUPS_ERROR: {
       return {
         ...state,
         error: action.data,
       };
     }
-    case 'GROUPS_REPLACE': {
+    case GROUPS_REPLACE: {
       let groups = [];
 
       // Pick out the props I need

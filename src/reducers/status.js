@@ -1,13 +1,11 @@
-export const initialState = {
-  loading: false,
-  info: null,
-  error: null,
-  success: null,
-};
+import { STATUS_REPLACE } from '../actions/status';
+import Store from '../store/status';
+
+export const initialState = Store;
 
 export default function appReducer(state = initialState, action) {
   switch (action.type) {
-    case 'STATUS_REPLACE': {
+    case STATUS_REPLACE: {
       return {
         ...state,
         loading: action.loading || false,

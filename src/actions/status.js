@@ -1,6 +1,8 @@
+export const STATUS_REPLACE = 'STATUS_REPLACE';
+
 /**
-  * Show Error
-  */
+ * Show Error
+ */
 export default function (dispatch, type, val) {
   return new Promise((resolve, reject) => {
     // Validate types
@@ -18,9 +20,11 @@ export default function (dispatch, type, val) {
       if (type === 'loading' && val !== false) message = true;
     }
 
-    return resolve(dispatch({
-      type: 'STATUS_REPLACE',
-      [type]: message,
-    }));
+    return resolve(
+      dispatch({
+        type: STATUS_REPLACE,
+        [type]: message,
+      }),
+    );
   });
 }
