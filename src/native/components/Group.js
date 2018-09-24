@@ -9,18 +9,14 @@ import ErrorMessages from '../../constants/errors';
 import Error from './Error';
 import Spacer from './Spacer';
 
-const GroupView = ({
-  error,
-  groups,
-  groupId,
-}) => {
+const GroupView = ({ error, groups, groupId }) => {
   // Error
   if (error) return <Error content={error} />;
 
   // Get this Group from all groups
   let group = null;
   if (groupId && groups) {
-    group = groups.find(item => parseInt(item.id, 10) === parseInt(groupId, 10));
+    group = groups.find(item => item.id === groupId);
   }
 
   // Grouo not found
@@ -32,37 +28,27 @@ const GroupView = ({
         <Image source={{ uri: group.image }} style={{ height: 100, width: null, flex: 1 }} />
 
         <Spacer size={25} />
-        <H3>
-          {group.name}
-        </H3>
+        <H3>{group.name}</H3>
         <Spacer size={15} />
 
         <Card>
           <CardItem header bordered>
-            <Text>
-              About this group
-            </Text>
+            <Text>About this group</Text>
           </CardItem>
           <CardItem>
             <Body>
-              <Text>
-                {group.description}
-              </Text>
+              <Text>{group.description}</Text>
             </Body>
           </CardItem>
         </Card>
 
         <Card>
           <CardItem header bordered>
-            <Text>
-              Contact Information
-            </Text>
+            <Text>Contact Information</Text>
           </CardItem>
           <CardItem>
             <Body>
-              <Text>
-                {group.contactName}
-              </Text>
+              <Text>{group.contactName}</Text>
             </Body>
             <Right>
               <Text selectable>
@@ -73,10 +59,14 @@ const GroupView = ({
         </Card>
         <Spacer size={10} />
         <Body>
-          <Button block bordered onPress={() => { Linking.openURL(group.link); }}>
-            <Text>
-              Join
-            </Text>
+          <Button
+            block
+            bordered
+            onPress={() => {
+              Linking.openURL(group.link);
+            }}
+          >
+            <Text>Join</Text>
           </Button>
         </Body>
         <Spacer size={20} />

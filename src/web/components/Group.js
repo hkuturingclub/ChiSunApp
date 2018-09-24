@@ -1,12 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-  Row,
-  Col,
-  Card,
-  CardText,
-  CardBody,
-  CardHeader,
+  Row, Col, Card, CardText, CardBody, CardHeader,
 } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import ErrorMessages from '../../constants/errors';
@@ -14,10 +9,7 @@ import Loading from './Loading';
 import Error from './Error';
 
 const GroupView = ({
-  error,
-  loading,
-  groups,
-  groupId,
+  error, loading, groups, groupId,
 }) => {
   // Loading
   if (loading) return <Loading />;
@@ -28,7 +20,7 @@ const GroupView = ({
   // Get this Group from all groups
   let group = null;
   if (groupId && groups) {
-    group = groups.find(item => parseInt(item.id, 10) === parseInt(groupId, 10));
+    group = groups.find(item => item.id === groupId);
   }
 
   // Group not found
@@ -38,33 +30,26 @@ const GroupView = ({
     <div>
       <Row>
         <Col sm="12">
-          <h1>
-            {group.name}
-          </h1>
+          <h1>{group.name}</h1>
         </Col>
       </Row>
       <Row>
         <Col lg="4" className="group-view-card">
           <Card>
-            <CardHeader>
-              About this group
-            </CardHeader>
+            <CardHeader>About this group</CardHeader>
             <CardBody>
-              <CardText>
-                {group.description}
-              </CardText>
+              <CardText>{group.description}</CardText>
             </CardBody>
           </Card>
         </Col>
         <Col lg="4" className="group-view-card">
           <Card>
-            <CardHeader>
-              Contact Information
-            </CardHeader>
+            <CardHeader>Contact Information</CardHeader>
             <CardBody>
               <CardText>
-                <p>{group.contactName}</p>
-                <p>{group.contactNumber}</p>
+                {group.contactName}
+                <br />
+                {group.contactNumber}
               </CardText>
             </CardBody>
           </Card>
@@ -74,8 +59,7 @@ const GroupView = ({
         <Col sm="12">
           <Link className="btn btn-secondary" to="/groups">
             <i className="icon-arrow-left" />
-            {' '}
-            Back
+            {' Back'}
           </Link>
         </Col>
       </Row>
