@@ -8,7 +8,7 @@ export default {
   invalidFirebase: 'Firebase is not connected correctly',
 
   // Recipes
-  group404: 'Recipe not found',
+  group404: 'Group not found',
 
   // Locale
   localeDoesNotExist: 'Sorry, we do not support that local',

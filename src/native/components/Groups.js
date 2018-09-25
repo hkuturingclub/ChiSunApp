@@ -13,10 +13,7 @@ import Header from './Header';
 import Spacer from './Spacer';
 
 const GroupListing = ({
-  error,
-  loading,
-  groups,
-  reFetch,
+  error, loading, groups, reFetch,
 }) => {
   // Loading
   if (loading) return <Loading />;
@@ -57,19 +54,10 @@ const GroupListing = ({
               <CardItem cardBody>
                 <Body>
                   <Spacer size={10} />
-                  <Text style={{ fontWeight: '800' }}>
-                    {item.name}
-                  </Text>
+                  <Text style={{ fontWeight: '800' }}>{item.name}</Text>
                   <Spacer size={15} />
-                  <Button
-                    block
-                    bordered
-                    small
-                    onPress={() => onPress(item)}
-                  >
-                    <Text>
-                      View Group
-                    </Text>
+                  <Button block bordered small onPress={() => onPress(item)}>
+                    <Text>View Group</Text>
                   </Button>
                   <Spacer size={5} />
                 </Body>
@@ -77,12 +65,7 @@ const GroupListing = ({
             </Card>
           )}
           keyExtractor={keyExtractor}
-          refreshControl={(
-            <RefreshControl
-              refreshing={loading}
-              onRefresh={reFetch}
-            />
-          )}
+          refreshControl={<RefreshControl refreshing={loading} onRefresh={reFetch} />}
         />
 
         <Spacer size={20} />
