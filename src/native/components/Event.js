@@ -8,6 +8,7 @@ import {
 import ErrorMessages from '../../constants/errors';
 import Error from './Error';
 import Spacer from './Spacer';
+import moment from 'moment';
 
 const EventView = ({
   error,
@@ -51,7 +52,13 @@ const EventView = ({
           <CardItem>
             <Body>
               <Text>
-                {event.start}
+                Day: {moment(event.start).format('Do MMM, dddd')}
+              </Text>
+              <Text>
+                Event Start: {moment(event.start).format('LT')}
+              </Text>
+              <Text>
+                Event End: {moment(event.end).format('LT')}
               </Text>
             </Body>
           </CardItem>

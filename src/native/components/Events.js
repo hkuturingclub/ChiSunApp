@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-  FlatList, RefreshControl,
+  FlatList, RefreshControl, Image
 } from 'react-native';
 import {
   Container, Content, Card, CardItem, Body, Text, Button,
@@ -11,6 +11,7 @@ import Loading from './Loading';
 import Error from './Error';
 import Header from './Header';
 import Spacer from './Spacer';
+import moment from 'moment';
 
 const EventListing = ({
   error,
@@ -25,9 +26,8 @@ const EventListing = ({
   if (error) return <Error content={error} />;
 
   const keyExtractor = item => item.id;
-
   const onPress = item => Actions.event({ match: { params: { id: String(item.id) } } });
-
+  
   return (
     <Container>
       <Content padder>
@@ -37,10 +37,10 @@ const EventListing = ({
         />
 
         <FlatList
-          numColumns={2}
+          numColumns={1}
           data={events}
           renderItem={({ item }) => (
-            <Card transparent style={{ paddingHorizontal: 6 }}>
+            <Card transparent style={{ paddingHorizontal: 8 }}>
               <CardItem cardBody>
                 <Body>
                   <Spacer size={10} />
@@ -48,9 +48,12 @@ const EventListing = ({
                     {item.title}
                   </Text>
                   <Spacer size={15} />
+                  <Image source={{ uri: 'https://drive.google.com/uc?id='+item.image }} style={{ height: 300, width: 300, flex: 1, resizeMode: "contain", alignSelf:"center" }} />
+                  <Spacer size={15} />
                   <Text>
-                    {item.start}
+                    {moment(item.start).format('Do MMM, dddd')}
                   </Text>
+                  <Spacer size={15} />
                   <Button
                     block
                     bordered

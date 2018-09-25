@@ -18,7 +18,8 @@ export function setError(message) {
 /**
  * Get Events
  */
-const url = `https://www.googleapis.com/calendar/v3/calendars/${CALENDAR_ID}/events?key=${API_KEY}`;
+const currDate = encodeURIComponent((new Date()).toISOString())
+const url = `https://www.googleapis.com/calendar/v3/calendars/${CALENDAR_ID}/events?key=${API_KEY}&timeMin=${currDate}`;
 export function getEvents() {
   return dispatch => new Promise(resolve => request
     .get(url)
@@ -32,6 +33,7 @@ export function getEvents() {
           title: event.summary,
           description: event.description,
           location: event.location,
+          image: event.attachments[0].fileId,
         });
       });
       return resolve(
