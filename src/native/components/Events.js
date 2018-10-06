@@ -33,38 +33,41 @@ const EventListing = ({
       <Content padder>
         <Header
           title="Upcoming Events"
-          content="Events in Chi Sun Collge in the near future."
+          content="Events in Chi Sun College in the near future."
         />
 
         <FlatList
           numColumns={1}
           data={events}
           renderItem={({ item }) => (
-            <Card transparent style={{ paddingHorizontal: 8 }}>
+            <Card transparent style={{ paddingHorizontal: 6 }}>
               <CardItem cardBody>
-                <Body>
-                  <Spacer size={10} />
-                  <Text style={{ fontWeight: '800' }}>
-                    {item.title}
-                  </Text>
-                  <Spacer size={15} />
-                  <Image source={{ uri: 'https://drive.google.com/uc?id='+item.image }} style={{ height: 300, width: 300, flex: 1, resizeMode: "contain", alignSelf:"center" }} />
-                  <Spacer size={15} />
-                  <Text>
-                    {moment(item.start).format('Do MMM, dddd')}
-                  </Text>
-                  <Spacer size={15} />
-                  <Button
-                    block
-                    bordered
-                    small
-                    onPress={() => onPress(item)}
-                  >
-                    <Text>View Event</Text>
-                  </Button>
-                  <Spacer size={5} />
-                </Body>
-              </CardItem>
+                  <Image source={{ uri: 'https://drive.google.com/uc?id='+item.image }} 
+                    style={{ 
+                      height: 300, 
+                      width: null, 
+                      flex: 1,
+                      borderRadius: 5,
+                      resizeMode: "contain",
+                       }} />
+                </CardItem>  
+                <CardItem cardBody>
+                  <Body>
+                    <Spacer size={10} />                  
+                    <Text style={{ fontWeight: '800', alignSelf: 'center' }}>
+                      {item.title}
+                    </Text>
+                    <Spacer size={15} />
+                    <Text style={{ alignSelf: 'center' }}>
+                      {moment(item.start).format('Do MMM, dddd')}
+                    </Text>
+                    <Spacer size={15} />
+                    <Button block bordered small onPress={() => onPress(item)}>
+                      <Text>View Event</Text>
+                    </Button>
+                    <Spacer size={5} />
+                  </Body>
+                </CardItem>
             </Card>
           )}
           keyExtractor={keyExtractor}

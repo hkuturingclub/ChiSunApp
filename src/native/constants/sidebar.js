@@ -1,5 +1,10 @@
 export default [
   {
+    name: 'Events',
+    route: 'events',
+    icon: 'calendar',
+  },
+  {
     name: 'Groups',
     route: 'groups',
     icon: 'people',
