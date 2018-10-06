@@ -17,29 +17,28 @@ class GroupListing extends Component {
     }),
     fetchGroups: PropTypes.func.isRequired,
     showError: PropTypes.func.isRequired,
-  }
+  };
 
   static defaultProps = {
     match: null,
-  }
+  };
 
   componentDidMount = () => this.fetchGroups();
 
   /**
-    * Fetch Data from API, saving to Redux
-    */
+   * Fetch Data from API, saving to Redux
+   */
   fetchGroups = () => {
     const { fetchGroups, showError } = this.props;
-    return fetchGroups()
-      .catch((err) => {
-        console.log(`Error: ${err}`);
-        return showError(err);
-      });
-  }
+    return fetchGroups().catch((err) => {
+      console.log(`Error: ${err}`);
+      return showError(err);
+    });
+  };
 
   render = () => {
     const { Layout, groups, match } = this.props;
-    const id = (match && match.params && match.params.id) ? match.params.id : null;
+    const id = match && match.params && match.params.id ? match.params.id : null;
 
     return (
       <Layout
@@ -50,7 +49,7 @@ class GroupListing extends Component {
         reFetch={() => this.fetchGroups()}
       />
     );
-  }
+  };
 }
 
 const mapStateToProps = state => ({

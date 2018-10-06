@@ -1,56 +1,39 @@
 import React from 'react';
-import { Scene, Tabs, Stack } from 'react-native-router-flux';
+import { Drawer, Scene } from 'react-native-router-flux';
 import { Icon } from 'native-base';
 
 import DefaultProps from '../constants/navigation';
-import AppConfig from '../../constants/config';
+
+import SideBar from '../components/Sidebar';
 
 import GroupsContainer from '../../containers/Groups';
 import GroupsComponent from '../components/Groups';
 import GroupViewComponent from '../components/Group';
 
-import AboutComponent from '../components/About';
+import theme from '../../../native-base-theme/variables/commonColor';
 
-const Index = (
-  <Stack hideNavBar>
-    <Scene hideNavBar>
-      <Tabs
-        key="tabbar"
-        swipeEnabled
-        type="replace"
-        showLabel={false}
-        {...DefaultProps.tabProps}
-      >
-        <Stack
-          key="home"
-          title={AppConfig.appName.toUpperCase()}
-          icon={() => <Icon name="planet" {...DefaultProps.icons} />}
-          {...DefaultProps.navbarProps}
-        >
-          <Scene key="home" component={AboutComponent} />
-        </Stack>
-
-        <Stack
-          key="groups"
-          title="Groups"
-          icon={() => <Icon name="book" {...DefaultProps.icons} />}
-          {...DefaultProps.navbarProps}
-        >
-          <Scene key="groups" component={GroupsContainer} Layout={GroupsComponent} />
-        </Stack>
-      </Tabs>
-    </Scene>
-
+export default (
+  <Drawer
+    key="root"
+    drawerIcon={() => <Icon name="menu" style={{ color: theme.brandPrimary }} />}
+    contentComponent={SideBar}
+  >
+    <Scene
+      key="groups"
+      title="Groups"
+      {...DefaultProps.navbarProps}
+      component={GroupsContainer}
+      Layout={GroupsComponent}
+      initial
+    />
     <Scene
       back
       clone
       key="group"
-      title="GROUP"
+      title="Group"
       {...DefaultProps.navbarProps}
       component={GroupsContainer}
       Layout={GroupViewComponent}
     />
-  </Stack>
+  </Drawer>
 );
-
-export default Index;
