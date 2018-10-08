@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import { getGroups, setError } from '../actions/groups';
 
-class GroupListing extends Component {
+class GroupListing extends React.Component {
   static propTypes = {
     Layout: PropTypes.func.isRequired,
     groups: PropTypes.shape({
