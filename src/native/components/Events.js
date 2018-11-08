@@ -42,7 +42,7 @@ const EventListing = ({
           renderItem={({ item }) => (
             <Card transparent style={{ paddingHorizontal: 6 }}>
               <CardItem cardBody>
-                  <Image source={{ uri: 'https://drive.google.com/uc?id='+item.image }} 
+                  <Image source={{ uri: item.image }} 
                     style={{ 
                       height: 300, 
                       width: null, 
