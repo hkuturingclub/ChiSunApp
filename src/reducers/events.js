@@ -14,7 +14,6 @@ export default function eventReducer(state = initialState, action) {
       let events = [];
       // Pick out the props I need
       if (action.data && typeof action.data === 'object') {
-<<<<<<< HEAD
         events = action.data.map(item => ({
           id: item.id,
           start: item.startDate.date || item.startDate.dateTime,
@@ -23,9 +22,6 @@ export default function eventReducer(state = initialState, action) {
           location: item.location,
           image: item.image,
         }));
-=======
-        events = action.data;
->>>>>>> 2ae2e9e... mobile-app: displays upcoming events
       }
       return {
         ...state,

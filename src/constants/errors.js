@@ -12,7 +12,7 @@ export default {
 
   // Events
   error404: 'Event not found',
-  
+
   // Locale
   localeDoesNotExist: 'Sorry, we do not support that local',
 };

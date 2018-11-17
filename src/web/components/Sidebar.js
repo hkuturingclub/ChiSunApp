@@ -9,14 +9,7 @@ const SidebarNavItems = () => (
       <Link className={`nav-link ${window.location.pathname === '/' && 'active'}`} to="/">
         <i className="icon-home" />
         {' '}
-<<<<<<< HEAD
         <span>Home</span>
-=======
-        <span>
-
-          Home
-        </span>
->>>>>>> 2ae2e9e... mobile-app: displays upcoming events
       </Link>
     </NavItem>
     <NavItem>
@@ -26,7 +19,6 @@ const SidebarNavItems = () => (
       >
         <i className="icon-notebook" />
         {' '}
-<<<<<<< HEAD
         <span>Groups</span>
       </Link>
       <Link
@@ -36,12 +28,6 @@ const SidebarNavItems = () => (
         <i className="icon-calendar" />
         {' '}
         <span>Create Event</span>
-=======
-        <span>
-
-          Groups
-        </span>
->>>>>>> 2ae2e9e... mobile-app: displays upcoming events
       </Link>
     </NavItem>
   </div>

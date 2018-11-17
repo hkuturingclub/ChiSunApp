@@ -1,17 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Image, Linking } from 'react-native';
-import Autolink from 'react-native-autolink';
 import {
-  Container, Content, Card, CardItem, Body, H3, Right, Text, Button,
+  Container, Content, Card, CardItem, Body, H3, Text,
 } from 'native-base';
+import moment from 'moment';
 import ErrorMessages from '../../constants/errors';
 import Error from './Error';
 import Spacer from './Spacer';
-<<<<<<< HEAD
-import moment from 'moment';
-=======
->>>>>>> 2ae2e9e... mobile-app: displays upcoming events
 
 const EventView = ({
   error,
@@ -24,7 +19,7 @@ const EventView = ({
   // Get this Group from all events
   let event = null;
   if (eventId && events) {
-    event = events.find(item => parseInt(item.id, 10) === parseInt(eventId, 10));
+    event = events.find(item => item.id === eventId);
   }
 
   // Grouo not found
@@ -33,8 +28,6 @@ const EventView = ({
   return (
     <Container>
       <Content padder>
-        {/* <Image source={{ uri: event.image }} style={{ height: 100, width: null, flex: 1 }} /> */}
-
         <Spacer size={25} />
         <H3>
           {event.title}
@@ -55,17 +48,19 @@ const EventView = ({
           <CardItem>
             <Body>
               <Text>
-<<<<<<< HEAD
-                Day: {moment(event.start).format('Do MMM, dddd')}
+                Day:
+                {' '}
+                {moment(event.start).format('Do MMM, dddd')}
               </Text>
               <Text>
-                Event Start: {moment(event.start).format('LT')}
+                Event Start:
+                {' '}
+                {moment(event.start).format('LT')}
               </Text>
               <Text>
-                Event End: {moment(event.end).format('LT')}
-=======
-                {event.start}
->>>>>>> 2ae2e9e... mobile-app: displays upcoming events
+                Event End:
+                {' '}
+                {moment(event.end).format('LT')}
               </Text>
             </Body>
           </CardItem>
