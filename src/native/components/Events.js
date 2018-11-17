@@ -42,6 +42,7 @@ const EventListing = ({
             <Card transparent style={{ paddingHorizontal: 6 }}>
               <CardItem cardBody>
                 <Image
+                  defaultSource={require('../../images/default_event.jpg')}
                   source={{ uri: item.image }}
                   style={{
                     height: 300,
