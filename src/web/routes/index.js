@@ -11,6 +11,9 @@ import GroupsContainer from '../../containers/Groups';
 import GroupsComponent from '../components/Groups';
 import GroupViewComponent from '../components/Group';
 
+import EventCreateContainer from '../../containers/EventCreate';
+import EventCreate from '../components/EventCreate';
+
 import Error from '../components/Error';
 
 const Index = () => (
@@ -21,6 +24,14 @@ const Index = () => (
       render={props => (
         <TemplateSidebar>
           <Home {...props} />
+        </TemplateSidebar>
+      )}
+    />
+    <Route
+      path="/event/create"
+      render={props => (
+        <TemplateSidebar>
+          <EventCreateContainer {...props} Layout={EventCreate} />
         </TemplateSidebar>
       )}
     />

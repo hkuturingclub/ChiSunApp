@@ -1,9 +1,10 @@
-@import "bootstrap";
-@import "components/sidebar";
-@import "components/groups";
-@import "components/loading";
-@import "components/header";
-@import "components/footer";
+@import 'bootstrap';
+@import 'components/sidebar';
+@import 'components/groups';
+@import 'components/loading';
+@import 'components/header';
+@import 'components/footer';
+@import '~react-datepicker/dist/react-datepicker.css';
 
 body {
   padding-top: 3.5em;
@@ -43,6 +44,19 @@ body {
 }
 
 @keyframes fadeInOut {
-  0%, 100% { opacity: 0.2 }
-  50% { opacity: 0.7 }
+  0%,
+  100% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.react-datepicker__time-container
+  .react-datepicker__time
+  .react-datepicker__time-box
+  ul.react-datepicker__time-list {
+  padding-left: 0;
+  padding-right: 0;
 }
