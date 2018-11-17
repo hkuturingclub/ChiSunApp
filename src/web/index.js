@@ -19,11 +19,10 @@ const { persistor, store } = configureStore();
 // persistor.purge(); // Debug to clear persist
 
 const rootElement = document.getElementById('root');
-
 const Root = () => (
   <Provider store={store}>
     <PersistGate loading={<Loading />} persistor={persistor}>
-      <Router>
+      <Router basename={`${process.env.PUBLIC_URL}/`}>
         <Routes />
       </Router>
     </PersistGate>

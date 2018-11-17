@@ -66,6 +66,7 @@ module.exports = {
       'process.env': {
         NODE_ENV: JSON.stringify('development'),
         PLATFORM_ENV: JSON.stringify('web'),
+        PUBLIC_URL: JSON.stringify(''),
       },
     }),
     new webpack.optimize.OccurrenceOrderPlugin(),
