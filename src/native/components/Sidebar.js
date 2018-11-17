@@ -1,7 +1,9 @@
 import React from 'react';
-import { Image, Platform, Dimensions } from 'react-native';
 import {
-  Content, Text, List, ListItem, Icon, Container, Left,
+  Image, Platform, Dimensions, FlatList,
+} from 'react-native';
+import {
+  Content, Text, ListItem, Icon, Container, Left,
 } from 'native-base';
 import PropTypes from 'prop-types';
 import { WebBrowser } from 'expo';
@@ -55,9 +57,10 @@ const SideBar = ({ activeItemKey }) => (
     <Content bounces={false} style={{ flex: 1, backgroundColor: '#fff', top: -1 }}>
       <Image source={drawerCover} style={styles.drawerCover} />
       <ListItem itemDivider />
-      <List
-        dataArray={items}
-        renderRow={item => (
+      <FlatList
+        data={items}
+        keyExtractor={(item, index) => `${index}`}
+        renderItem={({ item }) => (
           <ListItem
             button
             selected={activeItemKey === item.route}
@@ -75,6 +78,7 @@ const SideBar = ({ activeItemKey }) => (
             </Left>
           </ListItem>
         )}
+        extraData={activeItemKey}
       />
     </Content>
   </Container>

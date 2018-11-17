@@ -41,6 +41,7 @@ const GroupListing = ({
               <CardItem cardBody>
                 <TouchableOpacity onPress={() => onPress(item)} style={{ flex: 1 }}>
                   <Image
+                    defaultSource={require('../../images/chisun_college.png')}
                     source={{ uri: item.image }}
                     style={{
                       height: 100,
