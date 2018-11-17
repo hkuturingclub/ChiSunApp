@@ -1,6 +1,7 @@
 import status from './status';
 import groups from './groups';
 import eventCreate from './eventCreate';
+import events from './events';
 
 const rehydrated = (state = false, action) => {
   switch (action.type) {
@@ -16,4 +17,5 @@ export default {
   status,
   groups,
   eventCreate,
+  events,
 };
