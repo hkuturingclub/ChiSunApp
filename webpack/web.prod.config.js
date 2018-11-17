@@ -3,10 +3,7 @@ const webpack = require('webpack');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
-  entry: [
-    'babel-polyfill',
-    path.join(__dirname, '../src/web/index'),
-  ],
+  entry: ['babel-polyfill', path.join(__dirname, '../src/web/index')],
   output: {
     path: path.join(__dirname, '../build/'),
     filename: 'bundle.js',
@@ -51,6 +48,7 @@ module.exports = {
         // Useful to reduce the size of client-side libraries, e.g. react
         NODE_ENV: JSON.stringify('production'),
         PLATFORM_ENV: JSON.stringify('web'),
+        PUBLIC_URL: JSON.stringify('/ChiSunApp'),
       },
     }),
     // optimizations

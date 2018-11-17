@@ -10,9 +10,9 @@ npm-debug.*
 # Android/IntelliJ
 android/
 #
-build/
 .idea
 .tmp
 .gradle
 local.properties
 *.iml
+build/bundle.js

@@ -1,6 +1,6 @@
 {
   "name": "chi-sun-college-app",
-  "homepage": "https://github.com/hkuturingclub",
+  "homepage": "http://hkuturingclub.github.io/ChiSunApp",
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
@@ -41,6 +41,8 @@
     "test": "node node_modules/jest/bin/jest.js --watch",
     "web": "webpack-dev-server --content-base build/ --config webpack/web.dev.config.js --mode development --port 3001 --inline --hot --colors --historyApiFallback",
     "web-bundle": "webpack --config webpack/web.prod.config.js --progress --colors --mode production",
+    "predeploy": "npm run web-bundle",
+    "deploy": "gh-pages -d build",
     "clear-cache": "gulp clear-cache",
     "debug": "open 'rndebugger://set-debugger-loc?host=localhost&port=19001'",
     "lint": "eslint --ext .js --ext .jsx src",
@@ -64,6 +66,7 @@
     "expo": "^29.0.0",
     "firebase": "^5.4.1",
     "formik": "^1.3.1",
+    "gh-pages": "^2.0.1",
     "moment": "^2.22.2",
     "morgan": "^1.9.0",
     "native-base": "^2.4.2",
