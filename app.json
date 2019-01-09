@@ -1,9 +1,22 @@
 {
   "expo": {
     "sdkVersion": "29.0.0",
-    "name": "Chi Sun College App",
-    "slug": "chi-sun-college-app",
+    "name": "Chi Sun College",
+    "slug": "hku-chi-sun-college",
     "icon": "src/images/app-icon.png",
-    "privacy": "public"
+    "privacy": "public",
+    "version": "0.1.0",
+    "description": "One-stop platform for all things Chi Sun College.",
+    "githubUrl": "https://github.com/hkuturingclub/ChiSunApp",
+    "ios": {
+      "bundleIdentifier": "com.hku.chisuncollege"
+    },
+    "android": {
+      "package": "com.hku.chisuncollege"
+    },
+    "splash": {
+      "image": "src/images/splash.png",
+      "resizeMode": "cover"
+    }
   }
 }
