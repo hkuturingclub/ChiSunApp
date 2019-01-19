@@ -11,8 +11,9 @@ This is the repository for the web and mobile apps of Chi Sun College of the Uni
 
 # Mobile App
 
-1.  Run by `yarn start`
-2.  Download Expo mobile app and scan QR code to run the app
+1.  If you don't have expo installed, install by `npm install -g expo-cli`
+2.  Run app `expo start`
+3.  Download Expo mobile app and scan QR code to run the app
 
 ## How to deploy
 
