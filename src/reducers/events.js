@@ -16,7 +16,7 @@ export default function eventReducer(state = initialState, action) {
       if (action.data && typeof action.data === 'object') {
         events = action.data.map(item => ({
           id: item.id,
-          start: item.startDate.date || item.startDate.dateTime,
+          start: item.startDate,
           title: item.name,
           description: item.description,
           location: item.location,

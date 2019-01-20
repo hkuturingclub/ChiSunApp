@@ -17,41 +17,32 @@ class EventListing extends Component {
     }),
     fetchEvents: PropTypes.func.isRequired,
     showError: PropTypes.func.isRequired,
-  }
+  };
 
   static defaultProps = {
     match: null,
-  }
+  };
 
   componentDidMount = () => this.fetchEvents();
 
   /**
-    * Fetch Data from API, saving to Redux
-    */
+   * Fetch Data from API, saving to Redux
+   */
   fetchEvents = () => {
     const { fetchEvents, showError } = this.props;
-    return fetchEvents()
-      .catch((err) => {
-        console.log(`Error: ${err}`);
-        return showError(err);
-      });
-  }
-
+    return fetchEvents().catch((err) => {
+      console.log(`Error: ${err}`);
+      return showError(err);
+    });
+  };
 
   render = () => {
     const { Layout, events, match } = this.props;
-    const id = (match && match.params && match.params.id) ? match.params.id : null;
-
+    const id = match && match.params && match.params.id ? match.params.id : null;
     return (
-      <Layout
-        eventId={id}
-        error={events.error}
-        loading={events.loading}
-        events={events.events}
-        reFetch={() => this.fetchGroups()}
-      />
+      <Layout eventId={id} error={events.error} loading={events.loading} events={events.events} />
     );
-  }
+  };
 }
 
 const mapStateToProps = state => ({

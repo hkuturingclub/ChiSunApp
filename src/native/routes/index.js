@@ -8,7 +8,7 @@ import DefaultProps from '../constants/navigation';
 import SideBar from '../components/Sidebar';
 
 import EventsContainer from '../../containers/Events';
-import EventsComponent from '../components/Events';
+import EventsComponent from '../components/Events/Events';
 import EventViewComponent from '../components/Event';
 
 import GroupsContainer from '../../containers/Groups';
@@ -44,7 +44,6 @@ export default (
       {...DefaultProps.navbarProps}
       component={GroupsContainer}
       Layout={GroupsComponent}
-      initial
     />
     <Scene
       back
@@ -54,16 +53,6 @@ export default (
       {...DefaultProps.navbarProps}
       component={GroupsContainer}
       Layout={GroupViewComponent}
-    />
-
-    <Scene
-      back
-      clone
-      key="event"
-      title="EVENT"
-      {...DefaultProps.navbarProps}
-      component={EventsContainer}
-      Layout={EventViewComponent}
     />
   </Drawer>
 );
