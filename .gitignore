@@ -1,18 +1,1 @@
-node_modules/
-.vscode/
-.expo/
-npm-debug.*
-
-# OSX
-#
 .DS_Store
-
-# Android/IntelliJ
-android/
-#
-.idea
-.tmp
-.gradle
-local.properties
-*.iml
-build/bundle.js

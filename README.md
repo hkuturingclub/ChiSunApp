@@ -11,7 +11,8 @@ This is the repository for the web and mobile apps of Chi Sun College of the Uni
 
 ## Web App
 
-1.  `yarn install`
+1.  `cd web`
+2.  `yarn install`
 
 ## Server
 
@@ -27,8 +28,9 @@ This is the repository for the web and mobile apps of Chi Sun College of the Uni
 
 ### Web App
 
-1.  Run `yarn run web`
-2.  Visit web app at [http://localhost:3001/](http://localhost:3001/)
+1.  `cd web`
+2.  `yarn start`
+3.  Visit web app at [http://localhost:3000/](http://localhost:3000/)
 
 ### Mobile App
 
@@ -49,7 +51,7 @@ This is the repository for the web and mobile apps of Chi Sun College of the Uni
 
 ### Server
 
-1.  `yarn server-deploy`
+1.  `git subtree push --prefix server/ https://git.heroku.com/quiet-sea-90084.git master`
 
 ### Web App
 
