@@ -15,34 +15,29 @@ import Header from '../Header';
 const EVENTS_QUERY = gql`
   query {
     events {
-      count
-      events {
-        id
-        name
-        description
-        image
-        startDate
-        location
-      }
+      id
+      name
+      description
+      image
+      startDate
+      location
     }
   }
 `;
 
-const EventListing = ({ eventsQuery }) => {
+const Events = ({ eventsQuery }) => {
   const { loading, error, events } = eventsQuery;
-  console.log(events);
+
   // Loading
   if (loading) return <Loading />;
 
   // Error
-  if (error) return <Error content={error} />;
+  if (error) return <Error content={error.message} />;
 
-  const onPress = item => Actions.event({ match: { params: { id: String(item.id) } } });
+  const onPress = event => Actions.event({ event });
   const weekFromNow = moment().add(7, 'days');
-  const eventsThisWeek = events.events.filter(event => moment(event.start).isSameOrBefore(weekFromNow));
-  const eventsLater = events.events.filter(
-    event => !moment(event.start).isSameOrBefore(weekFromNow),
-  );
+  const eventsThisWeek = events.filter(event => moment(event.start).isSameOrBefore(weekFromNow));
+  const eventsLater = events.filter(event => !moment(event.start).isSameOrBefore(weekFromNow));
   return (
     <Container>
       <Content padder>
@@ -61,4 +56,12 @@ const EventListing = ({ eventsQuery }) => {
   );
 };
 
-export default graphql(EVENTS_QUERY, { name: 'eventsQuery' })(EventListing);
+Events.propTypes = {
+  eventsQuery: PropTypes.shape({
+    loading: PropTypes.bool,
+    error: PropTypes.shape(),
+    events: PropTypes.arrayOf(PropTypes.shape()),
+  }),
+};
+
+export default graphql(EVENTS_QUERY, { name: 'eventsQuery' })(Events);

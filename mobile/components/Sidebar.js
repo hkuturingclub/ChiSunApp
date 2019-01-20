@@ -7,11 +7,9 @@ import {
 } from 'native-base';
 import PropTypes from 'prop-types';
 import { WebBrowser } from 'expo';
-
 import { Actions } from 'react-native-router-flux';
 import items from '../constants/sidebar';
-
-const drawerCover = require('../assets/chisun_college.png');
+import drawerCover from '../assets/chisun_college.png';
 
 const deviceHeight = Dimensions.get('window').height;
 

@@ -4,8 +4,10 @@ import groupTypes from './groups/GroupTypes';
 
 const queryTypes = gql`
   type Query {
-    events: [Event]
-    groups: [Group]
+    events: [Event!]!
+    event(id: ID!): Event!
+    groups: [Group!]!
+    group(id: ID!): Group!
   }
 `;
 

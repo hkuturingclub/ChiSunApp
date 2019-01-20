@@ -5,22 +5,13 @@ import {
   Container, Content, Card, CardItem, Body, H3, Text,
 } from 'native-base';
 import moment from 'moment';
-import ErrorMessages from '../../constants/errors';
-import Error from './Error';
-import Spacer from './Spacer';
+import Error from '../Error';
+import Spacer from '../Spacer';
+import placeholderImage from '../../assets/placeholder.jpg';
 
-const EventView = ({ error, events, eventId }) => {
-  // Error
-  if (error) return <Error content={error} />;
-
-  // Get this Group from all events
-  let event = null;
-  if (eventId && events) {
-    event = events.find(item => item.id === eventId);
-  }
-
-  // Grouo not found
-  if (!event) return <Error content={ErrorMessages.event404} />;
+const EventView = ({ event }) => {
+  // Event not found
+  if (!event) return <Error content="Event not found" />;
 
   return (
     <Container>
@@ -65,7 +56,7 @@ const EventView = ({ error, events, eventId }) => {
           </CardItem>
           <CardItem cardBody>
             <Image
-              defaultSource={require('../../images/default_event.jpg')}
+              defaultSource={placeholderImage}
               source={{ uri: event.image }}
               style={{
                 flex: 1,
@@ -83,13 +74,14 @@ const EventView = ({ error, events, eventId }) => {
 };
 
 EventView.propTypes = {
-  error: PropTypes.string,
-  eventId: PropTypes.string.isRequired,
-  events: PropTypes.arrayOf(PropTypes.shape()).isRequired,
-};
-
-EventView.defaultProps = {
-  error: null,
+  event: PropTypes.shape({
+    id: PropTypes.string,
+    name: PropTypes.string,
+    description: PropTypes.string,
+    image: PropTypes.string,
+    startDate: PropTypes.string,
+    location: PropTypes.string,
+  }),
 };
 
 export default EventView;

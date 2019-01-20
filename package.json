@@ -39,14 +39,18 @@
     "android": "react-native-scripts android",
     "ios": "react-native-scripts ios",
     "test": "node node_modules/jest/bin/jest.js --watch",
-    "web": "webpack-dev-server --content-base build/ --config webpack/web.dev.config.js --mode development --port 3001 --inline --hot --colors --historyApiFallback",
-    "web-bundle": "webpack --config webpack/web.prod.config.js --progress --colors --mode production",
+    "web":
+      "webpack-dev-server --content-base build/ --config webpack/web.dev.config.js --mode development --port 3001 --inline --hot --colors --historyApiFallback",
+    "web-bundle":
+      "webpack --config webpack/web.prod.config.js --progress --colors --mode production",
     "predeploy": "npm run web-bundle",
     "deploy": "gh-pages -d build",
     "clear-cache": "gulp clear-cache",
     "debug": "open 'rndebugger://set-debugger-loc?host=localhost&port=19001'",
     "lint": "eslint --ext .js --ext .jsx src",
-    "lint-fix": "npm run lint -- --fix"
+    "lint-fix": "npm run lint -- --fix",
+    "deploy-server":
+      "git subtree push --prefix server/ https://git.heroku.com/quiet-sea-90084.git master"
   },
   "jest": {
     "preset": "jest-expo"

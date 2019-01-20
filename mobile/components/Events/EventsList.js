@@ -5,6 +5,7 @@ import {
 import PropTypes from 'prop-types';
 import { Col, Row, Grid } from 'react-native-easy-grid';
 import moment from 'moment';
+import placeholderImage from '../../assets/placeholder.jpg';
 
 const EventsList = ({ events, onPress }) => (
   <Card>
@@ -20,18 +21,14 @@ const EventsList = ({ events, onPress }) => (
                   justifyContent: 'center',
                 }}
               >
-                <Thumbnail
-                  large
-                  source={{ uri: event.image }}
-                  defaultSource={require('../../assets/default_event.jpg')}
-                />
+                <Thumbnail large source={{ uri: event.image }} defaultSource={placeholderImage} />
               </Col>
               <Col size={50}>
                 <Row size={30}>
                   <Text style={{ fontWeight: '400' }}>{eventStart.format('dddd, Do MMM')}</Text>
                 </Row>
                 <Row size={70}>
-                  <Text style={{ fontWeight: 'bold' }}>{event.title}</Text>
+                  <Text style={{ fontWeight: 'bold' }}>{event.name}</Text>
                 </Row>
               </Col>
               <Col

@@ -5,27 +5,22 @@ import Autolink from 'react-native-autolink';
 import {
   Container, Content, Card, CardItem, Body, H3, Right, Text, Button,
 } from 'native-base';
-import ErrorMessages from '../../constants/errors';
-import Error from './Error';
-import Spacer from './Spacer';
+import Error from '../Error';
+import Spacer from '../Spacer';
+import collegeLogo from '../../assets/chisun_college.png';
 
-const GroupView = ({ error, groups, groupId }) => {
-  // Error
-  if (error) return <Error content={error} />;
-
-  // Get this Group from all groups
-  let group = null;
-  if (groupId && groups) {
-    group = groups.find(item => item.id === groupId);
-  }
-
-  // Grouo not found
-  if (!group) return <Error content={ErrorMessages.group404} />;
+const GroupView = ({ group }) => {
+  // Group not found
+  if (!group) return <Error content="Group not found" />;
 
   return (
     <Container>
       <Content padder>
-        <Image source={{ uri: group.image }} style={{ height: 100, width: null, flex: 1 }} />
+        <Image
+          defaultSource={collegeLogo}
+          source={{ uri: group.image }}
+          style={{ height: 100, width: null, flex: 1 }}
+        />
 
         <Spacer size={25} />
         <H3>{group.name}</H3>
@@ -48,11 +43,11 @@ const GroupView = ({ error, groups, groupId }) => {
           </CardItem>
           <CardItem>
             <Body>
-              <Text>{group.contactName}</Text>
+              <Text>{group.contact_name}</Text>
             </Body>
             <Right>
               <Text selectable>
-                <Autolink text={group.contactNumber} />
+                <Autolink text={group.contact_number} />
               </Text>
             </Right>
           </CardItem>
@@ -76,13 +71,15 @@ const GroupView = ({ error, groups, groupId }) => {
 };
 
 GroupView.propTypes = {
-  error: PropTypes.string,
-  groupId: PropTypes.string.isRequired,
-  groups: PropTypes.arrayOf(PropTypes.shape()).isRequired,
-};
-
-GroupView.defaultProps = {
-  error: null,
+  group: PropTypes.shape({
+    id: PropTypes.string,
+    name: PropTypes.string,
+    image: PropTypes.string,
+    link: PropTypes.string,
+    description: PropTypes.string,
+    contact_name: PropTypes.string,
+    contact_number: PropTypes.string,
+  }),
 };
 
 export default GroupView;

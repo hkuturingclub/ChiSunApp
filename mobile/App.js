@@ -1,9 +1,10 @@
+/* global __DEV__ */
+
 import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from 'react-apollo';
 
 import React from 'react';
 import { StatusBar, Platform } from 'react-native';
-import PropTypes from 'prop-types';
 import { Router } from 'react-native-router-flux';
 
 import { StyleProvider } from 'native-base';
@@ -17,8 +18,13 @@ if (Platform.OS === 'android') {
   StatusBar.setHidden(true);
 }
 
+const graphQLURI = 'https://quiet-sea-90084.herokuapp.com/graphql';
 const client = new ApolloClient({
-  uri: 'https://shielded-reaches-18318.herokuapp.com/graphql',
+  uri: __DEV__ ? 'http://localhost:4000/graphql' : graphQLURI,
+  onError: ({ networkError, graphQLErrors }) => {
+    if (networkError) console.log(networkError);
+    if (graphQLErrors) console.log(graphQLErrors);
+  },
 });
 
 const App = () => (

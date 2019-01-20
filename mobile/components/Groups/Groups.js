@@ -1,29 +1,43 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-  FlatList, TouchableOpacity, RefreshControl, Image,
-} from 'react-native';
+import { FlatList, TouchableOpacity, Image } from 'react-native';
 import {
   Container, Content, Card, CardItem, Body, Text, Button,
 } from 'native-base';
 import { Actions } from 'react-native-router-flux';
-import Loading from './Loading';
-import Error from './Error';
-import Header from './Header';
-import Spacer from './Spacer';
+import gql from 'graphql-tag';
+import { graphql } from 'react-apollo';
+import Loading from '../Loading';
+import Error from '../Error';
+import Header from '../Header';
+import Spacer from '../Spacer';
+import collegeLogo from '../../assets/chisun_college.png';
 
-const GroupListing = ({
-  error, loading, groups, reFetch,
-}) => {
+const GROUPS_QUERY = gql`
+  query {
+    groups {
+      id
+      name
+      image
+      link
+      description
+      contact_name
+      contact_number
+    }
+  }
+`;
+
+const GroupListing = ({ groupsQuery }) => {
+  const { loading, error, groups } = groupsQuery;
+
   // Loading
   if (loading) return <Loading />;
 
   // Error
-  if (error) return <Error content={error} />;
+  if (error) return <Error content={error.message} />;
 
   const keyExtractor = item => item.id;
-
-  const onPress = item => Actions.group({ match: { params: { id: String(item.id) } } });
+  const onPress = group => Actions.group({ group });
 
   return (
     <Container>
@@ -41,7 +55,7 @@ const GroupListing = ({
               <CardItem cardBody>
                 <TouchableOpacity onPress={() => onPress(item)} style={{ flex: 1 }}>
                   <Image
-                    defaultSource={require('../../images/chisun_college.png')}
+                    defaultSource={collegeLogo}
                     source={{ uri: item.image }}
                     style={{
                       height: 100,
@@ -57,16 +71,8 @@ const GroupListing = ({
                   <Spacer size={10} />
                   <Text style={{ fontWeight: '800' }}>{item.name}</Text>
                   <Spacer size={15} />
-                  <Button
-                    block
-                    bordered
-                    small
-                    onPress={() => onPress(item)}
-                  >
-                    <Text>
-
-                      View Group
-                    </Text>
+                  <Button block bordered small onPress={() => onPress(item)}>
+                    <Text>View Group</Text>
                   </Button>
                   <Spacer size={5} />
                 </Body>
@@ -74,7 +80,6 @@ const GroupListing = ({
             </Card>
           )}
           keyExtractor={keyExtractor}
-          refreshControl={<RefreshControl refreshing={loading} onRefresh={reFetch} />}
         />
 
         <Spacer size={20} />
@@ -84,15 +89,11 @@ const GroupListing = ({
 };
 
 GroupListing.propTypes = {
-  error: PropTypes.string,
-  loading: PropTypes.bool.isRequired,
-  groups: PropTypes.arrayOf(PropTypes.shape()).isRequired,
-  reFetch: PropTypes.func,
+  groupsQuery: PropTypes.shape({
+    loading: PropTypes.bool,
+    error: PropTypes.shape(),
+    groups: PropTypes.arrayOf(PropTypes.shape()),
+  }),
 };
 
-GroupListing.defaultProps = {
-  error: null,
-  reFetch: null,
-};
-
-export default GroupListing;
+export default graphql(GROUPS_QUERY, { name: 'groupsQuery' })(GroupListing);
