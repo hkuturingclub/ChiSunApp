@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Image } from 'react-native';
 import {
   Container, Content, Card, CardItem, Body, H3, Text,
 } from 'native-base';
@@ -8,11 +9,7 @@ import ErrorMessages from '../../constants/errors';
 import Error from './Error';
 import Spacer from './Spacer';
 
-const EventView = ({
-  error,
-  events,
-  eventId,
-}) => {
+const EventView = ({ error, events, eventId }) => {
   // Error
   if (error) return <Error content={error} />;
 
@@ -29,47 +26,54 @@ const EventView = ({
     <Container>
       <Content padder>
         <Spacer size={25} />
-        <H3>
-          {event.title}
-        </H3>
+        <H3>{event.title}</H3>
         <Spacer size={15} />
 
         <Card>
           <CardItem header bordered>
-            <Text>About this event</Text>
+            <Text>Description</Text>
           </CardItem>
           <CardItem>
             <Body>
-              <Text>
-                {event.description}
-              </Text>
+              <Text>{event.description}</Text>
             </Body>
+          </CardItem>
+        </Card>
+        <Card>
+          <CardItem header bordered>
+            <Text>Time</Text>
           </CardItem>
           <CardItem>
             <Body>
-              <Text>
-                Day:
-                {' '}
-                {moment(event.start).format('Do MMM, dddd')}
-              </Text>
-              <Text>
-                Event Start:
-                {' '}
-                {moment(event.start).format('LT')}
-              </Text>
-              <Text>
-                Event End:
-                {' '}
-                {moment(event.end).format('LT')}
-              </Text>
+              <Text>{moment(event.start).format('LT - Do MMM, dddd')}</Text>
             </Body>
+          </CardItem>
+        </Card>
+        <Card>
+          <CardItem header bordered>
+            <Text>Location</Text>
           </CardItem>
           <CardItem>
             <Body>
-              <Text>
-                {event.location}
-              </Text>
+              <Text>{event.location}</Text>
             </Body>
+          </CardItem>
+        </Card>
+        <Card>
+          <CardItem header bordered>
+            <Text>Poster</Text>
+          </CardItem>
+          <CardItem cardBody>
+            <Image
+              defaultSource={require('../../images/default_event.jpg')}
+              source={{ uri: event.image }}
+              style={{
+                flex: 1,
+                height: 500,
+                width: null,
+                resizeMode: 'contain',
+              }}
+            />
           </CardItem>
         </Card>
         <Spacer size={10} />
