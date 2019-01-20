@@ -1,7 +1,7 @@
 {
   "main.css": "/ChiSunApp/static/css/main.add89712.chunk.css",
-  "main.js": "/ChiSunApp/static/js/main.bf8d4c63.chunk.js",
-  "main.js.map": "/ChiSunApp/static/js/main.bf8d4c63.chunk.js.map",
+  "main.js": "/ChiSunApp/static/js/main.153abc9d.chunk.js",
+  "main.js.map": "/ChiSunApp/static/js/main.153abc9d.chunk.js.map",
   "static/css/1.29c9ed87.chunk.css": "/ChiSunApp/static/css/1.29c9ed87.chunk.css",
   "static/js/1.b71cd4e3.chunk.js": "/ChiSunApp/static/js/1.b71cd4e3.chunk.js",
   "static/js/1.b71cd4e3.chunk.js.map": "/ChiSunApp/static/js/1.b71cd4e3.chunk.js.map",
@@ -10,6 +10,6 @@
   "static/css/main.add89712.chunk.css.map": "/ChiSunApp/static/css/main.add89712.chunk.css.map",
   "static/css/1.29c9ed87.chunk.css.map": "/ChiSunApp/static/css/1.29c9ed87.chunk.css.map",
   "index.html": "/ChiSunApp/index.html",
-  "precache-manifest.f066b2ed8c747a906379f8fe5b9fc62f.js": "/ChiSunApp/precache-manifest.f066b2ed8c747a906379f8fe5b9fc62f.js",
+  "precache-manifest.0160c23acfa37403320793d0da30aacb.js": "/ChiSunApp/precache-manifest.0160c23acfa37403320793d0da30aacb.js",
   "service-worker.js": "/ChiSunApp/service-worker.js"
 }
