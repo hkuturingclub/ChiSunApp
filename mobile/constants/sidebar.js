@@ -29,4 +29,9 @@ export default [
     link: 'http://www.chisuncollege.hku.hk/',
     icon: 'globe',
   },
+  {
+    name: 'Management',
+    route: 'management',
+    icon: 'people',
+  },
 ];
