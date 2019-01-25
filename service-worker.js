@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/ChiSunApp/precache-manifest.0160c23acfa37403320793d0da30aacb.js"
+  "/ChiSunApp/precache-manifest.3afdffc080287380c79ba5f5ee2b0d81.js"
 );
 
 workbox.clientsClaim();
