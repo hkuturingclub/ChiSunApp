@@ -14,6 +14,8 @@ import GroupViewComponent from '../components/Group';
 import EventCreateContainer from '../containers/EventCreate';
 import EventCreate from '../components/EventCreate';
 
+import AppPrivacyPolicy from '../components/AppPrivacyPolicy';
+
 import Error from '../components/Error';
 
 const Index = () => (
@@ -48,6 +50,14 @@ const Index = () => (
       render={props => (
         <TemplateSidebar>
           <GroupsContainer {...props} Layout={GroupViewComponent} />
+        </TemplateSidebar>
+      )}
+    />
+    <Route
+      path="/privacy-policy/app"
+      render={props => (
+        <TemplateSidebar>
+          <AppPrivacyPolicy {...props} />
         </TemplateSidebar>
       )}
     />
