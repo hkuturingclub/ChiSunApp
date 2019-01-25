@@ -13,6 +13,9 @@ import EventView from '../components/Events/EventView';
 import Groups from '../components/Groups/Groups';
 import GroupView from '../components/Groups/GroupView';
 
+import Managment from '../components/Management/ManagementList';
+
+
 export default (
   <Drawer
     key="root"
@@ -37,5 +40,6 @@ export default (
       {...DefaultProps.navbarProps}
       component={GroupView}
     />
+    <Scene key="management" title="Management" {...DefaultProps.navbarProps} component={Managment} />
   </Drawer>
 );

@@ -1,5 +1,6 @@
 import eventsResolvers from './events/EventResolvers';
 import groupsResolvers from './groups/GroupResolvers';
+import managementResolvers from './management/ManagementResolvers';
 
 const globalResolvers = {
   Query: {
@@ -7,6 +8,7 @@ const globalResolvers = {
     event: eventsResolvers.event,
     groups: groupsResolvers.groups,
     group: groupsResolvers.group,
+    management: managementResolvers.managements,
   },
 };
 
