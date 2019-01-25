@@ -20,7 +20,7 @@ self.__precacheManifest = [
     "url": "/ChiSunApp/static/css/1.29c9ed87.chunk.css"
   },
   {
-    "revision": "eeb0a877074e336b7153ac9037b8c121",
+    "revision": "70be46fc6dc2f0958a1d7ae7821a6b24",
     "url": "/ChiSunApp/index.html"
   }
 ];
