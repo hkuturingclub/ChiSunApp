@@ -1,26 +1,30 @@
-/* global __DEV__ */
-
-import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from 'react-apollo';
+import ApolloClient from 'apollo-boost';
 
-import React from 'react';
-import { StatusBar, Platform } from 'react-native';
+import { Platform, StatusBar } from 'react-native';
 import { Router } from 'react-native-router-flux';
+import React from 'react';
 
 import { StyleProvider } from 'native-base';
 import getTheme from './native-base-theme/components';
 import theme from './native-base-theme/variables/commonColor';
 
+import { Constants } from "expo";
+
 import Routes from './routes/index';
+const { manifest } = Constants;
+
+const graphQLURI = (typeof manifest.packagerOpts === `object`) && manifest.packagerOpts.dev
+  ? `http://${manifest.debuggerHost.split(":").shift()}:4000/graphql`
+  : `https://quiet-sea-90084.herokuapp.com/graphql`;
 
 // Hide StatusBar on Android as it overlaps tabs
 if (Platform.OS === 'android') {
   StatusBar.setHidden(true);
 }
 
-const graphQLURI = 'https://quiet-sea-90084.herokuapp.com/graphql';
 const client = new ApolloClient({
-  uri: __DEV__ ? 'http://localhost:4000/graphql' : graphQLURI,
+  uri: graphQLURI,
   onError: ({ networkError, graphQLErrors }) => {
     if (networkError) console.log(networkError);
     if (graphQLErrors) console.log(graphQLErrors);

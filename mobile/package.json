@@ -4,7 +4,9 @@
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
-    "eject": "expo eject"
+    "eject": "expo eject",
+    "lint": "eslint --ext .js --ext .jsx .",
+    "lint-fix": "npm run lint -- --fix"
   },
   "dependencies": {
     "apollo-boost": "^0.1.27",
@@ -18,7 +20,14 @@
     "react-native-router-flux": "^4.0.6"
   },
   "devDependencies": {
-    "babel-preset-expo": "^5.0.0"
+    "babel-eslint": "^10.0.1",
+    "babel-preset-expo": "^5.0.0",
+    "eslint-config-react-app": "^3.0.6",
+    "eslint-plugin-flowtype": "^3.2.1",
+    "eslint-plugin-import": "^2.15.0",
+    "eslint-plugin-jsx-a11y": "^6.2.0",
+    "eslint-plugin-react": "^7.12.4",
+    "eslint-plugin-sort-imports-es6-autofix": "^0.3.0"
   },
   "private": true
 }
