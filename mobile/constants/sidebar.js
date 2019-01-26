@@ -10,6 +10,11 @@ export default [
     icon: 'people',
   },
   {
+    name: 'Tutorial Team',
+    route: 'management',
+    icon: 'md-at',
+  },
+  {
     name: 'Room Booking',
     type: 'link',
     link: 'https://cschku.skedda.com/booking',
@@ -28,10 +33,5 @@ export default [
     type: 'link',
     link: 'http://www.chisuncollege.hku.hk/',
     icon: 'globe',
-  },
-  {
-    name: 'Management',
-    route: 'management',
-    icon: 'people',
-  },
+  }
 ];

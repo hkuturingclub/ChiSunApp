@@ -1,7 +1,7 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import { H1, Text } from 'native-base';
 import { View } from 'react-native';
-import { Text, H1 } from 'native-base';
+import PropTypes from 'prop-types';
+import React from 'react';
 import Spacer from './Spacer';
 
 const Header = ({ title, content }) => (

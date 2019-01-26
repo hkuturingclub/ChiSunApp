@@ -1,16 +1,16 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import { Actions } from 'react-native-router-flux';
 import {
   Container, Content, Tab, Tabs,
 } from 'native-base';
-import { Actions } from 'react-native-router-flux';
-import moment from 'moment';
 import { graphql } from 'react-apollo';
-import gql from 'graphql-tag';
-import EventsList from './EventsList';
-import Loading from '../Loading';
 import Error from '../Error';
+import EventsList from './EventsList';
 import Header from '../Header';
+import Loading from '../Loading';
+import PropTypes from 'prop-types';
+import React from 'react';
+import gql from 'graphql-tag';
+import moment from 'moment';
 
 const EVENTS_QUERY = gql`
   query {
@@ -36,8 +36,8 @@ const Events = ({ eventsQuery }) => {
 
   const onPress = event => Actions.event({ event });
   const weekFromNow = moment().add(7, 'days');
-  const eventsThisWeek = events.filter(event => moment(event.start).isSameOrBefore(weekFromNow));
-  const eventsLater = events.filter(event => !moment(event.start).isSameOrBefore(weekFromNow));
+  const eventsThisWeek = events.filter(event => moment(event.startDate).isBetween(moment(), weekFromNow, null, []));
+  const eventsLater = events.filter(event => moment(event.startDate).isSameOrAfter(weekFromNow));
   return (
     <Container>
       <Content padder>

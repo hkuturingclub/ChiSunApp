@@ -1,7 +1,7 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { View } from 'react-native';
 import { Text } from 'native-base';
+import { View } from 'react-native';
+import PropTypes from 'prop-types';
+import React from 'react';
 
 import Colors from '../../../native-base-theme/variables/commonColor';
 

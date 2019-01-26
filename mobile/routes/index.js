@@ -5,7 +5,7 @@ import { Icon } from 'native-base';
 import theme from '../native-base-theme/variables/commonColor';
 import DefaultProps from '../constants/navigation';
 
-import SideBar from '../components/Sidebar';
+import SideBar from '../components/Sidebar/Sidebar';
 
 import Events from '../components/Events/Events';
 import EventView from '../components/Events/EventView';

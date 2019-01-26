@@ -1,6 +1,6 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import { View } from 'native-base';
+import PropTypes from 'prop-types';
+import React from 'react';
 
 const Spacer = ({ size }) => (
   <View style={{ flex: 1, height: size }} />
