@@ -1,16 +1,16 @@
-import React from 'react';
 import {
-  Card, CardItem, Body, Text, Thumbnail, Button, Icon,
+  Body, Button, Card, CardItem, Icon, Text, Thumbnail,
 } from 'native-base';
+import { Col, Grid, Row } from 'react-native-easy-grid';
 import PropTypes from 'prop-types';
-import { Col, Row, Grid } from 'react-native-easy-grid';
+import React from 'react';
 import moment from 'moment';
 import placeholderImage from '../../assets/placeholder.jpg';
 
 const EventsList = ({ events, onPress }) => (
   <Card>
     {events.map((event) => {
-      const eventStart = moment(event.start);
+      const eventStart = moment(event.startDate);
       return (
         <CardItem key={event.id} bordered>
           <Body>

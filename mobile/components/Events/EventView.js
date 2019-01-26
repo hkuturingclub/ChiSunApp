@@ -1,12 +1,12 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Image } from 'react-native';
 import {
-  Container, Content, Card, CardItem, Body, H3, Text,
+  Body, Card, CardItem, Container, Content, H3, Text,
 } from 'native-base';
-import moment from 'moment';
+import { Image } from 'react-native';
 import Error from '../Error';
+import PropTypes from 'prop-types';
+import React from 'react';
 import Spacer from '../Spacer';
+import moment from 'moment';
 import placeholderImage from '../../assets/placeholder.jpg';
 
 const EventView = ({ event }) => {
