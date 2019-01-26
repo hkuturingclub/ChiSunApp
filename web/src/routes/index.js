@@ -1,20 +1,15 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
-// Templates
-import TemplateSidebar from '../components/TemplateSidebar';
+// // Templates
+import AppBar from '../components/AppBar';
 
-// Routes
 import Home from '../components/Home';
+import Groups from '../components/Groups'; 
+// import GroupsList from '../components/GroupsList';
+// import GroupView from '../components/GroupView';
 
-import GroupsContainer from '../containers/Groups';
-import GroupsComponent from '../components/Groups';
-import GroupViewComponent from '../components/Group';
-
-import EventCreateContainer from '../containers/EventCreate';
-import EventCreate from '../components/EventCreate';
-
-import AppPrivacyPolicy from '../components/AppPrivacyPolicy';
+// import EventCreate from '../components/EventCreate';
 
 import Error from '../components/Error';
 
@@ -23,55 +18,70 @@ const Index = () => (
     <Route
       exact
       path="/"
-      render={props => (
-        <TemplateSidebar>
-          <Home {...props} />
-        </TemplateSidebar>
+      component={props => (
+          <AppBar> 
+              <Home {...props} /> 
+          </AppBar>
+      )}
+    />
+     <Route
+      exact
+      path="/groups"
+      component={props => (
+          <AppBar> 
+              <Groups {...props} /> 
+          </AppBar>
       )}
     />
     <Route
+      component={props => (
+        <AppBar>
+          <Error
+            {...props}
+            title="404"
+            content="Sorry, the route you requested does not exist"
+          />    
+        </AppBar>
+      )}
+    /> 
+    
+    {/*
+    <Route
       path="/event/create"
-      render={props => (
-        <TemplateSidebar>
-          <EventCreateContainer {...props} Layout={EventCreate} />
-        </TemplateSidebar>
+      component={props => (
+        <AppBar>
+          <EventCreate {...props} />
+        </AppBar>
       )}
     />
     <Route
       path="/groups"
-      render={props => (
-        <TemplateSidebar>
-          <GroupsContainer {...props} Layout={GroupsComponent} />
-        </TemplateSidebar>
+      component={props => (
+        <AppBar>
+          <GroupsList {...props} />
+        </AppBar>
       )}
     />
     <Route
       path="/group/:id"
-      render={props => (
-        <TemplateSidebar>
-          <GroupsContainer {...props} Layout={GroupViewComponent} />
-        </TemplateSidebar>
+      component={props => (
+        <AppBar>
+          <GroupView {...props} />
+        </AppBar>
       )}
     />
+    
     <Route
-      path="/privacy-policy/app"
-      render={props => (
-        <TemplateSidebar>
-          <AppPrivacyPolicy {...props} />
-        </TemplateSidebar>
-      )}
-    />
-    <Route
-      render={props => (
-        <TemplateSidebar>
+      component={props => (
+        <AppBar>
           <Error
             {...props}
             title="404"
             content="Sorry, the route you requested does not exist"
           />
-        </TemplateSidebar>
+        </AppBar>
       )}
-    />
+    /> */}
   </Switch>
 );
 

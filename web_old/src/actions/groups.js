@@ -4,7 +4,19 @@ export const GROUPS_ERROR = 'GROUPS_ERROR';
 export const GROUPS_REPLACE = 'GROUPS_REPLACE';
 
 /**
- * Get Groups   
+ * Set an Error Message
+ */
+export function setError(message) {
+  return dispatch => new Promise(resolve => resolve(
+    dispatch({
+      type: GROUPS_ERROR,
+      data: message,
+    }),
+  ));
+}
+
+/**
+ * Get Groups
  */
 export function getGroups() {
   if (Firebase === null) return () => new Promise(resolve => resolve());
