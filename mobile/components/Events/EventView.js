@@ -17,9 +17,8 @@ const EventView = ({ event }) => {
     <Container>
       <Content padder>
         <Spacer size={25} />
-        <H3>{event.title}</H3>
+        <H3>{event.name}</H3>
         <Spacer size={15} />
-
         <Card>
           <CardItem header bordered>
             <Text>Description</Text>
@@ -36,7 +35,7 @@ const EventView = ({ event }) => {
           </CardItem>
           <CardItem>
             <Body>
-              <Text>{moment(event.start).format('LT - Do MMM, dddd')}</Text>
+              <Text>{moment(event.startDate).format('LT - Do MMM, dddd')}</Text>
             </Body>
           </CardItem>
         </Card>

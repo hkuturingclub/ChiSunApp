@@ -1,23 +1,20 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { FlatList, TouchableOpacity, Image } from 'react-native';
-import {
-  Container, Content, Card, CardItem, Body, Text, Button,
-} from 'native-base';
-import { Actions } from 'react-native-router-flux';
-import gql from 'graphql-tag';
+import { Container, Content, Tab, Tabs } from 'native-base';
 import { graphql } from 'react-apollo';
-import Loading from '../Loading';
 import Error from '../Error';
+import GroupsList from './GroupsList';
 import Header from '../Header';
+import Loading from '../Loading';
+import PropTypes from 'prop-types';
+import React from 'react';
 import Spacer from '../Spacer';
-import collegeLogo from '../../assets/chisun_college.png';
+import gql from 'graphql-tag';
 
 const GROUPS_QUERY = gql`
   query {
     groups {
       id
       name
+      category
       image
       link
       description
@@ -36,52 +33,29 @@ const GroupListing = ({ groupsQuery }) => {
   // Error
   if (error) return <Error content={error.message} />;
 
-  const keyExtractor = item => item.id;
-  const onPress = group => Actions.group({ group });
+  const uniqueCategories = {};
+  groups.forEach(group => uniqueCategories[group.category] = 1);
+  const categories = Object.keys(uniqueCategories)
 
   return (
     <Container>
       <Content padder>
         <Header
           title="Calling all artists, athletes and innovaters"
-          content="From festive parties to sports and from meditation to programming classes, these activities are almost entirely student-run, and exhibit the creativity and livelihood that is quintessential to the Chi Sun style."
+          content="From festive parties to sports and from meditation to programming classes, these student-run activities exhibit the creativity and livelihood that is quintessential to the Chi Sun style."
         />
-
-        <FlatList
-          numColumns={2}
-          data={groups}
-          renderItem={({ item }) => (
-            <Card transparent style={{ paddingHorizontal: 6 }}>
-              <CardItem cardBody>
-                <TouchableOpacity onPress={() => onPress(item)} style={{ flex: 1 }}>
-                  <Image
-                    defaultSource={collegeLogo}
-                    source={{ uri: item.image }}
-                    style={{
-                      height: 100,
-                      width: null,
-                      flex: 1,
-                      borderRadius: 5,
-                    }}
-                  />
-                </TouchableOpacity>
-              </CardItem>
-              <CardItem cardBody>
-                <Body>
-                  <Spacer size={10} />
-                  <Text style={{ fontWeight: '800' }}>{item.name}</Text>
-                  <Spacer size={15} />
-                  <Button block bordered small onPress={() => onPress(item)}>
-                    <Text>View Group</Text>
-                  </Button>
-                  <Spacer size={5} />
-                </Body>
-              </CardItem>
-            </Card>
-          )}
-          keyExtractor={keyExtractor}
-        />
-
+        <Tabs>
+          {
+            categories.map((category, index) => {
+              const categoryGroups = groups.filter(group => group.category === category)
+              return (
+                <Tab heading={category} key={index}>
+                  <GroupsList groups={categoryGroups} />
+                </Tab>
+              )
+            })
+          }
+        </Tabs>
         <Spacer size={20} />
       </Content>
     </Container>
