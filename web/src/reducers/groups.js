@@ -24,6 +24,7 @@ export default function groupReducer(state = initialState, action) {
     case GROUPS_ERROR: {
       return {
         ...state,
+        loading: false,
         error: action.data,
       };
     }

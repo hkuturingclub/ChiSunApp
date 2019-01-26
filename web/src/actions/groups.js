@@ -4,23 +4,24 @@ export const GROUPS_ERROR = 'GROUPS_ERROR';
 export const GROUPS_REPLACE = 'GROUPS_REPLACE';
 
 /**
- * Get Groups   
+ * Get Groups
  */
 export function getGroups() {
-  if (Firebase === null) return () => new Promise(resolve => resolve());
+  return async dispatch => {
+    if (Firebase === null) {
+      dispatch({ type: GROUPS_ERROR, data: "Server error" });
+      return;
+    }
 
-  return dispatch => new Promise(resolve => FirebaseDB.collection('groups')
-    .get()
-    .then((querySnapshot) => {
+    try {
+      const response = await FirebaseDB.collection('groups').get();
       const groups = [];
-      querySnapshot.forEach((doc) => {
-        groups.push({ id: doc.id, ...doc.data() });
+      response.forEach(doc => {
+        groups.push({ id: doc.id, ...doc.data()});
       });
-      return resolve(
-        dispatch({
-          type: GROUPS_REPLACE,
-          data: groups,
-        }),
-      );
-    })).catch(e => console.log(e));
+      dispatch({ type: GROUPS_REPLACE, data: groups });
+    } catch (error) {
+      dispatch({ type: GROUPS_ERROR, data: error.message });
+    }
+  }
 }
