@@ -1,7 +1,9 @@
 import { Icon } from 'native-base';
 import { Linking, Text, View} from 'react-native';
+import { WebBrowser } from 'expo';
 import React from 'react';
 import theme from '../../native-base-theme/variables/commonColor';
+
 
 const styles = {
     iconContainer:{
@@ -36,6 +38,9 @@ const SidebarFooter = () => (
         <Text style={styles.footerText} onPress={() => Linking.openURL('mailto:turingclub.hku@gmail.com').catch((err) => console.log(err))}>Give Feedback</Text>
         <Text style={styles.footerText}> | </Text>
         <Text style={styles.footerText}>Developed by Turing Club</Text>
+      </View>
+      <View style={styles.footerTextContainer}>
+        <Text style={styles.footerText} onPress={() => WebBrowser.openBrowserAsync('https://hkuturingclub.github.io/ChiSunApp/privacy-policy/app')}>Privacy Policy</Text>
       </View>
     </View>
   )

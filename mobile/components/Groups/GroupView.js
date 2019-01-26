@@ -1,11 +1,11 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import {
+  Body, Button, Card, CardItem, Container, Content, H3, Right, Text,
+} from 'native-base';
 import { Image, Linking } from 'react-native';
 import Autolink from 'react-native-autolink';
-import {
-  Container, Content, Card, CardItem, Body, H3, Right, Text, Button,
-} from 'native-base';
 import Error from '../Error';
+import PropTypes from 'prop-types';
+import React from 'react';
 import Spacer from '../Spacer';
 import collegeLogo from '../../assets/chisun_college.png';
 
@@ -74,6 +74,7 @@ GroupView.propTypes = {
   group: PropTypes.shape({
     id: PropTypes.string,
     name: PropTypes.string,
+    category: PropTypes.string,
     image: PropTypes.string,
     link: PropTypes.string,
     description: PropTypes.string,
