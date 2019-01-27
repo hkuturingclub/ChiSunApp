@@ -13,8 +13,8 @@ import items from '../../constants/sidebar';
 
 const deviceHeight = Dimensions.get('window').height;
 const coverHeight = deviceHeight * 0.3;
-const footerHeight = deviceHeight * 0.1;
-const itemsHeight = deviceHeight * 0.6;
+const footerHeight = deviceHeight * 0.13;
+const itemsHeight = deviceHeight * 0.57;
 
 const styles = {
   sidebar: {

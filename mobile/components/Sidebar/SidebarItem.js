@@ -1,8 +1,8 @@
 import { Actions } from 'react-native-router-flux';
 import {
-    Icon, Left, ListItem
+    Icon, Left, ListItem, Text
 } from 'native-base';
-import { Platform, Text } from 'react-native';
+import { Platform } from 'react-native';
 import { WebBrowser } from 'expo';
 import React from 'react';
 
@@ -19,10 +19,11 @@ const styles = {
     }
 }
 
-const SidebarItem = ({item, activeItemKey}) => (
+const SidebarItem = ({item, activeItemKey}) =>
+(
     <ListItem
       button
-      selected={activeItemKey === item.route}
+      selected={item.route===activeItemKey}
       onPress={() => {
         if (item.type && item.type === 'link') {
           WebBrowser.openBrowserAsync(item.link);
@@ -37,5 +38,6 @@ const SidebarItem = ({item, activeItemKey}) => (
       </Left>
     </ListItem>
 )
+
 
 export default SidebarItem;
