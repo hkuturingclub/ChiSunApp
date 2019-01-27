@@ -15,6 +15,7 @@ const resolvers = {
     querySnapshot.forEach(doc => {
       events.push({ id: doc.id, ...doc.data() });
     });
+    events.sort((a, b) => Date.parse(a.startDate) - Date.parse(b.startDate));
     return events;
   },
 };
