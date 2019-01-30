@@ -1,8 +1,8 @@
-import React from 'react';
-import { connect } from 'react-redux';
 import { Alert,Progress } from 'antd';
+import { addEvent, reset } from '../actions/eventCreate';
+import { connect } from 'react-redux';
 import EventCreateForm from './EventCreateForm';
-import { reset, addEvent } from '../actions/eventCreate';
+import React from 'react';
 
 class EventCreate extends React.Component {
   componentDidMount = () => {

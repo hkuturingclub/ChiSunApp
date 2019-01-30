@@ -1,10 +1,10 @@
-import React from 'react';
-import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import React from 'react';
 
 import Error from './Error';
 
-import { getGroups, setError } from '../actions/groups';
+import { getGroups } from '../actions/groups';
 
 class GroupView extends React.Component {
   // componentDidMount = () => this.fetchGroups();

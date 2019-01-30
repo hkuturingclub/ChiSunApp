@@ -1,14 +1,14 @@
+import { Route, Switch } from 'react-router-dom';
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
 
 // // Templates
 import AppBar from '../components/AppBar';
 
-import Home from '../components/Home';
-import Groups from '../components/Groups'; 
-// import GroupsList from '../components/GroupsList';
-import GroupView from '../components/GroupView';
+import AppPrivacyPolicy from '../components/AppPrivacyPolicy';
 import EventCreate from '../components/EventCreate';
+import GroupView from '../components/GroupView';
+import Groups from '../components/Groups';
+import Home from '../components/Home';
 
 import Error from '../components/Error';
 
@@ -52,6 +52,15 @@ const Index = () => (
     />
 
     <Route
+      path="/privacy-policy/app"
+      component={props => (
+        <AppBar>
+          <AppPrivacyPolicy {...props} />
+        </AppBar>
+      )}
+    />
+
+    <Route
       component={props => (
         <AppBar>
           <Error
@@ -64,36 +73,7 @@ const Index = () => (
     />
 
 
-    {/*
 
-    <Route
-      path="/groups"
-      component={props => (
-        <AppBar>
-          <GroupsList {...props} />
-        </AppBar>
-      )}
-    />
-    <Route
-      path="/group/:id"
-      component={props => (
-        <AppBar>
-          <GroupView {...props} />
-        </AppBar>
-      )}
-    />
-    
-    <Route
-      component={props => (
-        <AppBar>
-          <Error
-            {...props}
-            title="404"
-            content="Sorry, the route you requested does not exist"
-          />
-        </AppBar>
-      )}
-    /> */}
   </Switch>
 );
 
