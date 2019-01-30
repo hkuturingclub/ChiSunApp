@@ -1,63 +1,63 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import {
-  Row, Col, Card, CardImg, CardText, CardBody, CardTitle,
-} from 'reactstrap';
-import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 import Error from './Error';
+import { Link } from 'react-router-dom';
+import { getGroups } from '../actions/groups';
 
-const GroupListing = ({ error, loading, groups }) => {
-  // Error
-  if (error) return <Error content={error} />;
+class GroupsList extends React.Component {
+  componentDidMount = () => this.props.getGroups();
 
-  // Build Cards for Listing
-  const cards = groups.map(item => (
-    <Card key={`${item.id}`}>
-      <Link to={`/group/${item.id}`}>
-        <CardImg top src={item.image} alt={item.name} />
-      </Link>
-      <CardBody>
-        <CardTitle>{item.name}</CardTitle>
-        <CardText>{item.description}</CardText>
-        <Link className="btn btn-primary" to={`/group/${item.id}`}>
-          View Group
-          {' '}
-          <i className="icon-arrow-right" />
+
+  render = () => {
+    const { loading, error, groups } = this.props.groups;
+
+    // Loading
+    if (loading) return <div>Loading</div>;
+
+    // Error
+    if (error) return <Error content={error} />;
+
+    // Build Cards for Listing
+    const cards = groups.map(item => (
+      <div key={`${item.id}`}>
+        <Link to={`/group/${item.id}`} params={{ group: item }}>
+          <img src={item.image} alt={item.name} width={300} />
         </Link>
-      </CardBody>
-    </Card>
-  ));
+        <div>
+          <h4>{item.name}</h4>
+          <p>{item.description}</p>
+          <Link className="btn btn-primary" to={`/group/${item.id}`}>
+            View Group <i className="icon-arrow-right" />
+          </Link>
+        </div>
+      </div>
+    ));
 
-  // Show Listing
-  return (
-    <div>
-      <Row>
-        <Col sm="12">
-          <h1>Groups</h1>
-          <p>
-            From festive parties to sports and from meditation to programming classes, these
-            activities are almost entirely student-run, and exhibit the creativity and livelihood
-            that is quintessential to the Chi Sun style.
-          </p>
-        </Col>
-      </Row>
-      <Row className={loading ? 'content-loading' : ''}>
-        <Col sm="12" className="card-columns">
-          {cards}
-        </Col>
-      </Row>
-    </div>
-  );
+    // Show Listing
+    return (
+      <div>
+        <h1>Groups</h1>
+        <p>
+          From festive parties to sports and from meditation to programming
+          classes, these activities are almost entirely student-run, and
+          exhibit the creativity and livelihood that is quintessential to
+          the Chi Sun style.
+        </p>
+        {cards}
+      </div>
+    );
+  };
+}
+
+const mapStateToProps = state => ({
+  groups: state.groups
+});
+
+const mapDispatchToProps = {
+  getGroups
 };
 
-GroupListing.propTypes = {
-  error: PropTypes.string,
-  loading: PropTypes.bool.isRequired,
-  groups: PropTypes.arrayOf(PropTypes.shape()).isRequired,
-};
-
-GroupListing.defaultProps = {
-  error: null,
-};
-
-export default GroupListing;
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(GroupsList);

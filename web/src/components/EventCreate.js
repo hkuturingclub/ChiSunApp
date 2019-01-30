@@ -1,32 +1,47 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { Alert, Progress } from 'reactstrap';
+import { connect } from 'react-redux';
+import { Alert,Progress } from 'antd';
 import EventCreateForm from './EventCreateForm';
+import { reset, addEvent } from '../actions/eventCreate';
 
-const EventCreate = ({
-  createEvent, processing, error, createdEventId,
-}) => (
-  <div>
-    <h1>Create Event</h1>
-    {/* Show processing */}
-    {processing && <Progress animated color="success" value={50} />}
+class EventCreate extends React.Component {
+  componentDidMount = () => {
+    const { reset } = this.props;
+    reset();
+  };
 
-    {/* Show success or error messages */}
-    {createdEventId && (
-      <Alert color="success">{`The event has been successfully created with id ${createdEventId}.`}</Alert>
-    )}
-    {error && <Alert color="danger">{error}</Alert>}
+  render() {
+    const { addEvent, eventCreate } = this.props;
+    const { processing, error, createdEventId } = eventCreate;
+    return (
+      <div>
+        <h1>Create Event</h1>
+        {/* Show processing */}
+        {processing && <div style={{width:170}}><Progress percent={50} size="small" status="active" /></div>}
 
-    {/* Do not show form when processing */}
-    {!processing && <EventCreateForm onSubmit={createEvent} />}
-  </div>
-);
+        {/* Show success or error messages */}
+        {createdEventId && (
+          <div><Alert message={"The event has been successfully created with id " + createdEventId + "."} type="success"  /></div>
+        )}
+        {error && <div><Alert message={error} type="error" /></div>}
 
-EventCreate.propTypes = {
-  createEvent: PropTypes.func.isRequired,
-  processing: PropTypes.bool,
-  error: PropTypes.string,
-  createdEventId: PropTypes.string,
+        {/* Do not show form when processing */}
+        {!processing && <EventCreateForm onSubmit={addEvent} />}
+      </div>
+    );
+  }
+}
+
+const mapStateToProps = state => ({
+  eventCreate: state.eventCreate || {}
+});
+
+const mapDispatchToProps = {
+  reset,
+  addEvent,
 };
 
-export default EventCreate;
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(EventCreate);
