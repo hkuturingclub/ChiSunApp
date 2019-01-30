@@ -17,6 +17,7 @@ const MANAGEMENT_QUERY = gql`
     management {
       id
       name
+      image
       floors
       position
     }
@@ -43,7 +44,7 @@ const ManagementList = ({ managementQuery }) => {
           <Card transparent style={{ paddingHorizontal: 6 }}>
             <CardItem cardBody>
               <Image
-                defaultSource={placeholderImage}
+                source={{url:item.image}}
                 style={{
                   height: 200,
                   width: null,
@@ -66,7 +67,7 @@ const ManagementList = ({ managementQuery }) => {
             </CardItem>
           </Card>
         )}
-        keyExtractor={(item, index) => item.key}
+        keyExtractor={(item, index) => item.id}
       />
 
       <Spacer size={20} />
