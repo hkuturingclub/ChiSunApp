@@ -1,5 +1,6 @@
 {
   "name": "chi-sun-web",
+  "homepage": "http://hkuturingclub.github.io/ChiSunApp",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -21,7 +22,9 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint --ext .js --ext .jsx src",
-    "lint-fix": "npm run lint -- --fix"
+    "lint-fix": "npm run lint -- --fix",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -33,6 +36,7 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "eslint-plugin-sort-imports-es6-autofix": "^0.3.0"
+    "eslint-plugin-sort-imports-es6-autofix": "^0.3.0",
+    "gh-pages": "^2.0.1"
   }
 }

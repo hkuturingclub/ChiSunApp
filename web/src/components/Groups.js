@@ -1,8 +1,8 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import Error from './Error';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 import { getGroups } from '../actions/groups';
+import Error from './Error';
+import React from 'react';
 
 class GroupsList extends React.Component {
   componentDidMount = () => this.props.getGroups();

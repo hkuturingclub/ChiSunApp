@@ -1,8 +1,8 @@
-import React from 'react';
 import {
-    Layout, Menu, Icon,
+    Icon, Layout, Menu,
   } from 'antd';
-import { Link } from 'react-router-dom'; 
+import { Link } from 'react-router-dom';
+import React from 'react'; 
 const { Header, Content, Sider, Footer } = Layout;
 
 const sidebarItems = [
@@ -26,6 +26,8 @@ const sidebarItems = [
 export default class AppBar extends React.Component {
     render() {
         const { children } = this.props;
+        const baseLength = process.env.PUBLIC_URL.length;
+        const currentRoute = window.location.pathname.slice(baseLength);
         return (
             <Layout style={{ minHeight: '100vh' }}>
                 <Header style={{ background: '#1DA57A' }}>
@@ -40,7 +42,7 @@ export default class AppBar extends React.Component {
                 >
                     <Menu
                     mode="inline"
-                    defaultSelectedKeys={[`${window.location.pathname}`]}
+                    defaultSelectedKeys={[currentRoute]}
                     style={{ height: '100%', borderRight: 0 }}
                     >
                     {sidebarItems.map(item => (

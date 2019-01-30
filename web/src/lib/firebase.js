@@ -1,6 +1,6 @@
-import * as FirebaseModule from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/storage';
+import * as FirebaseModule from 'firebase/app';
 import firebaseConfig from '../constants/firebase';
 
 const {

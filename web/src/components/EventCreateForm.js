@@ -1,7 +1,7 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import { Button, DatePicker, Form, Input, } from "antd";
 import { Formik } from 'formik';
-import { Form, Input, DatePicker, Button, } from "antd";
+import PropTypes from 'prop-types';
+import React from 'react';
 
 const EventCreateForm = ({ onSubmit }) => (
   <Formik
