@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Error from './Error';
 import { Link } from 'react-router-dom';
-
 import { getGroups } from '../actions/groups';
 
 class GroupsList extends React.Component {

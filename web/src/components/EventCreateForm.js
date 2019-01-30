@@ -1,18 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Formik } from 'formik';
-import {
-  Button,
-  Form,
-  FormGroup,
-  Label,
-  Input,
-  FormText,
-  Row,
-  Col
-} from 'reactstrap';
-import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
+import { Form, Input, DatePicker, Button, } from "antd";
 
 const EventCreateForm = ({ onSubmit }) => (
   <Formik
@@ -42,7 +31,9 @@ const EventCreateForm = ({ onSubmit }) => (
       }
       return errors;
     }}
+
     onSubmit={(values, { setSubmitting }) => {
+      console.log("Submit");
       onSubmit({
         name: values.name,
         description: values.description,
@@ -65,8 +56,9 @@ const EventCreateForm = ({ onSubmit }) => (
       /* and other goodies */
     }) => (
       <Form onSubmit={handleSubmit}>
-        <FormGroup>
-          <Label for="name">Event Name</Label>
+        <Form.Item
+          label = "Event Name"
+        >
           <Input
             type="text"
             id="name"
@@ -76,10 +68,12 @@ const EventCreateForm = ({ onSubmit }) => (
             value={values.name}
           />
           {errors.name &&
-            touched.name && <FormText color="danger">{errors.name}</FormText>}
-        </FormGroup>
-        <FormGroup>
-          <Label for="description">Description</Label>
+          touched.name && <Form.Item extra={errors.name} color="danger"/>
+          }
+        </Form.Item>
+          <Form.Item
+            label = "Description"
+          >
           <Input
             type="textarea"
             id="description"
@@ -91,13 +85,12 @@ const EventCreateForm = ({ onSubmit }) => (
           />
           {errors.description &&
             touched.description && (
-              <FormText color="danger">{errors.description}</FormText>
+            <Form.Item extra={ errors.description } color="danger" />
             )}
-        </FormGroup>
-        <Row>
-          <Col>
-            <FormGroup>
-              <Label for="location">Location</Label>
+          </Form.Item>
+            <Form.Item
+              label = "Location"
+            >
               <Input
                 type="text"
                 id="location"
@@ -108,13 +101,12 @@ const EventCreateForm = ({ onSubmit }) => (
               />
               {errors.location &&
                 touched.location && (
-                  <FormText color="danger">{errors.location}</FormText>
-                )}
-            </FormGroup>
-          </Col>
-          <Col>
-            <FormGroup>
-              <Label for="startTime">Start Time</Label>
+            <Form.Item extra={ errors.location } color="danger" />
+            )}
+            </Form.Item>
+              <Form.Item
+                label = "Start Date"
+              >
               <br />
               <DatePicker
                 selected={values.startDate}
@@ -134,13 +126,12 @@ const EventCreateForm = ({ onSubmit }) => (
               />
               {errors.startDate &&
                 touched.startDate && (
-                  <FormText color="danger">{errors.startDate}</FormText>
-                )}
-            </FormGroup>
-          </Col>
-        </Row>
-        <FormGroup>
-          <Label for="image">Image</Label>
+                  <Form.Item extra={ errors.startDate } color="danger" />
+              )}
+              </Form.Item>
+                <Form.Item
+                  label = "Image"
+                >
           <Input
             type="file"
             id="image"
@@ -151,9 +142,10 @@ const EventCreateForm = ({ onSubmit }) => (
             onBlur={handleBlur}
           />
           {errors.image &&
-            touched.image && <FormText color="danger">{errors.image}</FormText>}
-        </FormGroup>
-        <Button type="submit" disabled={isSubmitting}>
+            touched.image && <Form.Item extra={ errors.image } color="danger" /> }
+          </Form.Item>
+
+        <Button type="primary" htmlType="submit" disabled={isSubmitting}>
           Create
         </Button>
       </Form>

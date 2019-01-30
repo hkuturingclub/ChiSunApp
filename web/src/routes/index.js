@@ -7,9 +7,8 @@ import AppBar from '../components/AppBar';
 import Home from '../components/Home';
 import Groups from '../components/Groups'; 
 // import GroupsList from '../components/GroupsList';
-// import GroupView from '../components/GroupView';
-
-// import EventCreate from '../components/EventCreate';
+import GroupView from '../components/GroupView';
+import EventCreate from '../components/EventCreate';
 
 import Error from '../components/Error';
 
@@ -34,6 +33,25 @@ const Index = () => (
       )}
     />
     <Route
+      path="/group/:id"
+      component={props => (
+        <AppBar>
+          <GroupView {...props} />
+        </AppBar>
+      )}
+
+    />
+
+    <Route
+      path="/event/create"
+      component={props => (
+        <AppBar>
+          <EventCreate {...props} />
+        </AppBar>
+      )}
+    />
+
+    <Route
       component={props => (
         <AppBar>
           <Error
@@ -43,17 +61,11 @@ const Index = () => (
           />    
         </AppBar>
       )}
-    /> 
-    
-    {/*
-    <Route
-      path="/event/create"
-      component={props => (
-        <AppBar>
-          <EventCreate {...props} />
-        </AppBar>
-      )}
     />
+
+
+    {/*
+
     <Route
       path="/groups"
       component={props => (
