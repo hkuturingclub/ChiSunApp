@@ -5,7 +5,7 @@ export default (variables = variable) => {
     color: variables.textColor,
     fontSize: variables.fontSizeH1,
     lineHeight: variables.lineHeightH1,
-    fontWeight: '900',
+    fontWeight: '500',
   };
 
   return h1Theme;

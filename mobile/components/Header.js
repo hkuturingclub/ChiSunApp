@@ -4,10 +4,10 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import Spacer from './Spacer';
 
-const Header = ({ title, content }) => (
+const Header = ({ title, content, align}) => (
   <View>
-    <Spacer size={25} />
-    <H1>
+    <Spacer size={15} />
+    <H1 style={{textAlign: align}}>
       {title}
     </H1>
     {!!content && (
@@ -18,7 +18,7 @@ const Header = ({ title, content }) => (
         </Text>
       </View>
     )}
-    <Spacer size={25} />
+    <Spacer size={15} />
   </View>
 );
 
@@ -30,6 +30,7 @@ Header.propTypes = {
 Header.defaultProps = {
   title: 'Missing title',
   content: '',
+  align: 'left'
 };
 
 export default Header;

@@ -1,47 +1,62 @@
-import { Icon } from 'native-base';
-import { Linking, Text, View} from 'react-native';
+import { Container, Icon, Button } from 'native-base';
+import { Linking, Text, View, TouchableOpacity} from 'react-native';
 import { WebBrowser } from 'expo';
 import React from 'react';
 import theme from '../../native-base-theme/variables/commonColor';
 
 
 const styles = {
+    footer: {
+      flexDirection: 'column',
+      justifyContent: 'space-evenly',
+      padding: 5
+    },
     iconContainer:{
         color: theme.brandPrimary
     },
     footerText: {
         fontSize: 10,
-        color: "grey"
+        color: "grey",
     },
     socialContainer: {
-        flexDirection: 'row',
-        justifyContent: 'space-evenly'
+      flexDirection: 'row',
+      justifyContent: 'space-evenly',
+      padding: 5
     },
     footerTextContainer: {
-        alignItems: 'center',
-        flex: 1,
-        flexDirection: "row",
-        justifyContent: 'space-evenly',
-        padding: 5,
-        color: "grey"
+      flexDirection: "row",
+      justifyContent: 'space-evenly',
+      color: "grey",
+      padding: 5,
+      paddingTop: 10
     },
 }
 
+const openLink = (link) => Linking.openURL(link).catch((err) => console.log(err));
+
 const SidebarFooter = () => (
-    <View>
+  <View style={styles.footer}>
       <View style={styles.socialContainer}>
-        <Icon onPress={() => Linking.openURL('mailto:chisuncollege@hku.hk').catch((err) => console.log(err))} style={styles.iconContainer} type="MaterialIcons" name="email"/>
-        <Icon onPress={() => Linking.openURL('https://www.facebook.com/chisuncollege/')} style={styles.iconContainer} type="Entypo" name="facebook-with-circle"/>
-        <Icon onPress={() => Linking.openURL('https://www.instagram.com/chisuncollege/?hl=en')} style={styles.iconContainer} type="Entypo" name="instagram-with-circle"/>
+        <TouchableOpacity onPress={() => openLink('mailto:chisuncollege@hku.hk')}>
+          <Icon style={styles.iconContainer} type="MaterialIcons" name="email"/>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => openLink('https://www.facebook.com/chisuncollege/')}>
+          <Icon style={styles.iconContainer} type="Entypo" name="facebook-with-circle"/>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => openLink('https://www.instagram.com/chisuncollege/?hl=en')}>
+          <Icon style={styles.iconContainer} type="Entypo" name="instagram-with-circle"/>
+        </TouchableOpacity>
       </View>
-      <View style={styles.footerTextContainer}>
-        <Text style={styles.footerText} onPress={() => Linking.openURL('mailto:turingclub.hku@gmail.com').catch((err) => console.log(err))}>Give Feedback</Text>
-        <Text style={styles.footerText}> | </Text>
+      <TouchableOpacity style={styles.footerTextContainer} onPress={() => openLink('mailto:turingclub.hku@gmail.com')}>    
         <Text style={styles.footerText}>Developed by Turing Club</Text>
-      </View>
-      <View style={styles.footerTextContainer}>
-        <Text style={styles.footerText} onPress={() => WebBrowser.openBrowserAsync('https://hkuturingclub.github.io/ChiSunApp/privacy-policy/app')}>Privacy Policy</Text>
-      </View>
+        <Text style={styles.footerText}> | </Text>
+        <Text style={{...styles.footerText, textDecorationLine:'underline'}}>
+          Give Feedback
+        </Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.footerTextContainer} onPress={() => WebBrowser.openBrowserAsync('https://hkuturingclub.github.io/ChiSunApp/privacy-policy/app')}>
+        <Text style={{...styles.footerText, textDecorationLine:'underline'}}>Privacy Policy</Text>
+      </TouchableOpacity>        
     </View>
   )
 

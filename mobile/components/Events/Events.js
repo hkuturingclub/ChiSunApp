@@ -41,7 +41,7 @@ const Events = ({ eventsQuery }) => {
   return (
     <Container>
       <Content padder>
-        <Header hasTabs title="Upcoming Events" />
+        <Header hasTabs title="Upcoming Events" align='center'/>
         <Tabs>
           <Tab heading={`This Week (${eventsThisWeek.length})`}>
             <EventsList events={eventsThisWeek} onPress={onPress} />

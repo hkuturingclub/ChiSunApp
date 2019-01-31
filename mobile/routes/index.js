@@ -7,7 +7,7 @@ import EventView from '../components/Events/EventView';
 import Events from '../components/Events/Events';
 import GroupView from '../components/Groups/GroupView';
 import Groups from '../components/Groups/Groups';
-import Managment from '../components/Management/ManagementList';
+import Managment from '../components/Management/Management';
 import SideBar from '../components/Sidebar/Sidebar';
 import theme from '../native-base-theme/variables/commonColor';
 
@@ -15,10 +15,10 @@ import theme from '../native-base-theme/variables/commonColor';
 export default (
   <Drawer
     key="root"
-    drawerIcon={() => <Icon name="ios-menu" style={{ color: theme.brandPrimary }} />}
+    drawerIcon={() => <Icon name="ios-menu" style={{ color: theme.brandPrimary, fontSize: 40}} />}
     contentComponent={SideBar}
   >
-    <Scene key="events" title="Events" {...DefaultProps.navbarProps} component={Events} />
+    <Scene key="events" title="Events" {...DefaultProps.navbarProps} component={Events} initial />
     <Scene
       back
       clone
@@ -27,7 +27,7 @@ export default (
       {...DefaultProps.navbarProps}
       component={EventView}
     />
-    <Scene key="groups" title="Groups" {...DefaultProps.navbarProps} component={Groups} initial/>
+    <Scene key="groups" title="Groups" {...DefaultProps.navbarProps} component={Groups} />
     <Scene
       back
       clone
