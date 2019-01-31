@@ -41,6 +41,7 @@ const GroupsList = ({ groups }) => <FlatList
     </Card>
   )}
   keyExtractor={(item) => item.id}
+  scrollEnabled={false}
 />
 
 GroupsList.propTypes = {

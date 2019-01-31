@@ -18,10 +18,7 @@ const graphQLURI = (typeof manifest.packagerOpts === `object`) && manifest.packa
   ? `http://${manifest.debuggerHost.split(":").shift()}:4000/graphql`
   : `https://quiet-sea-90084.herokuapp.com/graphql`;
 
-// Hide StatusBar on Android as it overlaps tabs
-if (Platform.OS === 'android') {
-  StatusBar.setHidden(true);
-}
+StatusBar.setHidden(false);
 
 const client = new ApolloClient({
   uri: graphQLURI,

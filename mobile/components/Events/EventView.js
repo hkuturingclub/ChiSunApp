@@ -16,7 +16,7 @@ const EventView = ({ event }) => {
   return (
     <Container>
       <Content padder>
-        <Spacer size={25} />
+        <Spacer size={15} />
         <H3>{event.name}</H3>
         <Spacer size={15} />
         <Card>

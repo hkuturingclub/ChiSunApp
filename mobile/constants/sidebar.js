@@ -10,7 +10,7 @@ export default [
     icon: 'people',
   },
   {
-    name: 'Tutorial Team',
+    name: 'Management Team',
     route: 'management',
     icon: 'md-at',
   },

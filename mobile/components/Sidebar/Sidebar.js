@@ -1,8 +1,8 @@
 import {
-  Container, Content, ListItem
+  Container, Content, ListItem, Text, Icon
 } from 'native-base';
 import {
-  Dimensions, FlatList, Image, View
+  Dimensions, FlatList, Image, View, ScrollView
 } from 'react-native';
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -11,36 +11,24 @@ import SidebarItem from './SidebarItem';
 import drawerCover from '../../assets/chisun_college.png';
 import items from '../../constants/sidebar';
 
-const deviceHeight = Dimensions.get('window').height;
-const coverHeight = deviceHeight * 0.3;
-const footerHeight = deviceHeight * 0.13;
-const itemsHeight = deviceHeight * 0.57;
-
 const styles = {
   sidebar: {
-    flex: 1,
     backgroundColor: '#fff',
-    top: -1
+    flex: 1,
+    justifyContent: 'space-between'
   },
   drawerCover: {
     alignSelf: 'center',
     resizeMode: 'contain',
-    height: coverHeight,
-    marginTop: 5,
-  },
-  itemsContainer: {
-    height: itemsHeight
-  },
-  footerContainer:{
-    height: footerHeight,
-  },
+    height: 150,
+    backgroundColor: '#67c28c',
+  }
 };
 
 const SideBar = ({ activeItemKey }) => (
-  <Container>
-    <Content bounces={false} style={styles.sidebar}>
-      <Image source={drawerCover} style={styles.drawerCover} />
-      <View style={styles.itemsContainer}>
+  <Content bounces={false} contentContainerStyle={styles.sidebar}>
+      <View>
+        <Image source={drawerCover} style={styles.drawerCover}/>
         <ListItem itemDivider />
         <FlatList
           data={items}
@@ -49,9 +37,9 @@ const SideBar = ({ activeItemKey }) => (
           extraData={activeItemKey}
         />
       </View>
-      <SidebarFooter style={styles.footerContainer} />
+      <SidebarFooter />
     </Content>
-  </Container>
+  
 );
 
 SideBar.propTypes = {
