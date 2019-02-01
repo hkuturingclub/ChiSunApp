@@ -1,7 +1,6 @@
-import React from 'react';
-import { Accordion } from 'native-base';
 import { FlatList } from 'react-native';
 import Item from './ManagementItem';
+import React from 'react';
 
 
 const ManagementList = ({ items, numColumns, seniorTeam }) =>  (
@@ -23,5 +22,3 @@ const ManagementList = ({ items, numColumns, seniorTeam }) =>  (
 )
 
 export default ManagementList;
-
-

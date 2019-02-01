@@ -2,12 +2,13 @@ import {
   Body, Card, CardItem, Container, Content, H3, Text,
 } from 'native-base';
 import { Image } from 'react-native';
+import Autolink from 'react-native-autolink';
 import Error from '../Error';
 import PropTypes from 'prop-types';
 import React from 'react';
 import Spacer from '../Spacer';
 import moment from 'moment';
-import placeholderImage from '../../assets/placeholder.jpg';
+const placeholderImage = require('../../assets/placeholder.jpg');
 
 const EventView = ({ event }) => {
   // Event not found
@@ -25,7 +26,7 @@ const EventView = ({ event }) => {
           </CardItem>
           <CardItem>
             <Body>
-              <Text>{event.description}</Text>
+              <Autolink text={event.description} />
             </Body>
           </CardItem>
         </Card>
