@@ -1,8 +1,8 @@
 import { ApolloProvider } from 'react-apollo';
 import ApolloClient from 'apollo-boost';
 
-import { Platform, StatusBar } from 'react-native';
 import { Router } from 'react-native-router-flux';
+import { StatusBar } from 'react-native';
 import React from 'react';
 
 import { StyleProvider } from 'native-base';

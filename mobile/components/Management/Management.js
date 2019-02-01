@@ -1,13 +1,13 @@
-import React from 'react';
 import { Container, Content } from 'native-base';
-import PropTypes from 'prop-types';
+import { TUTOR } from '../../constants/managementRanks';
 import { graphql } from 'react-apollo';
-import gql from 'graphql-tag';
-import Loading from '../Loading';
 import Error from '../Error';
 import Header from '../Header';
+import Loading from '../Loading';
 import ManagementList from './ManagementList';
-import { TUTOR } from '../../constants/managementRanks';
+import PropTypes from 'prop-types';
+import React from 'react';
+import gql from 'graphql-tag';
 
 const MANAGEMENT_QUERY = gql`
   query {
@@ -25,7 +25,7 @@ const MANAGEMENT_QUERY = gql`
 
 const Management = ({ managementQuery }) => {
     const { loading, error, management } = managementQuery;
-    
+
     if (loading) return <Loading />;
 
     // Error
@@ -33,14 +33,14 @@ const Management = ({ managementQuery }) => {
 
     management.forEach(item=>item.floors.sort((c,d)=>c-d));
     management.sort((a,b) => {
-      if (a.rank == TUTOR && b.rank == TUTOR ) {
+      if (a.rank === TUTOR && b.rank === TUTOR ) {
         return b.floors[0]-a.floors[0];
       }
       return a.rank-b.rank;
     });
 
-    seniorTeam = management.filter(item => item.rank < TUTOR);
-    tutorialTeam = management.filter(item => item.rank === TUTOR);
+    const seniorTeam = management.filter(item => item.rank < TUTOR);
+    const tutorialTeam = management.filter(item => item.rank === TUTOR);
 
     return (
     <Container>
@@ -50,7 +50,7 @@ const Management = ({ managementQuery }) => {
         align='center'
       />
       <ManagementList items={seniorTeam} numColumns={1} seniorTeam />
-      <Header 
+      <Header
         title='Tutorial Team'
         align='center'
       />

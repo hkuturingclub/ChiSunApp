@@ -5,7 +5,7 @@ import { Col, Grid, Row } from 'react-native-easy-grid';
 import PropTypes from 'prop-types';
 import React from 'react';
 import moment from 'moment';
-import placeholderImage from '../../assets/placeholder.jpg';
+const placeholderImage = require('../../assets/placeholder.jpg');
 
 const EventsList = ({ events, onPress }) => (
   <Card>

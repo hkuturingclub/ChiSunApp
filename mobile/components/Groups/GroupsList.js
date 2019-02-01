@@ -6,7 +6,7 @@ import { FlatList, Image, TouchableOpacity } from 'react-native';
 import PropTypes from 'prop-types';
 import React from 'react';
 import Spacer from '../Spacer';
-import collegeLogo from '../../assets/chisun_college.png';
+const placeholderImage = require('../../assets/chisun_college.png');
 
 const GroupsList = ({ groups }) => <FlatList
   numColumns={2}
@@ -16,7 +16,7 @@ const GroupsList = ({ groups }) => <FlatList
       <CardItem cardBody>
         <TouchableOpacity onPress={() => Actions.group({ group: item })} style={{ flex: 1 }}>
           <Image
-            defaultSource={collegeLogo}
+            defaultSource={placeholderImage}
             source={{ uri: item.image }}
             style={{
               height: 100,

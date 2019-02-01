@@ -1,8 +1,8 @@
 import {
-  Container, Content, ListItem, Text, Icon
+  Content, ListItem
 } from 'native-base';
 import {
-  Dimensions, FlatList, Image, View, ScrollView
+  FlatList, Image, View
 } from 'react-native';
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -39,7 +39,7 @@ const SideBar = ({ activeItemKey }) => (
       </View>
       <SidebarFooter />
     </Content>
-  
+
 );
 
 SideBar.propTypes = {

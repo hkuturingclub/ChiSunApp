@@ -7,7 +7,7 @@ import Error from '../Error';
 import PropTypes from 'prop-types';
 import React from 'react';
 import Spacer from '../Spacer';
-import collegeLogo from '../../assets/chisun_college.png';
+const placeholderImage = require('../../assets/chisun_college.png');
 
 const GroupView = ({ group }) => {
   // Group not found
@@ -17,7 +17,7 @@ const GroupView = ({ group }) => {
     <Container>
       <Content padder>
         <Image
-          defaultSource={collegeLogo}
+          defaultSource={placeholderImage}
           source={{ uri: group.image }}
           style={{ height: 100, width: null, flex: 1 }}
         />

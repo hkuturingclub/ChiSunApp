@@ -1,9 +1,9 @@
-import variable from "./../variables/platform";
 import { Platform } from "react-native";
+import variable from "./../variables/platform";
 
 export default (variables = variable) => {
   const platformStyle = variables.platformStyle;
-  const platform = variables.platform;
+  // const platform = variables.platform;
 
   const tabContainerTheme = {
     elevation: 3,

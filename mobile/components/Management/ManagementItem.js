@@ -1,8 +1,8 @@
+import { Button, Card, Icon, Text, Thumbnail } from 'native-base';
+import { Col, Grid, Row } from 'react-native-easy-grid';
+import { Linking } from 'react-native';
 import React from 'react';
-import { Card, Text, Thumbnail, Button, Icon } from 'native-base';
-import placeholderImage from '../../assets/chisun_college.png';
-import { Col, Row, Grid } from 'react-native-easy-grid';
-import { View, Linking } from 'react-native';
+const placeholderImage = require('../../assets/chisun_college.png');
 
 const getFloorText = (floors) => {
   const first = floors[0];
@@ -34,7 +34,7 @@ const ManagementItem = ({floors, email, name, image, position, seniorTeam}) => (
             source={{uri:image}}
             defaultSource={placeholderImage}
           />
-        </Col> 
+        </Col>
         <Col size={70}>
           <Row style={styles.row} >
             <Text alignSelf='center' style={{textAlign:'center', fontWeight:'bold'}}>
@@ -42,8 +42,8 @@ const ManagementItem = ({floors, email, name, image, position, seniorTeam}) => (
             </Text>
           </Row>
           <Row style={styles.row}>
-            <Text 
-              alignSelf='center' 
+            <Text
+              alignSelf='center'
               style={{textAlign:'center'}}
             >
               {!seniorTeam && getFloorText(floors)}

@@ -1,4 +1,4 @@
-import { Platform, PixelRatio } from "react-native";
+import { PixelRatio, Platform } from "react-native";
 
 import pickerTheme from "./Picker";
 import variable from "./../variables/platform";
