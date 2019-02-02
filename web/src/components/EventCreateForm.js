@@ -1,14 +1,16 @@
-import { Button, DatePicker, Form, Input, } from "antd";
+import { Button, Col, DatePicker, Form, Icon, Input, Row, TimePicker, Upload } from "antd";
 import { Formik } from 'formik';
 import PropTypes from 'prop-types';
 import React from 'react';
+import moment from 'moment';
 
 const EventCreateForm = ({ onSubmit }) => (
   <Formik
     initialValues={{
       name: '',
       description: '',
-      startDate: new Date(),
+      date: null,
+      time: null,
       location: '',
       image: null
     }}
@@ -20,8 +22,11 @@ const EventCreateForm = ({ onSubmit }) => (
       if (!values.description) {
         errors.description = 'Required';
       }
-      if (!values.startDate) {
-        errors.startDate = 'Required';
+      if (!values.date) {
+        errors.date = 'Required';
+      }
+      if (!values.time) {
+        errors.time = 'Required';
       }
       if (!values.location) {
         errors.location = 'Required';
@@ -33,12 +38,17 @@ const EventCreateForm = ({ onSubmit }) => (
     }}
 
     onSubmit={(values, { setSubmitting }) => {
-      console.log("Submit");
+      const startDate = values.date.set({
+        hour: values.time.get('hour'),
+        minute: values.time.get('minute'),
+        second: 0,
+        millisecond: 0,
+      }).toISOString();
       onSubmit({
         name: values.name,
         description: values.description,
         location: values.location,
-        startDate: values.startDate.toISOString(),
+        startDate,
         image: values.image
       });
       setSubmitting(false);
@@ -56,95 +66,112 @@ const EventCreateForm = ({ onSubmit }) => (
       /* and other goodies */
     }) => (
       <Form onSubmit={handleSubmit}>
-        <Form.Item
-          label = "Event Name"
-        >
-          <Input
-            type="text"
-            id="name"
-            placeholder="Bite of Hong Kong"
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={values.name}
-          />
-          {errors.name &&
-          touched.name && <Form.Item extra={errors.name} color="danger"/>
-          }
-        </Form.Item>
-          <Form.Item
-            label = "Description"
-          >
-          <Input
-            type="textarea"
-            id="description"
-            placeholder="This time, we are going to have the vibrant and savory Indonesian cuisines. Let’s give your taste buds a delightful kick with tasty meat skewers bathed in flavorful peanut sauce (Satay), or the famous Javanese smashed fried chicken dish, served with spicy sambal (Ayam penyet). For drink?  how about the rich and creamy combination of coconut milk, palm sugar and jelly-like green noodles (Cendol)?"
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={values.description}
-            rows={10}
-          />
-          {errors.description &&
-            touched.description && (
-            <Form.Item extra={ errors.description } color="danger" />
-            )}
-          </Form.Item>
+        <Row gutter={16}>
+          <Col span={24}>
             <Form.Item
-              label = "Location"
+              label="Event Name"
+              hasFeedback={!!errors.name}
+              validateStatus={touched.name && errors.name && "error"}
+              help={touched.name && errors.name}
             >
               <Input
-                type="text"
+                id="name"
+                placeholder="Bite of Hong Kong"
+                onChange={handleChange}
+                value={values.name}
+              />
+            </Form.Item>
+          </Col>
+        </Row>
+        <Row gutter={16}>
+          <Col span={24}>
+            <Form.Item
+              label="Description"
+              hasFeedback={!!errors.description}
+              validateStatus={touched.description && errors.description && "error"}
+              help={touched.description && errors.description}
+            >
+              <Input.TextArea
+                id="description"
+                placeholder="This time, we are going to have the vibrant and savory Indonesian cuisines. Let’s give your taste buds a delightful kick with tasty meat skewers bathed in flavorful peanut sauce (Satay), or the famous Javanese smashed fried chicken dish, served with spicy sambal (Ayam penyet). For drink?  how about the rich and creamy combination of coconut milk, palm sugar and jelly-like green noodles (Cendol)?"
+                onChange={handleChange}
+                value={values.description}
+                autosize={{ minRows: 10 }}
+              />
+            </Form.Item>
+          </Col>
+        </Row>
+        <Row gutter={16}>
+          <Col span={24}>
+            <Form.Item
+              label="Location"
+              hasFeedback={!!errors.location}
+              validateStatus={touched.location && errors.location && "error"}
+              help={touched.location && errors.location}
+            >
+              <Input
                 id="location"
                 placeholder="Meet at 4/F Chi Sun Lobby"
                 onChange={handleChange}
-                onBlur={handleBlur}
                 value={values.location}
               />
-              {errors.location &&
-                touched.location && (
-            <Form.Item extra={ errors.location } color="danger" />
-            )}
             </Form.Item>
-              <Form.Item
-                label = "Start Date"
-              >
-              <br />
+          </Col>
+        </Row>
+        <Row gutter={16}>
+          <Col xs={24} sm={8}>
+            <Form.Item
+              label="Date"
+              hasFeedback={!!errors.date}
+              validateStatus={touched.date && errors.date && "error"}
+              help={touched.date && errors.date}
+            >
               <DatePicker
-                selected={values.startDate}
-                onChange={value => {
-                  setFieldValue('startDate', value);
-                }}
-                onChangeRaw={e => {
-                  // This stops the user from modifying the date picker manually
-                  e.preventDefault();
-                }}
-                showTimeSelect
-                dateFormat="MMM d, yyyy h:mm aa"
-                timeFormat="HH:mm"
-                timeIntervals={15}
-                timeCaption="Time"
-                className="form-control"
+                defaultValue={moment().set({hour:0,minute:0,second:0,millisecond:0})}
+                format={'MMM d, YYYY'}
+                onChange={date => setFieldValue('date', date)}
               />
-              {errors.startDate &&
-                touched.startDate && (
-                  <Form.Item extra={ errors.startDate } color="danger" />
-              )}
-              </Form.Item>
-                <Form.Item
-                  label = "Image"
-                >
-          <Input
-            type="file"
-            id="image"
-            accept="image/*"
-            onChange={e => {
-              setFieldValue('image', e.target.files[0]);
-            }}
-            onBlur={handleBlur}
-          />
-          {errors.image &&
-            touched.image && <Form.Item extra={ errors.image } color="danger" /> }
-          </Form.Item>
-
+            </Form.Item>
+          </Col>
+          <Col xs={24} sm={8}>
+            <Form.Item
+              label="Time"
+              hasFeedback={!!errors.time}
+              validateStatus={touched.time && errors.time && "error"}
+              help={touched.time && errors.time}
+            >
+              <TimePicker
+                defaultValue={moment().set({hour:0,minute:0,second:0,millisecond:0})}
+                use12Hours
+                format='h:mm a'
+                minuteStep={15}
+                onChange={time => setFieldValue('time', time)}
+              />
+            </Form.Item>
+          </Col>
+          <Col xs={24} sm={8}>
+            <Form.Item
+              label="Poster"
+              hasFeedback={!!errors.image}
+              validateStatus={touched.image && errors.image && "error"}
+              help={touched.image && errors.image}
+            >
+              <Upload
+                listType= 'picture'
+                accept="image/*"
+                beforeUpload={file => {
+                  setFieldValue('image', file);
+                  return false
+                }}
+                onRemove={() => setFieldValue('image', null)}
+              >
+                <Button>
+                  <Icon type="upload" /> Click to Upload
+                </Button>
+              </Upload>
+            </Form.Item>
+          </Col>
+        </Row>
         <Button type="primary" htmlType="submit" disabled={isSubmitting}>
           Create
         </Button>
