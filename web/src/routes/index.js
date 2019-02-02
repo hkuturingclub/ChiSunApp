@@ -3,14 +3,13 @@ import React from 'react';
 
 // // Templates
 import AppBar from '../components/AppBar';
-
 import AppPrivacyPolicy from '../components/AppPrivacyPolicy';
+import Error from '../components/Error';
 import EventCreate from '../components/EventCreate';
 import GroupView from '../components/GroupView';
 import Groups from '../components/Groups';
 import Home from '../components/Home';
-
-import Error from '../components/Error';
+import SignUp from '../components/SignUp';
 
 const Index = () => (
   <Switch>
@@ -21,6 +20,15 @@ const Index = () => (
           <AppBar> 
               <Home {...props} /> 
           </AppBar>
+      )}
+    />
+    <Route
+      exact
+      path="/signup"
+      component={props => (
+        <AppBar>
+          <SignUp {...props} />
+        </AppBar>
       )}
     />
      <Route

@@ -1,6 +1,7 @@
+import 'firebase/auth';
 import 'firebase/firestore';
 import 'firebase/storage';
-import * as FirebaseModule from 'firebase/app';
+import  FirebaseModule from 'firebase/app';
 import firebaseConfig from '../constants/firebase';
 
 const {
@@ -35,14 +36,19 @@ if (
 
 let db;
 let storage;
+let auth;
+
 if (firebaseInitialized) {
   // Initialize Cloud Firestore through Firebase
   db = FirebaseModule.firestore();
 
   // Initialize Storage through Firebase
   storage = FirebaseModule.storage();
+  auth = FirebaseModule.auth();
 }
 
 export const Firebase = firebaseInitialized ? FirebaseModule : null;
+export const FirebaseAuth = firebaseInitialized ? auth : null;
 export const FirebaseDB = firebaseInitialized ? db : null;
 export const FirebaseStorage = firebaseInitialized ? storage : null;
+

@@ -12,6 +12,11 @@ const sidebarItems = [
       icon: 'home'
     },
     {
+      text: 'Sign Up',
+      route: '/signup',
+      icon: 'user-add'
+    },
+    {
       text: 'Groups',
       route: '/groups',
       icon: 'team'
@@ -21,6 +26,7 @@ const sidebarItems = [
       route: '/event/create',
       icon: 'calendar'
     }
+
 ];
 
 export default class AppBar extends React.Component {
