@@ -2,7 +2,7 @@ import {
     Icon, Layout, Menu,
   } from 'antd';
 import { Link } from 'react-router-dom';
-import React from 'react'; 
+import React from 'react';
 const { Header, Content, Sider, Footer } = Layout;
 
 const sidebarItems = [
@@ -24,6 +24,11 @@ const sidebarItems = [
     {
       text: 'Create Event',
       route: '/event/create',
+      icon: 'calendar'
+    },
+    {
+      text: 'Manage Events',
+      route: '/events/manage',
       icon: 'calendar'
     }
 
@@ -84,6 +89,6 @@ export default class AppBar extends React.Component {
                 </Layout>
                 </Layout>
             </Layout>
-        );        
+        );
     }
 }
