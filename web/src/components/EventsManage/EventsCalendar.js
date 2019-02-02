@@ -16,6 +16,8 @@ badgeStatus[DISAPPROVED] = 'error';
 badgeStatus[PROCESSING] = 'processing';
 badgeStatus[APPROVED] = 'success';
 
+export const getBadge = (status, text) => <Badge status={badgeStatus[status] || "default"} text={text} />
+
 class EventsCalendar extends React.Component {
   getList(items, showTotal) {
     return items.length ?
@@ -25,7 +27,7 @@ class EventsCalendar extends React.Component {
         {
           items.map(item => (
             <li key={item.name}>
-              <Badge status={badgeStatus[item.status]} text={item.name} />
+              {getBadge(item.status, item.name)}
             </li>
           ))
         }

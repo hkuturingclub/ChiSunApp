@@ -1,5 +1,6 @@
 import { Firebase, FirebaseDB, FirebaseStorage } from '../lib/firebase';
 import { generateGUID } from '../lib/util.js';
+import { PROCESSING } from '../constants/events';
 
 export const EVENT_CREATE_RESET = 'EVENT_CREATE_RESET';
 export const EVENT_CREATE_PROCESSING = 'EVENT_CREATE_PROCESSING';
@@ -49,6 +50,7 @@ export function addEvent(eventDetails) {
             location: eventDetails.location,
             startDate: eventDetails.startDate,
             image: url,
+            status: PROCESSING, 
           })
         // Show success on event creation page along with document id
           .then((snapshot) => {

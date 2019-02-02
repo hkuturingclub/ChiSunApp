@@ -1,14 +1,14 @@
-import { Col, Row } from 'antd';
+import { Col, Row, Tabs } from 'antd';
 import { chunk } from 'lodash';
 import { connect } from 'react-redux';
 import { getEvents } from '../../actions/events';
 import Error from '../Error';
-import EventCard from './EventCard';
-import EventsCalendar from './EventsCalendar';
+import EventsCalendar, { getBadge } from './EventsCalendar';
+import EventStack from './EventStack'; 
 import React from 'react';
-import moment from 'moment';
+import moment from 'moment';  
 
-const EVENTS_PER_ROW = 2;
+const TabPane = Tabs.TabPane;
 
 class EventsList extends React.Component {
   constructor(props) {
@@ -46,25 +46,63 @@ class EventsList extends React.Component {
 
     // Error
     if (error) return <Error content={error} />;
+
     const filter = mode === 'year' ? 'month' : 'day';
     const displayEvents = events.filter(event => moment(event.startDate).isSame(currentDate, filter));
-    const eventRows = chunk(displayEvents, EVENTS_PER_ROW);
+   
+    const eventsByStatus = {};
+    displayEvents.forEach(event=>{
+      if (!eventsByStatus[event.status]) {
+        eventsByStatus[event.status] = [];
+      }
+      eventsByStatus[event.status].push(event); 
+    });
+
+    let maxStatus; 
+    if (displayEvents.length){
+      maxStatus = Object.keys(eventsByStatus).reduce((a,b)=>eventsByStatus[a].length > eventsByStatus[b].length ? a : b); 
+    }
 
     // Show Listing
     return (
       <div>
-      <h1>Unapproved Events</h1>
-      <Row gutter={8}>
-        <Col span={12}>
+      <h1>Manage Events</h1>
+      <Row gutter={8} justify="center" type="flex" >
+        <Col span={maxStatus?12:24}>
           <EventsCalendar events={events} currentDate={currentDate} onSelect={this.onSelect} onModeChange={this.onModeChange}/>
         </Col>
-        <Col span={12}>
+        {maxStatus && <Col span={12}> 
+             <Tabs defaultActiveKey={maxStatus}>
+              {
+                Object.keys(eventsByStatus).map((status,index)=> { 
+                  const eventRows = chunk(eventsByStatus[status], EVENTS_PER_ROW);
+                  return(
+                    <TabPane tab={getBadge(status,status)} key={status} > 
+                      <EventStack eventRows = { eventRows } /> 
+                    </TabPane>
+                  )
+                })
+              }
+            </Tabs>
+        </Col>}
+        {/* <Col span={12}>   
+          <Tabs type="card">
+            {eventRows.map((eventRow,index,status) => 
+              <TabPane tab={status} key={index}>
+                <Row gutter={8} key={index}> 
+                  {eventRow.map(event=> <Col span={24/EVENTS_PER_ROW} key={event.id}><EventCard event={event} /></Col>)}
+                </Row>
+              </TabPane>
+              )}
+          </Tabs>
+        </Col>  */}
+        {/* <Col span={12}>
           {eventRows.map((eventRow,index) =>
             <Row gutter={8} key={index}>
               {eventRow.map(event => <Col span={24/EVENTS_PER_ROW} key={event.id}><EventCard event={event} /></Col>)}
             </Row>
           )}
-        </Col>
+        </Col> */}
       </Row>
       </div>
     );
@@ -79,6 +117,7 @@ const mapDispatchToProps = {
   getEvents
 };
 
+export const EVENTS_PER_ROW = 2; 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
