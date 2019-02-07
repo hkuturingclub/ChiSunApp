@@ -1,17 +1,15 @@
-import "./App.css";
-import { Provider } from 'react-redux'; 
-import { BrowserRouter as Router }  from 'react-router-dom'; 
-import React, { Component } from 'react';
-import Routes from './routes';
-import store from './store'; 
+import { Provider } from 'react-redux';
+import React from 'react';
 
-class App extends Component {
+import "./App.css";
+import Routes from './routes';
+import store from './store';
+
+class App extends React.Component {
   render() {
     return (
       <Provider store={store}>
-        <Router basename={`${process.env.PUBLIC_URL}/`}>
-          <Routes />
-        </Router>
+        <Routes />
       </Provider>
     );
   }

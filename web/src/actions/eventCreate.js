@@ -1,6 +1,6 @@
 import { Firebase, FirebaseDB, FirebaseStorage } from '../lib/firebase';
-import { generateGUID } from '../lib/util.js';
 import { PROCESSING } from '../constants/events';
+import { generateGUID } from '../lib/util.js';
 
 export const EVENT_CREATE_RESET = 'EVENT_CREATE_RESET';
 export const EVENT_CREATE_PROCESSING = 'EVENT_CREATE_PROCESSING';

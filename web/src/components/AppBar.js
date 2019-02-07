@@ -1,48 +1,59 @@
-import {
-    Icon, Layout, Menu,
-  } from 'antd';
-import { Link } from 'react-router-dom';
+import { Button, Col, Icon, Layout, Menu, Row } from 'antd';
+import { Link, withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
 import React from 'react';
+
+import { signOut } from '../actions/user';
+import Error from '../components/Error';
+
 const { Header, Content, Sider, Footer } = Layout;
 
 const sidebarItems = [
-    {
-      text: 'Home',
-      route: '/',
-      icon: 'home'
-    },
-    {
-      text: 'Sign Up',
-      route: '/signup',
-      icon: 'user-add'
-    },
-    {
-      text: 'Groups',
-      route: '/groups',
-      icon: 'team'
-    },
-    {
-      text: 'Create Event',
-      route: '/event/create',
-      icon: 'calendar'
-    },
-    {
-      text: 'Manage Events',
-      route: '/events/manage',
-      icon: 'calendar'
-    }
-
+  {
+    text: 'Home',
+    route: '/',
+    icon: 'home'
+  },
+  {
+    text: 'Groups',
+    route: '/groups',
+    icon: 'team'
+  },
+  {
+    text: 'Create Event',
+    route: '/event/create',
+    icon: 'calendar'
+  },
+  {
+    text: 'Manage Events',
+    route: '/events/manage',
+    icon: 'book'
+  }
 ];
 
-export default class AppBar extends React.Component {
+class AppBar extends React.Component {
     render() {
-        const { children } = this.props;
+        const { children, location } = this.props;
+        const { user } = this.props.user;
         const baseLength = process.env.PUBLIC_URL.length;
-        const currentRoute = window.location.pathname.slice(baseLength);
+        const currentRoute = location.pathname.slice(baseLength);
+        const error404 = !sidebarItems.map(item => item.route).includes(currentRoute);
         return (
             <Layout style={{ minHeight: '100vh' }}>
                 <Header style={{ background: '#1DA57A' }}>
-                <h1 style={{ color: '#fff' }}>Chi Sun College</h1>
+                  <Row type="flex" justify="space-between">
+                    <Col span={19}>
+                      <h1 style={{ color: '#fff' }}>Chi Sun College</h1>
+                    </Col>
+                    <Col span={5} style={{ textAlign: 'center' }}>
+                      {user && <Button icon="logout" onClick={() => this.props.signOut()}>
+                        Logout
+                      </Button>}
+                      {!user && <Link to='/login'><Button icon="login">
+                        Login
+                      </Button></Link>}
+                    </Col>
+                  </Row>
                 </Header>
                 <Layout>
                 <Sider
@@ -54,6 +65,7 @@ export default class AppBar extends React.Component {
                     <Menu
                     mode="inline"
                     defaultSelectedKeys={[currentRoute]}
+                    selectedKeys={[currentRoute]}
                     style={{ height: '100%', borderRight: 0 }}
                     >
                     {sidebarItems.map(item => (
@@ -76,6 +88,10 @@ export default class AppBar extends React.Component {
                     }}
                     >
                     {children}
+                    {error404 && <Error
+                      title="404"
+                      content="Sorry, the route you requested does not exist"
+                    />}
                     </Content>
                     <Footer style={{ textAlign: 'right' }}>
                     <a
@@ -92,3 +108,13 @@ export default class AppBar extends React.Component {
         );
     }
 }
+
+const mapStateToProps = state => ({
+  user: state.user
+});
+
+const mapDispatchToProps = {
+  signOut
+};
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(AppBar));

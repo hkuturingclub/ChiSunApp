@@ -4,9 +4,9 @@ import { Redirect } from 'react-router-dom';
 import { connect } from "react-redux";
 import React from "react";
 
-import { signUp } from '../actions/user';
+import { signIn } from "../actions/user";
 
-class SignUp extends React.Component {
+class Login extends React.Component {
   render() {
     const { user, error } = this.props.user;
     if (user) {
@@ -32,15 +32,13 @@ class SignUp extends React.Component {
 
               if (!values.password) {
                 errors.password = 'Required';
-              } else if (values.password.length < 8) {
-                errors.password = 'Password must be at least 8 characters'
               }
 
               return errors;
             }}
 
             onSubmit={(values, { setSubmitting }) => {
-              this.props.signUp(values.email, values.password);
+              this.props.signIn(values.email, values.password);
               setSubmitting(false);
             }}
           >
@@ -98,11 +96,11 @@ class SignUp extends React.Component {
                     value={values.password}
                   />
                 </Form.Item>
-                <Button type="primary" icon="user-add" htmlType="submit" disabled={isSubmitting}>
-                  Register
+                <Button type="primary" icon="login" htmlType="submit" disabled={isSubmitting}>
+                  Log in
                 </Button>
                 <br />
-                Or <a href="/login">login now!</a>
+                Or <a href="/signup">register now!</a>
               </Form>
             )}
           </Formik>
@@ -116,8 +114,4 @@ const mapStateToProps = state => ({
   user: state.user
 });
 
-const mapDispatchToProps = {
-  signUp
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(SignUp);
+export default connect(mapStateToProps, { signIn })(Login);
