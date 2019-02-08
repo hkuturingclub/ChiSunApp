@@ -3,8 +3,8 @@ import { chunk } from 'lodash';
 import { connect } from 'react-redux';
 import { getEvents } from '../../actions/events';
 import Error from '../Error';
-import EventsCalendar, { getBadge } from './EventsCalendar';
-import EventStack from './EventStack'; 
+import EventStack from './EventStack';
+import EventsCalendar, { getBadge } from './EventsCalendar'; 
 import React from 'react';
 import moment from 'moment';  
 

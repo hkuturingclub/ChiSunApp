@@ -1,7 +1,7 @@
-import { Row, Col } from "antd"; 
-import React from 'react'; 
-import EventCard from './EventCard'; 
+import { Col, Row } from "antd"; 
 import { EVENTS_PER_ROW } from './EventsManage'; 
+import EventCard from './EventCard'; 
+import React from 'react'; 
 
 class EventStack extends React.Component{
     render(){
