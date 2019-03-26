@@ -10,12 +10,12 @@ export default [
     icon: 'people',
   },
   {
-    name: 'Management Team',
+    name: 'Tutorial Team',
     route: 'management',
     icon: 'md-at',
   },
   {
-    name: 'Room Booking',
+    name: '3/F Library Room Booking',
     type: 'link',
     link: 'https://cschku.skedda.com/booking',
     icon: 'easel',
