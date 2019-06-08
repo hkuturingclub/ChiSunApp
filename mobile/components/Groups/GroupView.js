@@ -53,6 +53,7 @@ const GroupView = ({ group }) => {
           </CardItem>
         </Card>
         <Spacer size={10} />
+        {(group.link!=null)?
         <Body>
           <Button
             block
@@ -64,6 +65,7 @@ const GroupView = ({ group }) => {
             <Text>Join</Text>
           </Button>
         </Body>
+        :<Container/>}
         <Spacer size={20} />
       </Content>
     </Container>
