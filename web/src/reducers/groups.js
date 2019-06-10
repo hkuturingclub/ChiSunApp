@@ -1,4 +1,4 @@
-import { GROUPS_ERROR, GROUPS_REPLACE } from '../actions/groups';
+import { GROUPS_ERROR, GROUPS_REPLACE } from "../actions/groups";
 
 export const initialState = {
   loading: true,
@@ -7,16 +7,17 @@ export const initialState = {
     {
       placeholder: true,
       id: 0,
-      name: '---- --- -- ------',
-      description: '---- --- -- ------ ---- --- -- ------ ---- --- -- ------ ---- --- -- ------',
-      category: '----',
+      name: "---- --- -- ------",
+      description:
+        "---- --- -- ------ ---- --- -- ------ ---- --- -- ------ ---- --- -- ------",
+      category: "----",
       image:
-        'https://firebasestorage.googleapis.com/v0/b/react-native-starter-app.appspot.com/o/image-1.jpg?alt=media&token=9f7c839b-2d40-4660-a2a0-bf6c2f64a2e5',
-      contactName: '---- ----',
-      contactNumber: '-- ---- ----',
-      link: '#',
-    },
-  ],
+        "https://firebasestorage.googleapis.com/v0/b/react-native-starter-app.appspot.com/o/image-1.jpg?alt=media&token=9f7c839b-2d40-4660-a2a0-bf6c2f64a2e5",
+      contact_name: "---- ----",
+      contact_number: "-- ---- ----",
+      link: "#"
+    }
+  ]
 };
 
 export default function groupReducer(state = initialState, action) {
@@ -25,23 +26,23 @@ export default function groupReducer(state = initialState, action) {
       return {
         ...state,
         loading: false,
-        error: action.data,
+        error: action.data
       };
     }
     case GROUPS_REPLACE: {
       let groups = [];
 
       // Pick out the props I need
-      if (action.data && typeof action.data === 'object') {
+      if (action.data && typeof action.data === "object") {
         groups = action.data.map(item => ({
           id: item.id,
           name: item.name,
           description: item.description,
           category: item.category,
           image: item.image,
-          contactName: item.contact_name,
-          contactNumber: item.contact_number,
-          link: item.link,
+          contact_name: item.contact_name,
+          contact_number: item.contact_number,
+          link: item.link
         }));
       }
 
@@ -49,7 +50,7 @@ export default function groupReducer(state = initialState, action) {
         ...state,
         error: null,
         loading: false,
-        groups,
+        groups
       };
     }
     default:

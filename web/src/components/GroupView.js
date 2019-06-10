@@ -1,24 +1,14 @@
-import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
-import React from 'react';
+import { Button } from "antd";
+import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import React from "react";
 
-import Error from './Error';
+import Error from "./Error";
 
-import { getGroups } from '../actions/groups';
+import { getGroups } from "../actions/groups";
 
 class GroupView extends React.Component {
-  // componentDidMount = () => this.fetchGroups();
-
-  /**
-   * Fetch Data from API, saving to Redux
-   */
-  // fetchGroups = () => {
-  //   const { fetchGroups, showError } = this.props;
-  //   return fetchGroups().catch(err => {
-  //     console.log(`Error: ${err}`);
-  //     return showError(err);
-  //   });
-  // };
+  componentDidMount = () => this.props.getGroups();
 
   render() {
     const { loading, error, groups } = this.props.groups;
@@ -37,31 +27,28 @@ class GroupView extends React.Component {
     }
 
     // Group not found
-    if (!group) return <Error content={'Group not found'} />;
+    if (!group) return <Error content={"Group not found"} />;
 
     return (
       <div>
-            <h1>{group.name}</h1>
-            <div>
-              <div>About this group</div>
-              <div>
-                <div>{group.description}</div>
-              </div>
-            </div>
-            <div>
-              <div>Contact Information</div>
-              <div>
-                <p>
-                  {group.contactName}
-                  <br />
-                  {group.contactNumber}
-                </p>
-              </div>
-            </div>
-            <Link className="btn btn-secondary" to="/groups">
-              <i className="icon-arrow-left" />
-              {' Back'}
-            </Link>
+        <h1>{group.name}</h1>
+        <img alt={group.name} src={group.image} width={300} />
+        <h4>Description</h4>
+        <p>{group.description || "NA"}</p>
+        <h4>Category</h4>
+        <p>{group.category || "NA"}</p>
+        <h4>Contact Information</h4>
+        <p>{group.contact_name}</p>
+        <p>{group.contact_number}</p>
+        <p>
+          <Button type="link" href={group.link}>
+            Group Link
+          </Button>
+        </p>
+        <Link className="btn btn-secondary" to="/groups">
+          <i className="icon-arrow-left" />
+          {" Back"}
+        </Link>
       </div>
     );
   }
@@ -72,10 +59,10 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = {
-  getGroups,
+  getGroups
 };
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps,
+  mapDispatchToProps
 )(GroupView);
