@@ -7,6 +7,7 @@ import Error from '../Error';
 import PropTypes from 'prop-types';
 import React from 'react';
 import Spacer from '../Spacer';
+import Link from '../../constants/Linker';
 const placeholderImage = require('../../assets/chisun_college.png');
 
 const GroupView = ({ group }) => {
@@ -47,7 +48,7 @@ const GroupView = ({ group }) => {
             </Body>
             <Right>
               <Text selectable>
-                <Autolink text={group.contact_number} />
+                <Link text={group.contact_number} />
               </Text>
             </Right>
           </CardItem>
