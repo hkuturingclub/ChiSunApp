@@ -34,7 +34,7 @@ const Management = ({ managementQuery }) => {
     management.forEach(item=>item.floors.sort((c,d)=>c-d));
     management.sort((a,b) => {
       if (a.rank === TUTOR && b.rank === TUTOR ) {
-        return b.floors[0]-a.floors[0];
+        return a.floors[0]-b.floors[0];
       }
       return a.rank-b.rank;
     });

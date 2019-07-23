@@ -1,5 +1,5 @@
 /*!
- * React Native Autolink
+ * React Native Link
  *
  * Copyright 2016-2019 Josh Swan
  * Released under the MIT license
@@ -8,9 +8,9 @@
 
 import React, { Component, createElement } from 'react';
 import PropTypes from 'prop-types';
-import Autolinker from 'autolinker';
+import Autolinker, {matchers} from 'autolinker';
 import { Alert, Linking, Platform, StyleSheet, Text } from 'react-native';
-import matchers from './matchers';
+// import matchers from 'matchers';
 
 const tagBuilder = Autolinker.prototype.getTagBuilder();
 
@@ -276,7 +276,7 @@ export default class Link extends Component {
   }
 }
 
-Autolink.defaultProps = {
+Link.defaultProps = {
   email: true,
   hashtag: false,
   latlng: false,
@@ -292,7 +292,7 @@ Autolink.defaultProps = {
   webFallback: Platform.OS !== 'ios', // iOS requires LSApplicationQueriesSchemes for Linking.canOpenURL
 };
 
-Autolink.propTypes = {
+Link.propTypes = {
   email: PropTypes.bool,
   hashtag: PropTypes.oneOf([false, 'instagram', 'twitter']),
   latlng: PropTypes.bool,

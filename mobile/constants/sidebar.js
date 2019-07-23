@@ -1,5 +1,10 @@
 export default [
   {
+    name: 'About',
+    route: 'about',
+    icon: 'information',
+  },
+  {
     name: 'Events',
     route: 'events',
     icon: 'calendar',

@@ -2,6 +2,7 @@ import { Drawer, Scene } from 'react-native-router-flux';
 import { Icon } from 'native-base';
 import React from 'react';
 
+import About from '../components/About';
 import DefaultProps from '../constants/navigation';
 import EventView from '../components/Events/EventView';
 import Events from '../components/Events/Events';
@@ -18,7 +19,8 @@ export default (
     drawerIcon={() => <Icon name="ios-menu" style={{ color: theme.brandPrimary, fontSize: 40}} />}
     contentComponent={SideBar}
   >
-    <Scene key="events" title="Events" {...DefaultProps.navbarProps} component={Events} initial />
+    <Scene key="about" title="About" {...DefaultProps.navbarProps} component={About} initial />
+    <Scene key="events" title="Events" {...DefaultProps.navbarProps} component={Events}  />
     <Scene
       back
       clone
