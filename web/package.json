@@ -38,6 +38,6 @@
   ],
   "devDependencies": {
     "eslint-plugin-sort-imports-es6-autofix": "^0.3.0",
-    "gh-pages": "^2.0.1"
+    "gh-pages": "2.0"
   }
 }
