@@ -172,7 +172,7 @@ const GroupForm = ({ onSubmit, initialValues = {} }) => (
               }
               help={touched.contact_number && errors.contact_number}
             >
-              <Input
+              <Input.TextArea
                 id="contact_number"
                 placeholder="Contact +852 0000 0000 or email john.doe@gmail.com"
                 onChange={handleChange}

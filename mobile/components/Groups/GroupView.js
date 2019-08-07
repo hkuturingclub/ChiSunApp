@@ -1,13 +1,21 @@
 import {
-  Body, Button, Card, CardItem, Container, Content, H3, Right, Text,
-} from 'native-base';
-import { Image, Linking } from 'react-native';
-import Autolink from 'react-native-autolink';
-import Error from '../Error';
-import PropTypes from 'prop-types';
-import React from 'react';
-import Spacer from '../Spacer';
-const placeholderImage = require('../../assets/chisun_college.png');
+  Body,
+  Button,
+  Card,
+  CardItem,
+  Container,
+  Content,
+  H3,
+  Right,
+  Text
+} from "native-base";
+import { Image, Linking } from "react-native";
+import Autolink from "react-native-autolink";
+import Error from "../Error";
+import PropTypes from "prop-types";
+import React from "react";
+import Spacer from "../Spacer";
+const placeholderImage = require("../../assets/chisun_college.png");
 
 const GroupView = ({ group }) => {
   // Group not found
@@ -53,17 +61,21 @@ const GroupView = ({ group }) => {
           </CardItem>
         </Card>
         <Spacer size={10} />
-        <Body>
-          <Button
-            block
-            bordered
-            onPress={() => {
-              Linking.openURL(group.link);
-            }}
-          >
-            <Text>Join</Text>
-          </Button>
-        </Body>
+        {group.link != null ? (
+          <Body>
+            <Button
+              block
+              bordered
+              onPress={() => {
+                Linking.openURL(group.link);
+              }}
+            >
+              <Text>Join</Text>
+            </Button>
+          </Body>
+        ) : (
+          <Container />
+        )}
         <Spacer size={20} />
       </Content>
     </Container>
@@ -79,8 +91,8 @@ GroupView.propTypes = {
     link: PropTypes.string,
     description: PropTypes.string,
     contact_name: PropTypes.string,
-    contact_number: PropTypes.string,
-  }),
+    contact_number: PropTypes.string
+  })
 };
 
 export default GroupView;
