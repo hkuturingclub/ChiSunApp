@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 import React from "react";
 
 import { signOut } from "../actions/user";
-import Error from "../components/Error";
 
 const { Header, Content, Sider, Footer } = Layout;
 
@@ -36,20 +35,12 @@ const sidebarItems = [
   }
 ];
 
-// Routes not shown in sidebar. Used to check invalid routes.
-const otherRoutes = ["/group"];
-
 class AppBar extends React.Component {
   render() {
     const { children, location } = this.props;
     const { user } = this.props.user;
     const baseLength = process.env.PUBLIC_URL.length;
     const currentRoute = location.pathname.slice(baseLength);
-    let error404 = !sidebarItems.map(item => item.route).includes(currentRoute);
-    // Check otherRoutes as well
-    if (error404) {
-      error404 = !otherRoutes.includes(`/${currentRoute.split("/")[1]}`);
-    }
     return (
       <Layout style={{ minHeight: "100vh" }}>
         <Header style={{ background: "#1DA57A" }}>
@@ -104,12 +95,6 @@ class AppBar extends React.Component {
               }}
             >
               {children}
-              {error404 && (
-                <Error
-                  title="404"
-                  content="Sorry, the route you requested does not exist"
-                />
-              )}
             </Content>
             <Footer style={{ textAlign: "right" }}>
               <a
