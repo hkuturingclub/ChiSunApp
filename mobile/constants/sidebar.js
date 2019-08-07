@@ -1,29 +1,29 @@
 export default [
   {
-    name: 'About',
-    route: 'about',
-    icon: 'information',
+    name: "Events",
+    route: "events",
+    icon: "calendar"
   },
   {
-    name: 'Events',
-    route: 'events',
-    icon: 'calendar',
+    name: "Groups",
+    route: "groups",
+    icon: "people"
   },
   {
-    name: 'Groups',
-    route: 'groups',
-    icon: 'people',
+    name: "Tutorial Team",
+    route: "management",
+    icon: "md-at"
   },
   {
-    name: 'Tutorial Team',
-    route: 'management',
-    icon: 'md-at',
+    name: "3/F Library Room Booking",
+    type: "link",
+    link: "https://cschku.skedda.com/booking",
+    icon: "easel"
   },
   {
-    name: '3/F Library Room Booking',
-    type: 'link',
-    link: 'https://cschku.skedda.com/booking',
-    icon: 'easel',
+    name: "About",
+    route: "about",
+    icon: "ios-information-circle-outline"
   },
   /*
   {
@@ -34,9 +34,9 @@ export default [
   },
   */
   {
-    name: 'College Website',
-    type: 'link',
-    link: 'http://www.chisuncollege.hku.hk/',
-    icon: 'globe',
+    name: "College Website",
+    type: "link",
+    link: "http://www.chisuncollege.hku.hk/",
+    icon: "globe"
   }
 ];
