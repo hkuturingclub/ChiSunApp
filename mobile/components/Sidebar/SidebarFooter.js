@@ -37,6 +37,14 @@ const openLink = link => Linking.openURL(link).catch(err => console.log(err));
 const SidebarFooter = () => (
   <View style={styles.footer}>
     <View style={styles.socialContainer}>
+      <TouchableOpacity onPress={() => openLink("tel://+85239171419")}>
+        <Icon style={styles.iconContainer} type="FontAwesome" name="phone" />
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => openLink("whatsapp://send?phone=+85264169538")}
+      >
+        <Icon style={styles.iconContainer} type="FontAwesome" name="whatsapp" />
+      </TouchableOpacity>
       <TouchableOpacity onPress={() => openLink("mailto:chisuncollege@hku.hk")}>
         <Icon style={styles.iconContainer} type="MaterialIcons" name="email" />
       </TouchableOpacity>
