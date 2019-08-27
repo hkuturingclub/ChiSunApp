@@ -51,7 +51,7 @@ This is the repository for the web and mobile apps of Chi Sun College of the Uni
 
 ### Server
 
-1.  `git subtree push --prefix server/ https://git.heroku.com/quiet-sea-90084.git master`
+1.  `git subtree push --prefix server/ https://git.heroku.com/hkuchisuncollege.git master`
 
 ### Web App
 
