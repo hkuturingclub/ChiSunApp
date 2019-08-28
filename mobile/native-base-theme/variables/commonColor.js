@@ -1,12 +1,13 @@
-import color from 'color';
+import color from "color";
 
-import { Dimensions, PixelRatio, Platform } from 'react-native';
+import { Dimensions, PixelRatio, Platform } from "react-native";
 
-const deviceHeight = Dimensions.get('window').height;
-const deviceWidth = Dimensions.get('window').width;
+const deviceHeight = Dimensions.get("window").height;
+const deviceWidth = Dimensions.get("window").width;
 const platform = Platform.OS;
 const platformStyle = undefined;
-const isIphoneX = platform === 'ios' && deviceHeight === 812 && deviceWidth === 375;
+const isIphoneX =
+  platform === "ios" && deviceHeight === 812 && deviceWidth === 375;
 
 export default {
   platformStyle,
@@ -14,18 +15,18 @@ export default {
 
   // Android
   androidRipple: true,
-  androidRippleColor: 'rgba(256, 256, 256, 0.3)',
-  androidRippleColorDark: 'rgba(0, 0, 0, 0.15)',
+  androidRippleColor: "rgba(256, 256, 256, 0.3)",
+  androidRippleColorDark: "rgba(0, 0, 0, 0.15)",
   btnUppercaseAndroidText: true,
 
   // Badge
-  badgeBg: '#ED1727',
-  badgeColor: '#fff',
-  badgePadding: platform === 'ios' ? 3 : 0,
+  badgeBg: "#ED1727",
+  badgeColor: "#fff",
+  badgePadding: platform === "ios" ? 3 : 0,
 
   // Button
-  btnFontFamily: platform === 'ios' ? 'System' : 'Roboto',
-  btnDisabledBg: '#b5b5b5',
+  btnFontFamily: platform === "ios" ? "System" : "Roboto",
+  btnDisabledBg: "#b5b5b5",
   buttonPadding: 6,
   get btnPrimaryBg() {
     return this.brandPrimary;
@@ -58,7 +59,7 @@ export default {
     return this.inverseTextColor;
   },
   get btnTextSize() {
-    return platform === 'ios' ? this.fontSizeBase * 1.1 : this.fontSizeBase - 1;
+    return platform === "ios" ? this.fontSizeBase * 1.1 : this.fontSizeBase - 1;
   },
   get btnTextSizeLarge() {
     return this.fontSizeBase * 1.5;
@@ -77,33 +78,33 @@ export default {
   },
 
   // Card
-  cardDefaultBg: '#fff',
-  cardBorderColor: '#ccc',
+  cardDefaultBg: "#fff",
+  cardBorderColor: "#ccc",
 
   // CheckBox
-  CheckboxRadius: platform === 'ios' ? 13 : 0,
-  CheckboxBorderWidth: platform === 'ios' ? 1 : 2,
-  CheckboxPaddingLeft: platform === 'ios' ? 4 : 2,
-  CheckboxPaddingBottom: platform === 'ios' ? 0 : 5,
-  CheckboxIconSize: platform === 'ios' ? 21 : 16,
-  CheckboxIconMarginTop: platform === 'ios' ? undefined : 1,
-  CheckboxFontSize: platform === 'ios' ? 23 / 0.9 : 17,
+  CheckboxRadius: platform === "ios" ? 13 : 0,
+  CheckboxBorderWidth: platform === "ios" ? 1 : 2,
+  CheckboxPaddingLeft: platform === "ios" ? 4 : 2,
+  CheckboxPaddingBottom: platform === "ios" ? 0 : 5,
+  CheckboxIconSize: platform === "ios" ? 21 : 16,
+  CheckboxIconMarginTop: platform === "ios" ? undefined : 1,
+  CheckboxFontSize: platform === "ios" ? 23 / 0.9 : 17,
   DefaultFontSize: 17,
-  checkboxBgColor: '#039BE5',
+  checkboxBgColor: "#039BE5",
   checkboxSize: 20,
-  checkboxTickColor: '#fff',
+  checkboxTickColor: "#fff",
 
   // Color
-  brandPrimary: '#3cb878',
-  brandInfo: '#62B1F6',
-  brandSuccess: '#5cb85c',
-  brandDanger: '#d9534f',
-  brandWarning: '#f0ad4e',
-  brandDark: '#000',
-  brandLight: '#f4f4f4',
+  brandPrimary: "#3cb878",
+  brandInfo: "#62B1F6",
+  brandSuccess: "#5cb85c",
+  brandDanger: "#d9534f",
+  brandWarning: "#f0ad4e",
+  brandDark: "#000",
+  brandLight: "#f4f4f4",
 
   // Font
-  fontFamily: platform === 'ios' ? 'System' : 'Roboto',
+  fontFamily: platform === "ios" ? "System" : "Roboto",
   fontSizeBase: 15,
   get fontSizeH1() {
     return this.fontSizeBase * 2.2;
@@ -117,28 +118,28 @@ export default {
 
   // Footer
   footerHeight: isIphoneX ? 89 : 55,
-  footerDefaultBg: platform === 'ios' ? '#F8F8F8' : '#3cb878',
+  footerDefaultBg: platform === "ios" ? "#F8F8F8" : "#3cb878",
   footerPaddingBottom: isIphoneX ? 34 : 0,
 
   // FooterTab
-  tabBarTextColor: platform === 'ios' ? '#737373' : '#bfc6ea',
-  tabBarTextSize: platform === 'ios' ? 14 : 11,
-  activeTab: platform === 'ios' ? '#007aff' : '#fff',
-  sTabBarActiveTextColor: '#007aff',
-  tabBarActiveTextColor: platform === 'ios' ? '#2874F0' : '#fff',
-  tabActiveBgColor: platform === 'ios' ? '#cde1f9' : '#3cb878',
+  tabBarTextColor: platform === "ios" ? "#737373" : "#bfc6ea",
+  tabBarTextSize: platform === "ios" ? 14 : 11,
+  activeTab: platform === "ios" ? "#3CB878" : "#fff",
+  sTabBarActiveTextColor: "#3CB878",
+  tabBarActiveTextColor: platform === "ios" ? "#3CB878" : "#fff",
+  tabActiveBgColor: platform === "ios" ? "#cde1f9" : "#3cb878",
 
   // Header
-  toolbarBtnColor: platform === 'ios' ? '#007aff' : '#fff',
-  toolbarDefaultBg: platform === 'ios' ? '#F8F8F8' : '#3cb878',
-  toolbarHeight: platform === 'ios' ? (isIphoneX ? 88 : 64) : 56,
-  toolbarSearchIconSize: platform === 'ios' ? 20 : 23,
-  toolbarInputColor: platform === 'ios' ? '#CECDD2' : '#fff',
-  searchBarHeight: platform === 'ios' ? 30 : 40,
-  searchBarInputHeight: platform === 'ios' ? 30 : 50,
-  toolbarBtnTextColor: platform === 'ios' ? '#007aff' : '#fff',
-  iosStatusbar: 'dark-content',
-  toolbarDefaultBorder: platform === 'ios' ? '#a7a6ab' : '#3cb878',
+  toolbarBtnColor: platform === "ios" ? "#3CB878" : "#fff",
+  toolbarDefaultBg: platform === "ios" ? "#F8F8F8" : "#3cb878",
+  toolbarHeight: platform === "ios" ? (isIphoneX ? 88 : 64) : 56,
+  toolbarSearchIconSize: platform === "ios" ? 20 : 23,
+  toolbarInputColor: platform === "ios" ? "#CECDD2" : "#fff",
+  searchBarHeight: platform === "ios" ? 30 : 40,
+  searchBarInputHeight: platform === "ios" ? 30 : 50,
+  toolbarBtnTextColor: platform === "ios" ? "#3CB878" : "#fff",
+  iosStatusbar: "dark-content",
+  toolbarDefaultBorder: platform === "ios" ? "#a7a6ab" : "#3cb878",
   get statusBarColor() {
     return color(this.toolbarDefaultBg)
       .darken(0.2)
@@ -151,21 +152,21 @@ export default {
   },
 
   // Icon
-  iconFamily: 'Ionicons',
-  iconFontSize: platform === 'ios' ? 30 : 28,
-  iconHeaderSize: platform === 'ios' ? 33 : 24,
+  iconFamily: "Ionicons",
+  iconFontSize: platform === "ios" ? 30 : 28,
+  iconHeaderSize: platform === "ios" ? 33 : 24,
 
   // InputGroup
   inputFontSize: 17,
-  inputBorderColor: '#D9D5DC',
-  inputSuccessBorderColor: '#2b8339',
-  inputErrorBorderColor: '#ed2f2f',
+  inputBorderColor: "#D9D5DC",
+  inputSuccessBorderColor: "#2b8339",
+  inputErrorBorderColor: "#ed2f2f",
   inputHeightBase: 50,
   get inputColor() {
     return this.textColor;
   },
   get inputColorPlaceholder() {
-    return '#575757';
+    return "#575757";
   },
 
   // Line Height
@@ -173,75 +174,75 @@ export default {
   lineHeightH1: 32,
   lineHeightH2: 27,
   lineHeightH3: 22,
-  lineHeight: platform === 'ios' ? 20 : 24,
+  lineHeight: platform === "ios" ? 20 : 24,
 
   // List
-  listBg: 'transparent',
-  listBorderColor: '#c9c9c9',
-  listDividerBg: '#f4f4f4',
-  listBtnUnderlayColor: '#DDD',
-  listItemPadding: platform === 'ios' ? 10 : 12,
-  listNoteColor: '#808080',
+  listBg: "transparent",
+  listBorderColor: "#c9c9c9",
+  listDividerBg: "#f4f4f4",
+  listBtnUnderlayColor: "#DDD",
+  listItemPadding: platform === "ios" ? 10 : 12,
+  listNoteColor: "#808080",
   listNoteSize: 13,
 
   // Progress Bar
-  defaultProgressColor: '#E4202D',
-  inverseProgressColor: '#1A191B',
+  defaultProgressColor: "#E4202D",
+  inverseProgressColor: "#1A191B",
 
   // Radio Button
-  radioBtnSize: platform === 'ios' ? 25 : 23,
-  radioSelectedColorAndroid: '#3cb878',
-  radioBtnLineHeight: platform === 'ios' ? 29 : 24,
+  radioBtnSize: platform === "ios" ? 25 : 23,
+  radioSelectedColorAndroid: "#3cb878",
+  radioBtnLineHeight: platform === "ios" ? 29 : 24,
   get radioColor() {
     return this.brandPrimary;
   },
 
   // Segment
-  segmentBackgroundColor: platform === 'ios' ? '#F8F8F8' : '#3cb878',
-  segmentActiveBackgroundColor: platform === 'ios' ? '#007aff' : '#fff',
-  segmentTextColor: platform === 'ios' ? '#007aff' : '#fff',
-  segmentActiveTextColor: platform === 'ios' ? '#fff' : '#3cb878',
-  segmentBorderColor: platform === 'ios' ? '#007aff' : '#fff',
-  segmentBorderColorMain: platform === 'ios' ? '#a7a6ab' : '#3cb878',
+  segmentBackgroundColor: platform === "ios" ? "#F8F8F8" : "#3cb878",
+  segmentActiveBackgroundColor: platform === "ios" ? "#3CB878" : "#fff",
+  segmentTextColor: platform === "ios" ? "#3CB878" : "#fff",
+  segmentActiveTextColor: platform === "ios" ? "#fff" : "#3cb878",
+  segmentBorderColor: platform === "ios" ? "#3CB878" : "#fff",
+  segmentBorderColorMain: platform === "ios" ? "#a7a6ab" : "#3cb878",
 
   // Spinner
-  defaultSpinnerColor: '#45D56E',
-  inverseSpinnerColor: '#1A191B',
+  defaultSpinnerColor: "#45D56E",
+  inverseSpinnerColor: "#1A191B",
 
   // Tab
-  tabDefaultBg: platform === 'ios' ? '#F8F8F8' : '#3cb878',
-  topTabBarTextColor: platform === 'ios' ? '#6b6b6b' : '#a9f3a9',
-  topTabBarActiveTextColor: platform === 'ios' ? '#3cb878' : '#fff',
-  topTabBarBorderColor: platform === 'ios' ? '#a7a6ab' : '#fff',
-  topTabBarActiveBorderColor: platform === 'ios' ? '#3cb878' : '#fff',
+  tabDefaultBg: platform === "ios" ? "#F8F8F8" : "#3cb878",
+  topTabBarTextColor: platform === "ios" ? "#6b6b6b" : "#a9f3a9",
+  topTabBarActiveTextColor: platform === "ios" ? "#3cb878" : "#fff",
+  topTabBarBorderColor: platform === "ios" ? "#a7a6ab" : "#fff",
+  topTabBarActiveBorderColor: platform === "ios" ? "#3cb878" : "#fff",
 
   // Tabs
-  tabBgColor: '#F8F8F8',
+  tabBgColor: "#F8F8F8",
   tabFontSize: 15,
 
   // Text
-  textColor: '#000',
-  inverseTextColor: '#fff',
+  textColor: "#000",
+  inverseTextColor: "#fff",
   noteFontSize: 14,
   get defaultTextColor() {
     return this.textColor;
   },
 
   // Title
-  titleFontfamily: platform === 'ios' ? 'System' : 'Roboto_medium',
-  titleFontSize: platform === 'ios' ? 17 : 19,
-  subTitleFontSize: platform === 'ios' ? 12 : 14,
-  subtitleColor: platform === 'ios' ? '#000' : '#fff',
-  titleFontColor: platform === 'ios' ? '#000' : '#fff',
+  titleFontfamily: platform === "ios" ? "System" : "Roboto_medium",
+  titleFontSize: platform === "ios" ? 17 : 19,
+  subTitleFontSize: platform === "ios" ? 12 : 14,
+  subtitleColor: platform === "ios" ? "#000" : "#fff",
+  titleFontColor: platform === "ios" ? "#000" : "#fff",
 
   // Other
-  borderRadiusBase: platform === 'ios' ? 5 : 2,
+  borderRadiusBase: platform === "ios" ? 5 : 2,
   borderWidth: 1 / PixelRatio.getPixelSizeForLayoutSize(1),
   contentPadding: 10,
-  dropdownLinkColor: '#414142',
+  dropdownLinkColor: "#414142",
   inputLineHeight: 24,
   deviceWidth,
   deviceHeight,
   isIphoneX,
-  inputGroupRoundedBorderRadius: 30,
+  inputGroupRoundedBorderRadius: 30
 };

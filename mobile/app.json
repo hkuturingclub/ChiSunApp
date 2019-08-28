@@ -3,7 +3,7 @@
     "name": "Chi Sun College",
     "slug": "hku-chi-sun-college",
     "privacy": "public",
-    "sdkVersion": "32.0.0",
+    "sdkVersion": "33.0.0",
     "platforms": ["ios", "android"],
     "version": "1.0.0",
     "orientation": "portrait",
@@ -11,10 +11,11 @@
     "description": "One-stop platform for all things Chi Sun College.",
     "githubUrl": "https://github.com/hkuturingclub/ChiSunApp",
     "ios": {
-      "bundleIdentifier": "com.hku.chisuncollege"
+      "bundleIdentifier": "com.hkuturingclub.chisuncollege",
+      "supportsTablet": true
     },
     "android": {
-      "package": "com.hku.chisuncollege"
+      "package": "com.hkuturingclub.chisuncollege"
     },
     "splash": {
       "image": "./assets/splash.png",
@@ -23,9 +24,6 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": ["**/*"],
-    "ios": {
-      "supportsTablet": true
-    }
+    "assetBundlePatterns": ["**/*"]
   }
 }
