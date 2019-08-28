@@ -1,6 +1,6 @@
 import { Icon } from "native-base";
 import { Linking, Text, TouchableOpacity, View } from "react-native";
-import { WebBrowser } from "expo";
+import * as WebBrowser from 'expo-web-browser';
 import React from "react";
 import theme from "../../native-base-theme/variables/commonColor";
 

@@ -45,7 +45,7 @@ This is the repository for the web and mobile apps of Chi Sun College of the Uni
 1.  If you don't have expo installed, install by `npm install -g expo-cli`
 2.  Go to mobile directory `cd mobile`
 3.  Run app `expo start`
-4.  Download Expo mobile app and scan QR code to run the app
+4.  Run XCode (`mobile/ios`) or Android Studio (`mobile/android`) project
 
 ## How to deploy
 

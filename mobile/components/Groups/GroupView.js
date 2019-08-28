@@ -67,7 +67,7 @@ const GroupView = ({ group }) => {
               block
               bordered
               onPress={() => {
-                Linking.openURL(group.link);
+                Linking.openURL(group.link).catch(() => {});
               }}
             >
               <Text>Join</Text>

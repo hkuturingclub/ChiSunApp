@@ -11,16 +11,19 @@
   "dependencies": {
     "apollo-boost": "^0.1.27",
     "expo": "^34.0.1",
-    "expo-constants": "~5.0.1",
+    "expo-constants": "~6.0.0",
+    "expo-web-browser": "^6.0.0",
+    "expokit": "34.0.2",
     "graphql": "^14.1.1",
     "moment": "^2.24.0",
     "native-base": "2.11.0",
     "react": "16.8.3",
     "react-apollo": "^2.4.0",
-    "react-native": "https://github.com/expo/react-native/archive/sdk-34.0.0.tar.gz",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-34.0.1.tar.gz",
     "react-native-autolink": "^1.6.0",
     "react-native-html-parser": "^0.0.5",
-    "react-native-router-flux": "^4.0.6"
+    "react-native-router-flux": "^4.0.6",
+    "react-native-unimodules": "0.5.2"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.3",
