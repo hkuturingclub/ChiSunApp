@@ -1,14 +1,20 @@
 import {
-  Body, Card, CardItem, Container, Content, H3, Text,
-} from 'native-base';
-import { Image } from 'react-native';
-import Autolink from 'react-native-autolink';
-import Error from '../Error';
-import PropTypes from 'prop-types';
-import React from 'react';
-import Spacer from '../Spacer';
-import moment from 'moment';
-const placeholderImage = require('../../assets/placeholder.jpg');
+  Body,
+  Card,
+  CardItem,
+  Container,
+  Content,
+  H3,
+  Text
+} from "native-base";
+import { Image } from "react-native";
+import Autolink from "react-native-autolink";
+import Error from "../Error";
+import PropTypes from "prop-types";
+import React from "react";
+import Spacer from "../Spacer";
+import moment from "moment";
+const placeholderImage = require("../../assets/placeholder.jpg");
 
 const EventView = ({ event }) => {
   // Event not found
@@ -36,7 +42,7 @@ const EventView = ({ event }) => {
           </CardItem>
           <CardItem>
             <Body>
-              <Text>{moment(event.startDate).format('LT - Do MMM, dddd')}</Text>
+              <Text>{moment(event.startDate).format("LT - Do MMM, dddd")}</Text>
             </Body>
           </CardItem>
         </Card>
@@ -62,7 +68,7 @@ const EventView = ({ event }) => {
                 flex: 1,
                 height: 500,
                 width: null,
-                resizeMode: 'contain',
+                resizeMode: "contain"
               }}
             />
           </CardItem>
@@ -80,8 +86,8 @@ EventView.propTypes = {
     description: PropTypes.string,
     image: PropTypes.string,
     startDate: PropTypes.string,
-    location: PropTypes.string,
-  }),
+    location: PropTypes.string
+  })
 };
 
 export default EventView;
