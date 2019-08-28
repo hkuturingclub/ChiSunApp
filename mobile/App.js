@@ -9,7 +9,7 @@ import { StyleProvider } from "native-base";
 import getTheme from "./native-base-theme/components";
 import theme from "./native-base-theme/variables/commonColor";
 
-import { Constants } from "expo";
+import Constants from "expo-constants";
 
 import Routes from "./routes/index";
 const { manifest } = Constants;
