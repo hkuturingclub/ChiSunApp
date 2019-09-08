@@ -58,3 +58,27 @@ This is the repository for the web and mobile apps of Chi Sun College of the Uni
 1.  Ensure you are in master branch by `git branch`
 2.  Deploy by `yarn deploy`
 3.  Visit web app at [http://hkuturingclub.github.io/ChiSunApp](http://hkuturingclub.github.io/ChiSunApp)
+
+### Mobile App
+
+1. Update version in `mobile/app.json`
+2. `git checkout -b localbranch`
+3. `cd mobile`
+4. `expo eject` (Select ExpoKit)
+5. `expo publish`
+
+#### Android
+
+1. Open `android` directory in Android Studio
+2. Wait for dependencies to install
+3. Build unsigned apk and send to ITS
+
+#### iOS
+
+The following commands should be done in a separate branch and that branch should be deleted once the deployment is finished. Basically, we eject our app every time we have to send it to ITS.
+
+1. `cd ios`
+2. `pod install`
+3. `yarn start` and then Open `chi-sun-college.xcworkspace` project in `mobile/ios` using XCode
+4. If the app runs locally without issues, zip the entire `mobile` folder containing `node_modules` and `mobile/ios/Pods` and send to ITS.
+5. Check previous email conversations in `turingclub.hku@gmail` for further guidance.

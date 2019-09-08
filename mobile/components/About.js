@@ -3,37 +3,10 @@ import { Dimensions, Image, Text, View } from "react-native";
 import React, { Component } from "react";
 import assets from "../constants/assets";
 
-var DomParser = require("react-native-html-parser").DOMParser;
 class About extends Component {
   state = {
-    text: "Loading..."
+    text: assets.collegeAbout
   };
-  componentDidMount() {
-    fetch("http://www.chisuncollege.hku.hk/the-college/")
-      .then(response => {
-        let doc = new DomParser().parseFromString(
-          response._bodyText,
-          "text/html"
-        );
-        let Wrapper = doc.getElementsByClassName("wpb_wrapper")[2];
-        let aboutText = Wrapper.getElementsByTagName("p");
-        let ChiSunAbout = "";
-        for (let i = 0; i < aboutText.length; i++) {
-          if (aboutText[i].textContent !== "") {
-            ChiSunAbout += aboutText[i].textContent + "\n\n";
-          }
-        }
-        this.setState({
-          text: ChiSunAbout
-        });
-      })
-      .catch(error => {
-        console.log(error);
-        this.setState({
-          text: assets.collegeAbout
-        });
-      });
-  }
   render() {
     return (
       <Container>
