@@ -1,25 +1,27 @@
-import Colors from '../native-base-theme/variables/commonColor';
+import { Platform } from "react-native";
+import Colors from "../native-base-theme/variables/commonColor";
 
 export default {
   navbarProps: {
-    navigationBarStyle: { backgroundColor: 'white' },
+    navigationBarStyle: { backgroundColor: "white" },
     titleStyle: {
       color: Colors.textColor,
-      alignSelf: 'center',
+      alignSelf: "center",
       letterSpacing: 2,
       fontSize: Colors.fontSizeBase,
+      fontFamily: Platform.OS === "ios" ? "System" : "Roboto"
     },
-    backButtonTintColor: Colors.textColor,
+    backButtonTintColor: Colors.textColor
   },
 
   tabProps: {
     swipeEnabled: false,
-    activeBackgroundColor: '#57db7a',
+    activeBackgroundColor: "#57db7a",
     inactiveBackgroundColor: Colors.brandPrimary,
-    tabBarStyle: { backgroundColor: Colors.brandPrimary },
+    tabBarStyle: { backgroundColor: Colors.brandPrimary }
   },
 
   icons: {
-    style: { color: 'white', height: 30, width: 30 },
-  },
+    style: { color: "white", height: 30, width: 30 }
+  }
 };
