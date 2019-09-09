@@ -73,6 +73,29 @@ This is the repository for the web and mobile apps of Chi Sun College of the Uni
 2. Wait for dependencies to install
 3. Build unsigned apk and send to ITS
 
+##### How to build unsigned apk?
+
+1. Look for `release buildType` configuration in `mobile/android/app/build.gradle` and change `signingConfig` to `null` like this:
+
+```
+android {
+  ...
+  buildTypes {
+    ...
+    release {
+      minifyEnabled true
+      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+      consumerProguardFiles 'proguard-rules.pro'
+      signingConfig null
+    }
+  }
+  ...
+}
+```
+
+2. Run assembleRelease task: `./gradlew assembleRelease`
+3. If everything goes well you can find `app-release-unsigned.apk` in `mobile/android/app/build/outputs/apk/release`
+
 #### iOS
 
 The following commands should be done in a separate branch and that branch should be deleted once the deployment is finished. Basically, we eject our app every time we have to send it to ITS.
