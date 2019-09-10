@@ -30,7 +30,7 @@ const GroupsList = ({ groups }) => <FlatList
       <CardItem cardBody>
         <Body>
           <Spacer size={10} />
-          <Text style={{ fontWeight: '800' }}>{item.name}</Text>
+          <Text style={{ fontWeight: '800', height: 80 }}>{item.name}</Text>
           <Spacer size={15} />
           <Button block bordered small onPress={() => Actions.group({ group: item })}>
             <Text>View Group</Text>
