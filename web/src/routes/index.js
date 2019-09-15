@@ -14,6 +14,7 @@ import Groups from "../components/Groups";
 import Home from "../components/Home";
 import Login from "../components/Login";
 import SignUp from "../components/SignUp";
+import Tutors from "../components/Tutors";
 
 class Index extends React.Component {
   componentWillMount() {
@@ -34,6 +35,7 @@ class Index extends React.Component {
             <Route exact path="/group/:id/edit" component={GroupEdit} />
             <Route exact path="/events/manage" component={EventsManage} />
             <Route exact path="/event/create" component={EventCreate} />
+            <Route exact path="/tutors" component={Tutors} />
             <Route
               exact
               path="/privacy-policy/app"

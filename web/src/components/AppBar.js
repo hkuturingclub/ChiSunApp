@@ -32,6 +32,11 @@ const sidebarItems = [
     text: "Manage Events",
     route: "/events/manage",
     icon: "book"
+  },
+  {
+    text: "Tutors",
+    route: "/tutors",
+    icon: "solution"
   }
 ];
 
