@@ -99,8 +99,8 @@ class Login extends React.Component {
                 <Button type="primary" icon="login" htmlType="submit" disabled={isSubmitting}>
                   Log in
                 </Button>
-                <br />
-                Or <a href="/signup">register now!</a>
+                {/*<br />*/}
+                {/*Or <a href="/signup">register now!</a>*/}
               </Form>
             )}
           </Formik>
