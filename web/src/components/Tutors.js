@@ -1,8 +1,5 @@
-import React from 'react';
 import { Card, Col, Row } from 'antd';
-import { Avatar } from 'antd';
-const { Meta } = Card;
-
+import React from 'react';
 
 const tutorsData = [
   {
@@ -50,7 +47,7 @@ const Tutors = () => {
   <p>
   For information on the tutorial team, <a href="http://www.chisuncollege.hku.hk/management-tutorial-team">click here </a>
   </p>
-  <Row>{tutorsData.map(tutor=><Col span={6}><Card style={{margin:"auto",width:240,marginBottom:10}}title={tutor.name}><img src={tutor.image} width="200" height="200"/></Card></Col>)}</Row>
+  <Row>{tutorsData.map(tutor=><Col span={6}><Card style={{margin:"auto",width:240,marginBottom:10}}title={tutor.name}><img src={tutor.image} width="200" height="200" alt={tutor.name}/></Card></Col>)}</Row>
   </div>
 )}
 export default Tutors

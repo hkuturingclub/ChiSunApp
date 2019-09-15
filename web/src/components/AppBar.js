@@ -11,27 +11,32 @@ const sidebarItems = [
   {
     text: "Home",
     route: "/",
-    icon: "home"
+    icon: "home",
+    admin: false,
   },
   {
     text: "Create Group",
     route: "/groups/create",
-    icon: "user-add"
+    icon: "user-add",
+    admin: true
   },
   {
     text: "Groups",
     route: "/groups",
-    icon: "team"
+    icon: "team",
+    admin:false,
   },
   {
     text: "Create Event",
     route: "/event/create",
-    icon: "calendar"
+    icon: "calendar",
+    admin:false,
   },
   {
     text: "Manage Events",
     route: "/events/manage",
-    icon: "book"
+    icon: "book",
+    admin:false,
   },
   {
     text: "Tutors",
@@ -81,7 +86,7 @@ class AppBar extends React.Component {
               style={{ height: "100%", borderRight: 0 }}
             >
               {sidebarItems.map(item => (
-                <Menu.Item key={item.route}>
+                <Menu.Item key={item.route} disabled={item.admin && !!!user}>
                   <Link to={item.route}>
                     <Icon type={item.icon} />
                     <span>{item.text}</span>

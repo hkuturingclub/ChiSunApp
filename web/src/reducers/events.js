@@ -1,8 +1,13 @@
-import { EVENTS_ERROR, EVENTS_REPLACE } from '../actions/events';
+import { EVENTS_ERROR, EVENTS_REPLACE, EVENT_UPDATE_ERROR,
+  EVENT_UPDATE_PROCESSING, EVENT_UPDATE_STATUS } from '../actions/events';
 
 export const initialState = {
   loading: true,
   error: null,
+  updateError:null,
+  updating: false,
+  updated: false,
+  updateId: null,
   events: [
     {
       placeholder: true,
@@ -48,6 +53,41 @@ export default function eventsReducer(state = initialState, action) {
         loading: false,
         events,
       };
+    }
+    case EVENT_UPDATE_PROCESSING: {
+      return {
+        ...state,
+        error:null,
+        updating:true,
+        updated:false,
+        updateError:null,
+        updateId:null,
+      }
+    }
+    case EVENT_UPDATE_STATUS: {
+      let newEvents = state.events.filter(event => {
+        return event.id !== action.data.id
+      });
+      newEvents.push(action.data);
+      return {
+        ...state,
+        updateError:null,
+        error:null,
+        updating:false,
+        updated:true,
+        events:newEvents,
+        updateId: action.data.id,
+      }
+    }
+    case EVENT_UPDATE_ERROR: {
+      console.log(action.data)
+      return {
+        ...state,
+        updateError:action.data.error,
+        updating:false,
+        updated:false,
+        updateId:action.data.id,
+      }
     }
     default:
       return state;
