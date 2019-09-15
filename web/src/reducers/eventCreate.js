@@ -45,6 +45,7 @@ export default function eventCreateReducer(state = initialState, action) {
         createdEventId: action.data,
       };
     }
+
     default:
       return state;
   }

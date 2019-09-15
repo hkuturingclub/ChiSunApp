@@ -7,6 +7,7 @@ export const EVENT_CREATE_PROCESSING = 'EVENT_CREATE_PROCESSING';
 export const EVENT_CREATE_ERROR = 'EVENT_CREATE_ERROR';
 export const EVENT_CREATE_SUCCESS = 'EVENT_CREATE_SUCCESS';
 
+
 /**
  * Resets state
  */
@@ -78,3 +79,4 @@ export function addEvent(eventDetails) {
       });
   });
 }
+
