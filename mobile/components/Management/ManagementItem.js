@@ -5,9 +5,8 @@ import React from 'react';
 const placeholderImage = require('../../assets/chisun_college.png');
 
 const getFloorText = (floors) => {
-  const first = floors[0];
-  const last = floors[floors.length - 1];
-  return `${first} - ${last}F`;
+  const stringFloors = floors.join(', ');
+  return stringFloors;
 }
 
 const styles = {
