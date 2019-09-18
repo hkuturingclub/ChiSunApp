@@ -1,5 +1,5 @@
 import { Container, Content } from "native-base";
-import { Dimensions, Image, Text, View } from "react-native";
+import { Dimensions, Image, Text } from "react-native";
 import React, { Component } from "react";
 import assets from "../constants/assets";
 
