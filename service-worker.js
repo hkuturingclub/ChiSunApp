@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/ChiSunApp/precache-manifest.c418e8d717054cf3d970c692e3d68bc8.js"
+  "/ChiSunApp/precache-manifest.f55c994b6b84a9826522a536f23f50a7.js"
 );
 
 self.addEventListener('message', (event) => {
