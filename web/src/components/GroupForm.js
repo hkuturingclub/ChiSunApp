@@ -117,8 +117,8 @@ const GroupForm = ({ onSubmit, initialValues = {} }) => (
                 value={values.category}
               >
                 <Option value="Sports">Sports</Option>
-                <Option value="Initiative">Initiative</Option>
-                <Option value="Arts">Arts</Option>
+                <Option value="Initiative">Outreach and Innovation</Option>
+                <Option value="Arts">Arts and Culture</Option>
               </Select>
             </Form.Item>
           </Col>
