@@ -30,6 +30,7 @@
     "dataloader": "^1.4.0",
     "dotenv-safe": "^6.0.0",
     "firebase": "^5.8.0",
+    "firebase-admin": "^8.6.0",
     "graphql": "^14.5.3",
     "graphql-playground-middleware": "^1.1.2",
     "graphql-tag": "^2.10.1"

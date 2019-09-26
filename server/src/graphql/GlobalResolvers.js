@@ -10,6 +10,7 @@ const globalResolvers = {
     groups: groupsResolvers.groups,
     group: groupsResolvers.group,
     management: managementResolvers.managements,
+    me: userResolvers.me,
   },
   Mutation: {
     login: userResolvers.login,

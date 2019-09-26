@@ -10,9 +10,14 @@ const queryTypes = gql`
     groups: [Group!]!
     group(id: ID!): Group!
     management: [Management!]!
+    me: User!
   }
   type Mutation {
     login(email: String!, password: String!): String!
+  }
+
+  type User {
+    email: String!
   }
 `;
 

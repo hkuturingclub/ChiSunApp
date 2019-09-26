@@ -3,6 +3,7 @@ import { ApolloServer } from 'apollo-server';
 import globalResolvers from './graphql/GlobalResolvers';
 import globalQuery from './graphql/TypeDefinitions';
 import { FirebaseAuth, FirebaseDB } from './config/firebase';
+import { FirebaseAdmin } from './config/firebaseAdmin';
 
 (async () => {
   const server = new ApolloServer({
@@ -11,10 +12,18 @@ import { FirebaseAuth, FirebaseDB } from './config/firebase';
     introspection: true,
     playground: true,
     tracing: true,
-    context: () => ({
-      firebaseAuth: FirebaseAuth,
-      firebaseDB: FirebaseDB,
-    }),
+    context: async ({ req }) => {
+      const token = req.headers.authorization || null;
+      let user;
+      if (token) {
+        user = await FirebaseAdmin.auth().verifyIdToken(token);
+      }
+      return {
+        firebaseAuth: FirebaseAuth,
+        firebaseDB: FirebaseDB,
+        user,
+      };
+    },
   });
   const graphqlPort = process.env.PORT || 4000;
   server.setGraphQLPath('graphql');
