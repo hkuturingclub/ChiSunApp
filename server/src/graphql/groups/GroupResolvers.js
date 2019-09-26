@@ -1,6 +1,6 @@
 const resolvers = {
-  async group(parent, { id }, { firebase }) {
-    const doc = await firebase
+  async group(parent, { id }, { firebaseDB }) {
+    const doc = await firebaseDB
       .collection('groups')
       .doc(id)
       .get();
@@ -9,8 +9,8 @@ const resolvers = {
     }
     return { id: doc.id, ...doc.data() };
   },
-  async groups(parent, args, { firebase }) {
-    const querySnapshot = await firebase.collection('groups').get();
+  async groups(parent, args, { firebaseDB }) {
+    const querySnapshot = await firebaseDB.collection('groups').get();
     const groups = [];
     querySnapshot.forEach(doc => {
       groups.push({ id: doc.id, ...doc.data() });

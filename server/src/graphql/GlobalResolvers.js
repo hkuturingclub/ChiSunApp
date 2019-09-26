@@ -1,6 +1,7 @@
 import eventsResolvers from './events/EventResolvers';
 import groupsResolvers from './groups/GroupResolvers';
 import managementResolvers from './management/ManagementResolvers';
+import userResolvers from './user/UserResolvers';
 
 const globalResolvers = {
   Query: {
@@ -9,6 +10,9 @@ const globalResolvers = {
     groups: groupsResolvers.groups,
     group: groupsResolvers.group,
     management: managementResolvers.managements,
+  },
+  Mutation: {
+    login: userResolvers.login,
   },
 };
 

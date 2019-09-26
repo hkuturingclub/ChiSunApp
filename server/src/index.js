@@ -2,7 +2,7 @@ import 'babel-polyfill';
 import { ApolloServer } from 'apollo-server';
 import globalResolvers from './graphql/GlobalResolvers';
 import globalQuery from './graphql/TypeDefinitions';
-import { FirebaseDB } from './config/firebase';
+import { FirebaseAuth, FirebaseDB } from './config/firebase';
 
 (async () => {
   const server = new ApolloServer({
@@ -12,7 +12,8 @@ import { FirebaseDB } from './config/firebase';
     playground: true,
     tracing: true,
     context: () => ({
-      firebase: FirebaseDB,
+      firebaseAuth: FirebaseAuth,
+      firebaseDB: FirebaseDB,
     }),
   });
   const graphqlPort = process.env.PORT || 4000;

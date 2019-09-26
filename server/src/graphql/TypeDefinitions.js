@@ -11,6 +11,9 @@ const queryTypes = gql`
     group(id: ID!): Group!
     management: [Management!]!
   }
+  type Mutation {
+    login(email: String!, password: String!): String!
+  }
 `;
 
 const globalQuery = [queryTypes, eventTypes, groupTypes, managementTypes];

@@ -1,6 +1,6 @@
 const resolvers = {
-  async event(parent, { id }, { firebase }) {
-    const doc = await firebase
+  async event(parent, { id }, { firebaseDB }) {
+    const doc = await firebaseDB
       .collection('events')
       .doc(id)
       .get();
@@ -9,8 +9,8 @@ const resolvers = {
     }
     return { id: doc.id, ...doc.data() };
   },
-  async events(parent, args, { firebase }) {
-    const querySnapshot = await firebase.collection('events').get();
+  async events(parent, args, { firebaseDB }) {
+    const querySnapshot = await firebaseDB.collection('events').get();
     const events = [];
     querySnapshot.forEach(doc => {
       events.push({ id: doc.id, ...doc.data() });
