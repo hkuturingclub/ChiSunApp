@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "3d6d1ad8101f50eb1e7fa04ff689c63a",
+    "revision": "c32f73d5d67a50fe46d35723e125d5a9",
     "url": "/ChiSunApp/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/ChiSunApp/static/css/2.7a1db334.chunk.css"
   },
   {
-    "revision": "c63f7712dca7956e83e8",
+    "revision": "7dbb281a5ed2de8825e3",
     "url": "/ChiSunApp/static/css/main.36497136.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/ChiSunApp/static/js/2.46bf4514.chunk.js"
   },
   {
-    "revision": "c63f7712dca7956e83e8",
-    "url": "/ChiSunApp/static/js/main.7208a2e2.chunk.js"
+    "revision": "7dbb281a5ed2de8825e3",
+    "url": "/ChiSunApp/static/js/main.c1a13fb5.chunk.js"
   },
   {
     "revision": "829302cfd7250c7e3be1",
