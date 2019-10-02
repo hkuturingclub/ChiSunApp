@@ -128,7 +128,7 @@ const EventCreateForm = ({ onSubmit }) => (
             >
               <DatePicker
                 defaultValue={moment().set({hour:0,minute:0,second:0,millisecond:0})}
-                format={'MMM d, YYYY'}
+                format={'MMM DD, YYYY'}
                 onChange={date => setFieldValue('date', date)}
               />
             </Form.Item>
