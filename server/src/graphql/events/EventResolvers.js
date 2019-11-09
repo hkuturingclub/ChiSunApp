@@ -18,6 +18,27 @@ const resolvers = {
     events.sort((a, b) => Date.parse(a.startDate) - Date.parse(b.startDate));
     return events;
   },
+  async createEvent(parent,{ data: { name, description, location, startDate }},{ firebase }) {
+    try {
+      const docRef = await firebase.collection('events')
+        .add({
+          name: name,
+          description: description,
+          location: location,
+          startDate: startDate,
+          image: "https://miro.medium.com/max/2400/1*ROMNkf5Sr0dtaxZQRzmG8Q.png",
+          status: "processing"
+        })
+      const event = (await docRef.get()).data();
+      return {
+        id: docRef.id,
+        ...event
+      }
+    } catch (e) {
+      console.log(e)
+    }
+  }
 };
 
 export default resolvers;
+  

@@ -11,6 +11,15 @@ const queryTypes = gql`
     group(id: ID!): Group!
     management: [Management!]!
   }
+  type Mutation {
+    createEvent(data: CreateEventInput!): Event!
+  }
+  input CreateEventInput {
+    name: String!
+    description: String!
+    location: String!
+    startDate: String!
+  }
 `;
 
 const globalQuery = [queryTypes, eventTypes, groupTypes, managementTypes];

@@ -1,10 +1,7 @@
 import { Link } from "react-router-dom";
 import { List } from "antd";
-import { connect } from "react-redux";
-import { getGroups } from "../actions/groups";
 import Error from "./Error";
 import React from "react";
-import { graphql } from "graphql";
 import { gql } from 'apollo-boost';
 import { useQuery } from '@apollo/react-hooks';
 

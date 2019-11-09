@@ -4,9 +4,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from "@apollo/react-hooks";
-import { BrowserRouter } from "react-router-dom";
 
-const graphQLURI = `https://hkuchisuncollege.herokuapp.com/graphql`;
+const graphQLURI = process.env.NODE_ENV === "production" ? "https://hkuchisuncollege.herokuapp.com/graphql" : "http://localhost:4000/graphql";
 
 const client = new ApolloClient({
   uri: graphQLURI,
