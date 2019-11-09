@@ -4,18 +4,34 @@ import { connect } from "react-redux";
 import { getGroups } from "../actions/groups";
 import Error from "./Error";
 import React from "react";
+import { graphql } from "graphql";
+import { gql } from 'apollo-boost';
+import { useQuery } from '@apollo/react-hooks';
 
-class GroupsList extends React.Component {
-  componentDidMount = () => this.props.getGroups();
+const GROUPS_QUERY = gql `
+  query {
+    groups {
+      id
+      name
+      category
+      image
+      link
+      description
+      contact_name
+      contact_number
+    }
+  }
+`;
 
-  render = () => {
-    const { loading, error, groups } = this.props.groups;
+const GroupsList = () => {
+    const { loading, error, data } = useQuery(GROUPS_QUERY);
 
     // Loading
     if (loading) return <div>Loading</div>;
 
     // Error
     if (error) return <Error content={error} />;
+    const{groups} = data;
 
     // Show Listing
     return (
@@ -49,18 +65,6 @@ class GroupsList extends React.Component {
         />
       </div>
     );
-  };
-}
-
-const mapStateToProps = state => ({
-  groups: state.groups
-});
-
-const mapDispatchToProps = {
-  getGroups
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(GroupsList);
+export default GroupsList;
