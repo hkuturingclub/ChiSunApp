@@ -25,7 +25,7 @@
     "prettier-eslint": "^8.8.2"
   },
   "dependencies": {
-    "apollo-server": "^2.9.0",
+    "apollo-server": "^2.14.2",
     "babel-polyfill": "^6.26.0",
     "dataloader": "^1.4.0",
     "dotenv-safe": "^6.0.0",
