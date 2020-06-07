@@ -1,10 +1,10 @@
 {
-  "name": "server",
+  "name": "chi-sun-app-server",
   "version": "1.0.0",
-  "description": "Chi Sun Server ",
+  "description": "Chi Sun Server",
   "main": "index.js",
   "repository": "https://github.com/hkuturingclub/ChiSunApp/",
-  "author": "Chi Sun ",
+  "author": "Chi Sun Turing Club",
   "license": "MIT",
   "devDependencies": {
     "nodemon": "^2.0.4",
@@ -21,7 +21,7 @@
     "build": "tsc",
     "dev": "yarn build && nodemon",
     "heroku-postbuild": "yarn build",
-    "deploy": "git push heroku `git subtree split --prefix server master`:master --force",
+    "deploy": "git push heroku `cd .. && git subtree split --prefix server master`:master --force",
     "deploy_windows": "powershell -file ../deploy_windows.ps1"
   }
 }
