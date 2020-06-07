@@ -1,7 +1,7 @@
-import { gql } from 'apollo-server';
-import eventTypes from './events/EventTypes';
-import groupTypes from './groups/GroupTypes';
-import managementTypes from './management/ManagementTypes';
+import { gql } from "apollo-server";
+import eventTypes from "./events/EventTypes";
+import groupTypes from "./groups/GroupTypes";
+import managementTypes from "./management/ManagementTypes";
 
 const queryTypes = gql`
   type Query {

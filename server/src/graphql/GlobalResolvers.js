@@ -1,6 +1,6 @@
-import eventsResolvers from './events/EventResolvers';
-import groupsResolvers from './groups/GroupResolvers';
-import managementResolvers from './management/ManagementResolvers';
+import eventsResolvers from "./events/EventResolvers";
+import groupsResolvers from "./groups/GroupResolvers";
+import managementResolvers from "./management/ManagementResolvers";
 
 const globalResolvers = {
   Query: {
