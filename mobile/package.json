@@ -4,33 +4,22 @@
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
-    "eject": "expo eject",
-    "lint": "eslint --ext .js --ext .jsx .",
-    "lint-fix": "npm run lint -- --fix"
+    "eject": "expo eject"
   },
   "dependencies": {
     "apollo-boost": "^0.1.27",
-    "expo": "^34.0.1",
-    "expo-constants": "~6.0.0",
+    "expo": "^38.0.0",
+    "expo-constants": "~9.1.1",
     "graphql": "^14.1.1",
     "moment": "^2.24.0",
     "native-base": "2.11.0",
-    "react": "16.8.3",
+    "react": "16.11.0",
     "react-apollo": "^2.4.0",
-    "react-native": "https://github.com/expo/react-native/archive/sdk-34.0.0.tar.gz",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-38.0.0.tar.gz",
     "react-native-autolink": "^1.6.0",
     "react-native-html-parser": "^0.0.5",
     "react-native-router-flux": "^4.0.6"
   },
-  "devDependencies": {
-    "babel-eslint": "^10.0.3",
-    "babel-preset-expo": "^5.2.0",
-    "eslint-config-react-app": "^3.0.6",
-    "eslint-plugin-flowtype": "^3.2.1",
-    "eslint-plugin-import": "^2.15.0",
-    "eslint-plugin-jsx-a11y": "^6.2.0",
-    "eslint-plugin-react": "^7.12.4",
-    "eslint-plugin-sort-imports-es6-autofix": "^0.3.0"
-  },
+  "devDependencies": {},
   "private": true
 }
