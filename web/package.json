@@ -8,7 +8,7 @@
     "eslint": "^6.2.2",
     "firebase": "^5.8.1",
     "formik": "^1.4.2",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.19",
     "prop-types": "^15.6.2",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
