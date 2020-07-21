@@ -1,17 +1,25 @@
 {
   "files": {
     "main.css": "/ChiSunApp/static/css/main.36497136.chunk.css",
-    "main.js": "/ChiSunApp/static/js/main.c1a13fb5.chunk.js",
-    "main.js.map": "/ChiSunApp/static/js/main.c1a13fb5.chunk.js.map",
-    "runtime~main.js": "/ChiSunApp/static/js/runtime~main.24bf6ae2.js",
-    "runtime~main.js.map": "/ChiSunApp/static/js/runtime~main.24bf6ae2.js.map",
-    "static/css/2.7a1db334.chunk.css": "/ChiSunApp/static/css/2.7a1db334.chunk.css",
-    "static/js/2.46bf4514.chunk.js": "/ChiSunApp/static/js/2.46bf4514.chunk.js",
-    "static/js/2.46bf4514.chunk.js.map": "/ChiSunApp/static/js/2.46bf4514.chunk.js.map",
+    "main.js": "/ChiSunApp/static/js/main.82951953.chunk.js",
+    "main.js.map": "/ChiSunApp/static/js/main.82951953.chunk.js.map",
+    "runtime-main.js": "/ChiSunApp/static/js/runtime-main.b5e03cfa.js",
+    "runtime-main.js.map": "/ChiSunApp/static/js/runtime-main.b5e03cfa.js.map",
+    "static/css/2.48db8b0f.chunk.css": "/ChiSunApp/static/css/2.48db8b0f.chunk.css",
+    "static/js/2.daf63445.chunk.js": "/ChiSunApp/static/js/2.daf63445.chunk.js",
+    "static/js/2.daf63445.chunk.js.map": "/ChiSunApp/static/js/2.daf63445.chunk.js.map",
     "index.html": "/ChiSunApp/index.html",
-    "precache-manifest.f2c22842dd9398fc51a341ac0735141b.js": "/ChiSunApp/precache-manifest.f2c22842dd9398fc51a341ac0735141b.js",
+    "precache-manifest.df79a5118689fd8a06c9104f58d3edf6.js": "/ChiSunApp/precache-manifest.df79a5118689fd8a06c9104f58d3edf6.js",
     "service-worker.js": "/ChiSunApp/service-worker.js",
-    "static/css/2.7a1db334.chunk.css.map": "/ChiSunApp/static/css/2.7a1db334.chunk.css.map",
-    "static/css/main.36497136.chunk.css.map": "/ChiSunApp/static/css/main.36497136.chunk.css.map"
-  }
+    "static/css/2.48db8b0f.chunk.css.map": "/ChiSunApp/static/css/2.48db8b0f.chunk.css.map",
+    "static/css/main.36497136.chunk.css.map": "/ChiSunApp/static/css/main.36497136.chunk.css.map",
+    "static/js/2.daf63445.chunk.js.LICENSE.txt": "/ChiSunApp/static/js/2.daf63445.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.b5e03cfa.js",
+    "static/css/2.48db8b0f.chunk.css",
+    "static/js/2.daf63445.chunk.js",
+    "static/css/main.36497136.chunk.css",
+    "static/js/main.82951953.chunk.js"
+  ]
 }
