@@ -10,11 +10,11 @@ export const GROUP_CREATE_SUCCESS = "GROUP_CREATE_SUCCESS";
  * Resets state
  */
 export function reset() {
-  return dispatch =>
-    new Promise(resolve =>
+  return (dispatch) =>
+    new Promise((resolve) =>
       resolve(
         dispatch({
-          type: GROUP_CREATE_RESET
+          type: GROUP_CREATE_RESET,
         })
       )
     );
@@ -24,13 +24,13 @@ export function reset() {
  * Add Group
  */
 export function addGroup(groupDetails, groupID = generateGUID()) {
-  return async dispatch => {
+  return async (dispatch) => {
     if (Firebase === null) {
       return;
     }
 
     dispatch({
-      type: GROUP_CREATE_PROCESSING
+      type: GROUP_CREATE_PROCESSING,
     });
 
     try {
@@ -44,20 +44,18 @@ export function addGroup(groupDetails, groupID = generateGUID()) {
       } else {
         imageURL = groupDetails.image;
       }
-      await FirebaseDB.collection("groups")
-        .doc(groupID)
-        .set({
-          name: groupDetails.name,
-          description: groupDetails.description,
-          category: groupDetails.category,
-          contact_name: groupDetails.contact_name,
-          contact_number: groupDetails.contact_number,
-          link: groupDetails.link,
-          image: imageURL
-        });
+      await FirebaseDB.collection("groups").doc(groupID).set({
+        name: groupDetails.name,
+        description: groupDetails.description,
+        category: groupDetails.category,
+        contact_name: groupDetails.contact_name,
+        contact_number: groupDetails.contact_number,
+        link: groupDetails.link,
+        image: imageURL,
+      });
       dispatch({
         type: GROUP_CREATE_SUCCESS,
-        data: groupID
+        data: groupID,
       });
     } catch (error) {
       dispatch({ type: GROUP_CREATE_ERROR, data: error.message });

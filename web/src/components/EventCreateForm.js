@@ -1,55 +1,66 @@
-import { Button, Col, DatePicker, Form, Icon, Input, Row, TimePicker, Upload } from "antd";
-import { Formik } from 'formik';
-import PropTypes from 'prop-types';
-import React from 'react';
-import moment from 'moment';
+import {
+  Button,
+  Col,
+  DatePicker,
+  Form,
+  Icon,
+  Input,
+  Row,
+  TimePicker,
+  Upload,
+} from "antd";
+import { Formik } from "formik";
+import PropTypes from "prop-types";
+import React from "react";
+import moment from "moment";
 
 const EventCreateForm = ({ onSubmit }) => (
   <Formik
     initialValues={{
-      name: '',
-      description: '',
+      name: "",
+      description: "",
       date: null,
       time: null,
-      location: '',
-      image: null
+      location: "",
+      image: null,
     }}
-    validate={values => {
+    validate={(values) => {
       const errors = {};
       if (!values.name) {
-        errors.name = 'Required';
+        errors.name = "Required";
       }
       if (!values.description) {
-        errors.description = 'Required';
+        errors.description = "Required";
       }
       if (!values.date) {
-        errors.date = 'Required';
+        errors.date = "Required";
       }
       if (!values.time) {
-        errors.time = 'Required';
+        errors.time = "Required";
       }
       if (!values.location) {
-        errors.location = 'Required';
+        errors.location = "Required";
       }
       if (!values.image) {
-        errors.image = 'Required';
+        errors.image = "Required";
       }
       return errors;
     }}
-
     onSubmit={(values, { setSubmitting }) => {
-      const startDate = values.date.set({
-        hour: values.time.get('hour'),
-        minute: values.time.get('minute'),
-        second: 0,
-        millisecond: 0,
-      }).toISOString();
+      const startDate = values.date
+        .set({
+          hour: values.time.get("hour"),
+          minute: values.time.get("minute"),
+          second: 0,
+          millisecond: 0,
+        })
+        .toISOString();
       onSubmit({
         name: values.name,
         description: values.description,
         location: values.location,
         startDate,
-        image: values.image
+        image: values.image,
       });
       setSubmitting(false);
     }}
@@ -62,7 +73,7 @@ const EventCreateForm = ({ onSubmit }) => (
       handleBlur,
       handleSubmit,
       isSubmitting,
-      setFieldValue
+      setFieldValue,
       /* and other goodies */
     }) => (
       <Form onSubmit={handleSubmit}>
@@ -88,7 +99,9 @@ const EventCreateForm = ({ onSubmit }) => (
             <Form.Item
               label="Description"
               hasFeedback={!!errors.description}
-              validateStatus={touched.description && errors.description && "error"}
+              validateStatus={
+                touched.description && errors.description && "error"
+              }
               help={touched.description && errors.description}
             >
               <Input.TextArea
@@ -127,9 +140,14 @@ const EventCreateForm = ({ onSubmit }) => (
               help={touched.date && errors.date}
             >
               <DatePicker
-                defaultValue={moment().set({hour:0,minute:0,second:0,millisecond:0})}
-                format={'MMM DD, YYYY'}
-                onChange={date => setFieldValue('date', date)}
+                defaultValue={moment().set({
+                  hour: 0,
+                  minute: 0,
+                  second: 0,
+                  millisecond: 0,
+                })}
+                format={"MMM DD, YYYY"}
+                onChange={(date) => setFieldValue("date", date)}
               />
             </Form.Item>
           </Col>
@@ -141,11 +159,16 @@ const EventCreateForm = ({ onSubmit }) => (
               help={touched.time && errors.time}
             >
               <TimePicker
-                defaultValue={moment().set({hour:0,minute:0,second:0,millisecond:0})}
+                defaultValue={moment().set({
+                  hour: 0,
+                  minute: 0,
+                  second: 0,
+                  millisecond: 0,
+                })}
                 use12Hours
-                format='h:mm a'
+                format="h:mm a"
                 minuteStep={15}
-                onChange={time => setFieldValue('time', time)}
+                onChange={(time) => setFieldValue("time", time)}
               />
             </Form.Item>
           </Col>
@@ -157,13 +180,13 @@ const EventCreateForm = ({ onSubmit }) => (
               help={touched.image && errors.image}
             >
               <Upload
-                listType= 'picture'
+                listType="picture"
                 accept="image/*"
-                beforeUpload={file => {
-                  setFieldValue('image', file);
-                  return false
+                beforeUpload={(file) => {
+                  setFieldValue("image", file);
+                  return false;
                 }}
-                onRemove={() => setFieldValue('image', null)}
+                onRemove={() => setFieldValue("image", null)}
               >
                 <Button>
                   <Icon type="upload" /> Click to Upload
@@ -181,7 +204,7 @@ const EventCreateForm = ({ onSubmit }) => (
 );
 
 EventCreateForm.propTypes = {
-  onSubmit: PropTypes.func.isRequired
+  onSubmit: PropTypes.func.isRequired,
 };
 
 export default EventCreateForm;

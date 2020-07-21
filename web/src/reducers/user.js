@@ -1,8 +1,13 @@
-import { CREATE_USER_FAIL, FETCH_USER, LOGIN_USER_FAIL, RESET_ERROR } from "../actions/user";
+import {
+  CREATE_USER_FAIL,
+  FETCH_USER,
+  LOGIN_USER_FAIL,
+  RESET_ERROR,
+} from "../actions/user";
 
 export const initialState = {
   error: null,
-  user: null
+  user: null,
 };
 
 export default (state = initialState, action) => {
@@ -10,26 +15,26 @@ export default (state = initialState, action) => {
     case RESET_ERROR: {
       return {
         ...state,
-        error: null
+        error: null,
       };
     }
     case FETCH_USER: {
       return {
         ...state,
         user: action.data,
-        error: null
+        error: null,
       };
     }
     case LOGIN_USER_FAIL: {
       return {
         ...state,
-        error: action.data
+        error: action.data,
       };
     }
     case CREATE_USER_FAIL: {
       return {
         ...state,
-        error: action.data
+        error: action.data,
       };
     }
     default: {

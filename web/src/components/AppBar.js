@@ -18,31 +18,31 @@ const sidebarItems = [
     text: "Create Group",
     route: "/groups/create",
     icon: "user-add",
-    admin: true
+    admin: true,
   },
   {
     text: "Groups",
     route: "/groups",
     icon: "team",
-    admin:false,
+    admin: false,
   },
   {
     text: "Create Event",
     route: "/event/create",
     icon: "calendar",
-    admin:false,
+    admin: false,
   },
   {
     text: "Manage Events",
     route: "/events/manage",
     icon: "book",
-    admin:false,
+    admin: false,
   },
   {
     text: "Tutors",
     route: "/tutors",
-    icon: "solution"
-  }
+    icon: "solution",
+  },
 ];
 
 class AppBar extends React.Component {
@@ -85,7 +85,7 @@ class AppBar extends React.Component {
               selectedKeys={[currentRoute]}
               style={{ height: "100%", borderRight: 0 }}
             >
-              {sidebarItems.map(item => (
+              {sidebarItems.map((item) => (
                 <Menu.Item key={item.route} disabled={item.admin && !!!user}>
                   <Link to={item.route}>
                     <Icon type={item.icon} />
@@ -101,7 +101,7 @@ class AppBar extends React.Component {
                 background: "#fff",
                 padding: 24,
                 margin: 0,
-                minHeight: 280
+                minHeight: 280,
               }}
             >
               {children}
@@ -123,17 +123,12 @@ class AppBar extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({
-  user: state.user
+const mapStateToProps = (state) => ({
+  user: state.user,
 });
 
 const mapDispatchToProps = {
-  signOut
+  signOut,
 };
 
-export default withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(AppBar)
-);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(AppBar));

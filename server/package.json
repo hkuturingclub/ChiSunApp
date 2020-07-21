@@ -19,7 +19,7 @@
   "scripts": {
     "start": "node dist/index.js",
     "build": "tsc",
-    "dev": "yarn build && nodemon",
+    "dev": "nodemon",
     "heroku-postbuild": "yarn build",
     "deploy": "git push heroku `cd .. && git subtree split --prefix server master`:master --force",
     "deploy_windows": "powershell -file ../deploy_windows.ps1"

@@ -45,16 +45,13 @@ class GroupCreate extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({
-  groupCreate: state.groupCreate || {}
+const mapStateToProps = (state) => ({
+  groupCreate: state.groupCreate || {},
 });
 
 const mapDispatchToProps = {
   reset,
-  addGroup
+  addGroup,
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(GroupCreate);
+export default connect(mapStateToProps, mapDispatchToProps)(GroupCreate);

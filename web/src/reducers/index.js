@@ -9,5 +9,5 @@ export default {
   eventCreate,
   events,
   user,
-  groupCreate
+  groupCreate,
 };
