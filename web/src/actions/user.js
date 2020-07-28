@@ -5,61 +5,58 @@ export const CREATE_USER_FAIL = "CREATE_USER_FAIL";
 export const LOGIN_USER_FAIL = "LOGIN_USER_FAIL";
 export const RESET_ERROR = "RESET_ERROR";
 
-export const fetchUser = () => dispatch => {
-  FirebaseAuth.onAuthStateChanged(user => {
+export const fetchUser = () => (dispatch) => {
+  FirebaseAuth.onAuthStateChanged((user) => {
     if (user) {
       dispatch({
         type: FETCH_USER,
-        data: user
+        data: user,
       });
     } else {
       dispatch({
         type: FETCH_USER,
-        data: null
+        data: null,
       });
     }
   });
 };
 
-export const signIn = (email, password) => async dispatch => {
+export const signIn = (email, password) => async (dispatch) => {
   dispatch({
     type: RESET_ERROR,
-    data: null
+    data: null,
   });
 
   try {
     await FirebaseAuth.signInWithEmailAndPassword(email, password);
-  }
-  catch(error) {
+  } catch (error) {
     dispatch({
       type: LOGIN_USER_FAIL,
-      data: error.message
-    })
+      data: error.message,
+    });
   }
 };
 
-export const signOut = () => async dispatch => {
+export const signOut = () => async (dispatch) => {
   try {
     await FirebaseAuth.signOut();
-  }
-  catch(error) {
+  } catch (error) {
     console.log(error);
   }
 };
 
-export const signUp = (email, password) => async dispatch => {
+export const signUp = (email, password) => async (dispatch) => {
   dispatch({
     type: RESET_ERROR,
-    data: null
+    data: null,
   });
 
   try {
     await FirebaseAuth.createUserWithEmailAndPassword(email, password);
-  }
-  catch(error) {
+  } catch (error) {
     dispatch({
       type: CREATE_USER_FAIL,
-      data: error.message
+      data: error.message,
     });
   }
 };

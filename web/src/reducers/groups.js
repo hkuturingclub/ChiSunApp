@@ -15,9 +15,9 @@ export const initialState = {
         "https://firebasestorage.googleapis.com/v0/b/react-native-starter-app.appspot.com/o/image-1.jpg?alt=media&token=9f7c839b-2d40-4660-a2a0-bf6c2f64a2e5",
       contact_name: "---- ----",
       contact_number: "-- ---- ----",
-      link: "#"
-    }
-  ]
+      link: "#",
+    },
+  ],
 };
 
 export default function groupReducer(state = initialState, action) {
@@ -26,7 +26,7 @@ export default function groupReducer(state = initialState, action) {
       return {
         ...state,
         loading: false,
-        error: action.data
+        error: action.data,
       };
     }
     case GROUPS_REPLACE: {
@@ -34,7 +34,7 @@ export default function groupReducer(state = initialState, action) {
 
       // Pick out the props I need
       if (action.data && typeof action.data === "object") {
-        groups = action.data.map(item => ({
+        groups = action.data.map((item) => ({
           id: item.id,
           name: item.name,
           description: item.description,
@@ -42,7 +42,7 @@ export default function groupReducer(state = initialState, action) {
           image: item.image,
           contact_name: item.contact_name,
           contact_number: item.contact_number,
-          link: item.link
+          link: item.link,
         }));
       }
 
@@ -50,7 +50,7 @@ export default function groupReducer(state = initialState, action) {
         ...state,
         error: null,
         loading: false,
-        groups
+        groups,
       };
     }
     default:

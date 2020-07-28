@@ -25,7 +25,7 @@ class GroupEdit extends React.Component {
     // Get this Group from all groups
     let group = null;
     if (id && groups) {
-      group = groups.find(item => item.id === id);
+      group = groups.find((item) => item.id === id);
     }
 
     // Group not found
@@ -63,7 +63,7 @@ class GroupEdit extends React.Component {
 
         {!processing && !groupId && (
           <GroupForm
-            onSubmit={groupDetails => addGroup(groupDetails, group.id)}
+            onSubmit={(groupDetails) => addGroup(groupDetails, group.id)}
             initialValues={group}
           />
         )}
@@ -72,18 +72,15 @@ class GroupEdit extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   groupCreate: state.groupCreate || {},
-  groups: state.groups || {}
+  groups: state.groups || {},
 });
 
 const mapDispatchToProps = {
   reset,
   addGroup,
-  getGroups
+  getGroups,
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(GroupEdit);
+export default connect(mapStateToProps, mapDispatchToProps)(GroupEdit);

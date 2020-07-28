@@ -2,13 +2,13 @@ import {
   GROUP_CREATE_ERROR,
   GROUP_CREATE_PROCESSING,
   GROUP_CREATE_RESET,
-  GROUP_CREATE_SUCCESS
+  GROUP_CREATE_SUCCESS,
 } from "../actions/groupCreate";
 
 export const initialState = {
   error: null,
   processing: false,
-  groupId: ""
+  groupId: "",
 };
 
 export default function groupCreateReducer(state = initialState, action) {
@@ -18,7 +18,7 @@ export default function groupCreateReducer(state = initialState, action) {
         ...state,
         error: null,
         processing: false,
-        groupId: ""
+        groupId: "",
       };
     }
     case GROUP_CREATE_PROCESSING: {
@@ -26,7 +26,7 @@ export default function groupCreateReducer(state = initialState, action) {
         ...state,
         error: null,
         processing: true,
-        groupId: ""
+        groupId: "",
       };
     }
     case GROUP_CREATE_ERROR: {
@@ -34,7 +34,7 @@ export default function groupCreateReducer(state = initialState, action) {
         ...state,
         error: action.data,
         processing: false,
-        groupId: ""
+        groupId: "",
       };
     }
     case GROUP_CREATE_SUCCESS: {
@@ -42,7 +42,7 @@ export default function groupCreateReducer(state = initialState, action) {
         ...state,
         error: null,
         processing: false,
-        groupId: action.data
+        groupId: action.data,
       };
     }
     default:

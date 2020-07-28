@@ -1,15 +1,11 @@
-import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
-import React from 'react';
+import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
+import React from "react";
 
 const Error = ({ title, content }) => (
   <div>
-      <h2>
-      {title}
-    </h2>
-    <p>
-      {content}
-    </p>
+    <h2>{title}</h2>
+    <p>{content}</p>
     <p>
       <Link to="/" className="btn btn-primary">
         Go Home
@@ -24,8 +20,8 @@ Error.propTypes = {
 };
 
 Error.defaultProps = {
-  title: 'Uh oh',
-  content: 'An unexpected error came up',
+  title: "Uh oh",
+  content: "An unexpected error came up",
 };
 
 export default Error;

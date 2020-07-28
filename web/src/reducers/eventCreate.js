@@ -3,12 +3,12 @@ import {
   EVENT_CREATE_PROCESSING,
   EVENT_CREATE_RESET,
   EVENT_CREATE_SUCCESS,
-} from '../actions/eventCreate';
+} from "../actions/eventCreate";
 
 export const initialState = {
   error: null,
   processing: false,
-  createdEventId: '',
+  createdEventId: "",
 };
 
 export default function eventCreateReducer(state = initialState, action) {
@@ -18,7 +18,7 @@ export default function eventCreateReducer(state = initialState, action) {
         ...state,
         error: null,
         processing: false,
-        createdEventId: '',
+        createdEventId: "",
       };
     }
     case EVENT_CREATE_PROCESSING: {
@@ -26,7 +26,7 @@ export default function eventCreateReducer(state = initialState, action) {
         ...state,
         error: null,
         processing: true,
-        createdEventId: '',
+        createdEventId: "",
       };
     }
     case EVENT_CREATE_ERROR: {
@@ -34,7 +34,7 @@ export default function eventCreateReducer(state = initialState, action) {
         ...state,
         error: action.data,
         processing: false,
-        createdEventId: '',
+        createdEventId: "",
       };
     }
     case EVENT_CREATE_SUCCESS: {

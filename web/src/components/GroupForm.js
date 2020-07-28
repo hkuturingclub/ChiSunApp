@@ -13,9 +13,9 @@ const GroupForm = ({ onSubmit, initialValues = {} }) => (
       contact_name: initialValues.contact_name || "",
       contact_number: initialValues.contact_number || "",
       link: initialValues.link || "",
-      image: initialValues.image || null
+      image: initialValues.image || null,
     }}
-    validate={values => {
+    validate={(values) => {
       const errors = {};
       if (!values.name) {
         errors.name = "Required";
@@ -48,7 +48,7 @@ const GroupForm = ({ onSubmit, initialValues = {} }) => (
         contact_name: values.contact_name,
         contact_number: values.contact_number,
         link: values.link,
-        image: values.image
+        image: values.image,
       });
       setSubmitting(false);
     }}
@@ -61,7 +61,7 @@ const GroupForm = ({ onSubmit, initialValues = {} }) => (
       handleBlur,
       handleSubmit,
       isSubmitting,
-      setFieldValue
+      setFieldValue,
       /* and other goodies */
     }) => (
       <Form onSubmit={handleSubmit}>
@@ -113,7 +113,7 @@ const GroupForm = ({ onSubmit, initialValues = {} }) => (
               <Select
                 id="category"
                 style={{ width: 150 }}
-                onChange={value => setFieldValue("category", value)}
+                onChange={(value) => setFieldValue("category", value)}
                 value={values.category}
               >
                 <Option value="Sports">Sports</Option>
@@ -132,7 +132,7 @@ const GroupForm = ({ onSubmit, initialValues = {} }) => (
               <Upload
                 listType="picture"
                 accept="image/*"
-                beforeUpload={file => {
+                beforeUpload={(file) => {
                   setFieldValue("image", file);
                   return false;
                 }}
@@ -207,7 +207,7 @@ const GroupForm = ({ onSubmit, initialValues = {} }) => (
 );
 
 GroupForm.propTypes = {
-  onSubmit: PropTypes.func.isRequired
+  onSubmit: PropTypes.func.isRequired,
 };
 
 export default GroupForm;

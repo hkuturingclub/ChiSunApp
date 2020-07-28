@@ -23,7 +23,7 @@ class GroupView extends React.Component {
     // Get this Group from all groups
     let group = null;
     if (id && groups) {
-      group = groups.find(item => item.id === id);
+      group = groups.find((item) => item.id === id);
     }
 
     // Group not found
@@ -54,15 +54,12 @@ class GroupView extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({
-  groups: state.groups || {}
+const mapStateToProps = (state) => ({
+  groups: state.groups || {},
 });
 
 const mapDispatchToProps = {
-  getGroups
+  getGroups,
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(GroupView);
+export default connect(mapStateToProps, mapDispatchToProps)(GroupView);

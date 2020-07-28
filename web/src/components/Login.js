@@ -1,6 +1,6 @@
-import { Alert, Button, Col, Form, Icon, Input, Row } from 'antd';
-import { Formik } from 'formik';
-import { Redirect } from 'react-router-dom';
+import { Alert, Button, Col, Form, Icon, Input, Row } from "antd";
+import { Formik } from "formik";
+import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import React from "react";
 
@@ -10,33 +10,34 @@ class Login extends React.Component {
   render() {
     const { user, error } = this.props.user;
     if (user) {
-      return <Redirect push to='/' />
+      return <Redirect push to="/" />;
     }
 
     return (
-      <Row type="flex" align='middle' justify='center' style={{padding: 50}}>
+      <Row type="flex" align="middle" justify="center" style={{ padding: 50 }}>
         <Col span={12}>
           <Formik
             initialValues={{
-              email: '',
-              password: ''
+              email: "",
+              password: "",
             }}
-            validate={values => {
+            validate={(values) => {
               const errors = {};
 
               if (!values.email) {
-                errors.email = 'Required';
-              } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-                errors.email = 'Invalid email address';
+                errors.email = "Required";
+              } else if (
+                !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)
+              ) {
+                errors.email = "Invalid email address";
               }
 
               if (!values.password) {
-                errors.password = 'Required';
+                errors.password = "Required";
               }
 
               return errors;
             }}
-
             onSubmit={(values, { setSubmitting }) => {
               this.props.signIn(values.email, values.password);
               setSubmitting(false);
@@ -50,22 +51,28 @@ class Login extends React.Component {
               handleBlur,
               handleSubmit,
               isSubmitting,
-              setFieldValue
+              setFieldValue,
             }) => (
               <Form onSubmit={handleSubmit}>
-                <div style={{
-                  textAlign: 'center',
-                  padding: 30
-                }}>
+                <div
+                  style={{
+                    textAlign: "center",
+                    padding: 30,
+                  }}
+                >
                   <img
                     src="http://www.chisuncollege.hku.hk/wp-content/uploads/2016/08/CSC-Logo-Regular.png"
                     alt="Chi Sun Logo"
                     style={{
-                      maxWidth: "80%"
+                      maxWidth: "80%",
                     }}
                   />
                 </div>
-                {error && <div><Alert message={error} type="error" /></div>}
+                {error && (
+                  <div>
+                    <Alert message={error} type="error" />
+                  </div>
+                )}
                 <Form.Item
                   label="Email"
                   hasFeedback={!!errors.email}
@@ -74,7 +81,7 @@ class Login extends React.Component {
                 >
                   <Input
                     id="email"
-                    prefix={<Icon type="user"/>}
+                    prefix={<Icon type="user" />}
                     placeholder="Email"
                     onChange={handleChange}
                     value={values.email}
@@ -83,12 +90,14 @@ class Login extends React.Component {
                 <Form.Item
                   label="Password"
                   hasFeedback={!!errors.password}
-                  validateStatus={touched.password && errors.password && "error"}
+                  validateStatus={
+                    touched.password && errors.password && "error"
+                  }
                   help={touched.password && errors.password}
                 >
                   <Input
                     id="password"
-                    prefix={<Icon type="lock"/>}
+                    prefix={<Icon type="lock" />}
                     placeholder="Password"
                     type="password"
                     autoComplete="password"
@@ -96,7 +105,12 @@ class Login extends React.Component {
                     value={values.password}
                   />
                 </Form.Item>
-                <Button type="primary" icon="login" htmlType="submit" disabled={isSubmitting}>
+                <Button
+                  type="primary"
+                  icon="login"
+                  htmlType="submit"
+                  disabled={isSubmitting}
+                >
                   Log in
                 </Button>
                 {/*<br />*/}
@@ -104,14 +118,14 @@ class Login extends React.Component {
               </Form>
             )}
           </Formik>
-      </Col>
-    </Row>
+        </Col>
+      </Row>
     );
   }
 }
 
-const mapStateToProps = state => ({
-  user: state.user
+const mapStateToProps = (state) => ({
+  user: state.user,
 });
 
 export default connect(mapStateToProps, { signIn })(Login);

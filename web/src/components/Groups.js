@@ -30,7 +30,7 @@ class GroupsList extends React.Component {
         <List
           itemLayout="horizontal"
           dataSource={groups}
-          renderItem={item => (
+          renderItem={(item) => (
             <List.Item
               actions={[
                 <Link className="btn btn-primary" to={`/group/${item.id}`}>
@@ -38,7 +38,7 @@ class GroupsList extends React.Component {
                 </Link>,
                 <Link className="btn btn-primary" to={`/group/${item.id}/edit`}>
                   Edit
-                </Link>
+                </Link>,
               ]}
             >
               <List.Item.Meta
@@ -52,15 +52,12 @@ class GroupsList extends React.Component {
   };
 }
 
-const mapStateToProps = state => ({
-  groups: state.groups
+const mapStateToProps = (state) => ({
+  groups: state.groups,
 });
 
 const mapDispatchToProps = {
-  getGroups
+  getGroups,
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(GroupsList);
+export default connect(mapStateToProps, mapDispatchToProps)(GroupsList);

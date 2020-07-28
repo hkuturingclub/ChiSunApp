@@ -1,8 +1,8 @@
-import { Alert,Progress } from 'antd';
-import { addEvent, reset } from '../actions/eventCreate';
-import { connect } from 'react-redux';
-import EventCreateForm from './EventCreateForm';
-import React from 'react';
+import { Alert, Progress } from "antd";
+import { addEvent, reset } from "../actions/eventCreate";
+import { connect } from "react-redux";
+import EventCreateForm from "./EventCreateForm";
+import React from "react";
 
 class EventCreate extends React.Component {
   componentDidMount = () => {
@@ -17,13 +17,30 @@ class EventCreate extends React.Component {
       <div>
         <h1>Create Event</h1>
         {/* Show processing */}
-        {processing && <div style={{width:170}}><Progress percent={50} size="small" status="active" /></div>}
+        {processing && (
+          <div style={{ width: 170 }}>
+            <Progress percent={50} size="small" status="active" />
+          </div>
+        )}
 
         {/* Show success or error messages */}
         {createdEventId && (
-          <div><Alert message={"The event has been successfully created with id " + createdEventId + "."} type="success"  /></div>
+          <div>
+            <Alert
+              message={
+                "The event has been successfully created with id " +
+                createdEventId +
+                "."
+              }
+              type="success"
+            />
+          </div>
         )}
-        {error && <div><Alert message={error} type="error" /></div>}
+        {error && (
+          <div>
+            <Alert message={error} type="error" />
+          </div>
+        )}
 
         {/* Do not show form when processing */}
         {!processing && <EventCreateForm onSubmit={addEvent} />}
@@ -32,8 +49,8 @@ class EventCreate extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({
-  eventCreate: state.eventCreate || {}
+const mapStateToProps = (state) => ({
+  eventCreate: state.eventCreate || {},
 });
 
 const mapDispatchToProps = {
@@ -41,7 +58,4 @@ const mapDispatchToProps = {
   addEvent,
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(EventCreate);
+export default connect(mapStateToProps, mapDispatchToProps)(EventCreate);
